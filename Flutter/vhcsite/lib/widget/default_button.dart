@@ -18,7 +18,7 @@ class DefaultButton extends StatelessWidget {
         disabledColor: Theme.of(context).disabledColor,
         onPressed: disabled
             ? null
-            : () => Provider.of<EventChannel>(context, listen: false)
+            : () => Provider.of<ProviderEventChannel>(context, listen: false)
                 .fireEvent("button", type));
   }
 }

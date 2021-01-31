@@ -4,11 +4,11 @@ import 'package:vhcsite/state/event_channel.dart';
 const _POSSIBLE_NAVIGATIONS = {"home", "flutter"};
 
 class NavigationModel with Model {
-  final EventChannel eventChannel;
+  final ProviderEventChannel eventChannel;
   String navigationPath = "flutter";
 
-  NavigationModel({EventChannel parentChannel})
-      : eventChannel = EventChannel(parentChannel) {
+  NavigationModel({ProviderEventChannel parentChannel})
+      : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener("button", (payload) {
       navigate(payload);
       return false;
@@ -25,6 +25,6 @@ class NavigationModel with Model {
     }
 
     navigationPath = navigate;
-    modelUpdated();
+    updateModel();
   }
 }

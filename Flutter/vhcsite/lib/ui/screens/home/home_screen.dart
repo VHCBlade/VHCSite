@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline3,
                       textAlign: TextAlign.center,
                     ),
-                    Image.asset('img/Logo.png'),
+                    Image.asset('assets/img/Logo.png'),
                     Align(
                         alignment: Alignment.centerRight,
                         child: SelectableText(

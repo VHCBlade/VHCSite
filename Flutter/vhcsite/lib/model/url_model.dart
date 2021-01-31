@@ -3,10 +3,10 @@ import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model.dart';
 
 class UrlModel with Model {
-  final EventChannel eventChannel;
+  final ProviderEventChannel eventChannel;
 
-  UrlModel({EventChannel parentChannel})
-      : eventChannel = EventChannel(parentChannel) {
+  UrlModel({ProviderEventChannel parentChannel})
+      : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener("url", (payload) {
       launch(payload);
       return false;

@@ -1,6 +1,8 @@
 import 'package:vhcsite/state/event_channel.dart';
 
 abstract class Model {
-  void Function() modelUpdated = () {};
+  List<void Function()> modelUpdated = [];
   ProviderEventChannel get eventChannel;
+
+  void updateModel() => modelUpdated.forEach((element) => element());
 }

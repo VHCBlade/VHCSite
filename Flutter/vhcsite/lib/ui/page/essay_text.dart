@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
@@ -26,10 +25,6 @@ class HeaderText extends StatelessWidget {
         child:
             SelectableText(text, style: Theme.of(context).textTheme.headline3));
   }
-}
-
-Future<String> loadTextAsset(String link) async {
-  return await rootBundle.loadString(link);
 }
 
 TextSpan createLinkTextSpan(String text, String link, BuildContext context,

@@ -3,6 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
+class ModelNotifier<T extends Model> with ChangeNotifier {
+  final T model;
+
+  ModelNotifier(this.model) {
+    model.modelUpdated.add(notifyListeners);
+  }
+}
+
 class ModelProvider<T extends Model> extends StatefulWidget {
   final Widget child;
   final T Function(BuildContext, ProviderEventChannel) builder;
@@ -12,14 +20,6 @@ class ModelProvider<T extends Model> extends StatefulWidget {
 
   @override
   _ModelProviderState<T> createState() => _ModelProviderState<T>();
-}
-
-class ModelNotifier<T extends Model> with ChangeNotifier {
-  final T model;
-
-  ModelNotifier(this.model) {
-    model.modelUpdated = notifyListeners;
-  }
 }
 
 class _ModelProviderState<T extends Model> extends State<ModelProvider<T>> {
