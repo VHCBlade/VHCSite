@@ -17,6 +17,7 @@ class MainScreen extends StatelessWidget {
                   child: Text("Home"),
                   onPressed: () => null,
                 ),
+                Container(width: 10)
               ]),
           context),
     );
