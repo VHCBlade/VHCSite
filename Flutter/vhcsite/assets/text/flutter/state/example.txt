@@ -1,0 +1,7 @@
+Well the first thing you'll notice is the use of the event channel. We listen for a button event and simply match it with our possible navigations. The button doesn't even know that it's actually being used for navigation. That also means that if we want to change the functionality of the button, we don't even have to look at the buttons!
+
+You'll also see how little the model cares about the UI. That being, it doesn't care at all. It simply changes the current navigation value and lets anyone who cares know that the navigation value has changed. In this case, I simply change the underlying body. It's not the best form of navigation in the world, but hey, it's all I need right now.
+
+Then I just feed it into my ModelProvider and voila, I have Navigation enabled!
+
+I hope that this has given you a good idea on how to handle state management in Flutter. Do what you're good at and have a great day!

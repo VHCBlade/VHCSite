@@ -5,4 +5,6 @@ abstract class Model {
   ProviderEventChannel get eventChannel;
 
   void updateModel() => modelUpdated.forEach((element) => element());
+
+  void dispose() {}
 }

@@ -10,7 +10,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'VHCBlade',
       theme: createTheme(),
       home: ModelProvider(
           builder: (_, channel) => UrlModel(parentChannel: channel),

@@ -46,6 +46,7 @@ class _ModelProviderState<T extends Model> extends State<ModelProvider<T>> {
   void dispose() {
     super.dispose();
     model.eventChannel.dispose();
+    model.dispose();
   }
 
   @override
