@@ -5,7 +5,7 @@ const _POSSIBLE_NAVIGATIONS = {"home", "flutter"};
 
 class NavigationModel with Model {
   final ProviderEventChannel eventChannel;
-  String navigationPath = "flutter";
+  String navigationPath = "home";
 
   NavigationModel({ProviderEventChannel parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
