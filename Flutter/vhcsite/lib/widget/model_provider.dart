@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vhcsite/model/model.dart';
+import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
 class ModelProvider<T extends Model> extends StatefulWidget {

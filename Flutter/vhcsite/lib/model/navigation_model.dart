@@ -1,7 +1,7 @@
-import 'package:vhcsite/model/model.dart';
+import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
-const _POSSIBLE_NAVIGATIONS = {"home", "YouTube"};
+const _POSSIBLE_NAVIGATIONS = {"home", "youtube", "flutter"};
 
 class NavigationModel with Model {
   final EventChannel eventChannel;
