@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
@@ -27,12 +28,33 @@ class HeaderText extends StatelessWidget {
   }
 }
 
+_clickLink(String link, BuildContext context) =>
+    Provider.of<ProviderEventChannel>(context, listen: false)
+        .fireEvent('url', link);
+
+Widget createLinkText(String text, String link, BuildContext context) {
+  return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+          onTap: () => _clickLink(link, context),
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
+                decoration: TextDecoration.underline,
+                color: Theme.of(context).highlightColor),
+          )));
+}
+
+Widget createText(String text, BuildContext context) {
+  return Text(text, style: Theme.of(context).textTheme.subtitle1);
+}
+
+/// Currently there's a bug with Rich Text and not getting the URL to work.
+/// So don't use this.
 TextSpan createLinkTextSpan(String text, String link, BuildContext context,
     [List<TextSpan> children]) {
   final recognizer = TapGestureRecognizer();
-  recognizer.onTap = () =>
-      Provider.of<ProviderEventChannel>(context, listen: false)
-          .fireEvent('url', link);
+  recognizer.onTap = () => _clickLink(link, context);
 
   return TextSpan(
     text: text,

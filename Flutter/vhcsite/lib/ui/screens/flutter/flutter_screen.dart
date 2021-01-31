@@ -47,53 +47,40 @@ class FlutterPageContent extends StatelessWidget {
     return Wrap(
       runSpacing: 10,
       children: [
+        // Love
         HeaderText(text: "I Love Flutter"),
-        SelectableText.rich(createLinkTextSpan(
-          'Flutter',
-          'https://flutter.dev',
-          context,
-          [createTextSpan(model.safeGetValue('love'), context)],
-        )),
+        createLinkText('Flutter', 'https://flutter.dev', context),
+        createText(model.safeGetValue('love'), context),
+        // State
         HeaderText(text: "State of Ruin"),
-        SelectableText(
+        Text(
           model.safeGetValue('state'),
           style: Theme.of(context).textTheme.subtitle1,
         ),
+        // Provider
         HeaderText(text: "Lean on Your Provider"),
-        SelectableText.rich(createLinkTextSpan(
-          'Provider',
-          'https://pub.dev/packages/provider',
-          context,
-          [
-            createTextSpan(model.safeGetValue('provider'), context),
-            createTextSpan("\n", context),
-            createLinkTextSpan('Google I/O Provider Talk',
-                'https://www.youtube.com/watch?v=d_m5csmrf7I', context)
-          ],
-        )),
+        createLinkText(
+            'Provider', 'https://pub.dev/packages/provider', context),
+
+        createText(model.safeGetValue('provider'), context),
+        createLinkText('Google I/O Provider Talk',
+            'https://www.youtube.com/watch?v=d_m5csmrf7I', context),
+        // Build
         HeaderText(text: "Building on Provider"),
-        SelectableText(
-          model.safeGetValue('build'),
-          style: Theme.of(context).textTheme.subtitle1,
-        ),
+        createText(model.safeGetValue('build'), context),
         Image.asset(_IMAGE_PATH + 'model.png'),
         Image.asset(_IMAGE_PATH + 'notifier.png'),
         Image.asset(_IMAGE_PATH + 'event.png'),
-        SelectableText(
-          model.safeGetValue('solution'),
-          style: Theme.of(context).textTheme.subtitle1,
-        ),
+        createText(model.safeGetValue('solution'), context),
+        // Example
         HeaderText(text: "Lead by Example"),
         Image.asset(_IMAGE_PATH + 'example.png'),
-        SelectableText(
-          model.safeGetValue('example'),
-          style: Theme.of(context).textTheme.subtitle1,
-        ),
-        SelectableText.rich(createLinkTextSpan(
+        createText(model.safeGetValue('example'), context),
+        createLinkText(
           'Link to Source Code',
           'https://github.com/VHCBlade/VHCSite/tree/state-example',
           context,
-        )),
+        ),
       ],
     );
   }
