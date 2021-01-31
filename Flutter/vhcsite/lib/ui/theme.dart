@@ -6,7 +6,8 @@ ThemeData createTheme() {
       primaryColor: PRIMARY_COLOR,
       backgroundColor: SECONDARY_COLOR,
       canvasColor: SECONDARY_COLOR,
-      disabledColor: DISABLED_COLOR);
+      disabledColor: DISABLED_COLOR,
+      highlightColor: HIGHLIGHT_COLOR);
 
   return themeData.copyWith(
       textTheme: themeData.textTheme

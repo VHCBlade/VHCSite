@@ -1,10 +1,10 @@
-typedef bool EventListener(dynamic);
+typedef bool ProviderEventListener(dynamic);
 
-class EventChannel {
-  final EventChannel _parentChannel;
-  final Map<String, List<EventListener>> _listeners = {};
+class ProviderEventChannel {
+  final ProviderEventChannel _parentChannel;
+  final Map<String, List<ProviderEventListener>> _listeners = {};
 
-  EventChannel([this._parentChannel]);
+  ProviderEventChannel([this._parentChannel]);
 
   void fireEvent(String eventType, dynamic payload) {
     final shouldStopPropagation = _listenForEvent(eventType, payload);
@@ -14,8 +14,8 @@ class EventChannel {
     }
   }
 
-  void listenForEvent(String eventType, EventListener listener) {
-    List<EventListener> potListeners = _listeners[eventType];
+  void addEventListener(String eventType, ProviderEventListener listener) {
+    List<ProviderEventListener> potListeners = _listeners[eventType];
 
     if (potListeners == null) {
       potListeners = [];
@@ -28,7 +28,7 @@ class EventChannel {
   /// Listens for the event, will return whether the event should be
   /// propagated up the channel or not.
   bool _listenForEvent(String eventType, dynamic payload) {
-    List<EventListener> potListeners = _listeners[eventType];
+    List<ProviderEventListener> potListeners = _listeners[eventType];
 
     if (potListeners == null || potListeners.isEmpty) {
       return false;

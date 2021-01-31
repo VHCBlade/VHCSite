@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vhcsite/model/navigation_model.dart';
 import 'package:vhcsite/widget/default_button.dart';
-import 'package:vhcsite/widget/model_provider.dart';
+import 'package:vhcsite/state/model_provider.dart';
 import 'package:provider/provider.dart';
 
 class NavButton extends StatelessWidget {

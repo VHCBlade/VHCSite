@@ -5,7 +5,7 @@ import 'package:vhcsite/state/event_channel.dart';
 
 class ModelProvider<T extends Model> extends StatefulWidget {
   final Widget child;
-  final T Function(BuildContext, EventChannel) builder;
+  final T Function(BuildContext, ProviderEventChannel) builder;
 
   const ModelProvider({Key key, @required this.child, @required this.builder})
       : super(key: key);
@@ -28,9 +28,9 @@ class _ModelProviderState<T extends Model> extends State<ModelProvider<T>> {
   @override
   void initState() {
     super.initState();
-    EventChannel eventChannel;
+    ProviderEventChannel eventChannel;
     try {
-      eventChannel = Provider.of<EventChannel>(context, listen: false);
+      eventChannel = Provider.of<ProviderEventChannel>(context, listen: false);
     } on dynamic {
       // If something goes wrong, just set it to null.
       eventChannel = null;
@@ -40,6 +40,12 @@ class _ModelProviderState<T extends Model> extends State<ModelProvider<T>> {
     if (model == null) {
       throw Exception("Did not create a Model in Model Provider!");
     }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    model.eventChannel.dispose();
   }
 
   @override

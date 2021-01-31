@@ -1,15 +1,15 @@
 import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
-const _POSSIBLE_NAVIGATIONS = {"home", "youtube", "flutter"};
+const _POSSIBLE_NAVIGATIONS = {"home", "flutter"};
 
 class NavigationModel with Model {
   final EventChannel eventChannel;
-  String navigationPath = "home";
+  String navigationPath = "flutter";
 
   NavigationModel({EventChannel parentChannel})
       : eventChannel = EventChannel(parentChannel) {
-    eventChannel.listenForEvent("button", (payload) {
+    eventChannel.addEventListener("button", (payload) {
       navigate(payload);
       return false;
     });
