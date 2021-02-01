@@ -48,39 +48,37 @@ class FlutterPageContent extends StatelessWidget {
       runSpacing: 10,
       children: [
         // Love
-        HeaderText(text: "I Love Flutter"),
-        createLinkText('Flutter', 'https://flutter.dev', context),
-        createText(model.safeGetValue('love'), context),
+        EssayHeaderText(text: "I Love Flutter"),
+        EssayLinkText(text: 'Flutter', link: 'https://flutter.dev'),
+        EssayParagraphText(text: model.safeGetValue('love')),
         // State
-        HeaderText(text: "State of Ruin"),
+        EssayHeaderText(text: "State of Ruin"),
         Text(
           model.safeGetValue('state'),
           style: Theme.of(context).textTheme.subtitle1,
         ),
         // Provider
-        HeaderText(text: "Lean on Your Provider"),
-        createLinkText(
-            'Provider', 'https://pub.dev/packages/provider', context),
-
-        createText(model.safeGetValue('provider'), context),
-        createLinkText('Google I/O Provider Talk',
-            'https://www.youtube.com/watch?v=d_m5csmrf7I', context),
+        EssayHeaderText(text: "Lean on Your Provider"),
+        EssayLinkText(
+            text: 'Provider', link: 'https://pub.dev/packages/provider'),
+        EssayParagraphText(text: model.safeGetValue('provider')),
+        EssayLinkText(
+            text: 'Google I/O Provider Talk',
+            link: 'https://www.youtube.com/watch?v=d_m5csmrf7I'),
         // Build
-        HeaderText(text: "Building on Provider"),
-        createText(model.safeGetValue('build'), context),
+        EssayHeaderText(text: "Building on Provider"),
+        EssayParagraphText(text: model.safeGetValue('build')),
         Image.asset(_IMAGE_PATH + 'model.png'),
         Image.asset(_IMAGE_PATH + 'notifier.png'),
         Image.asset(_IMAGE_PATH + 'event.png'),
-        createText(model.safeGetValue('solution'), context),
+        EssayParagraphText(text: model.safeGetValue('solution')),
         // Example
-        HeaderText(text: "Lead by Example"),
+        EssayHeaderText(text: "Lead by Example"),
         Image.asset(_IMAGE_PATH + 'example.png'),
-        createText(model.safeGetValue('example'), context),
-        createLinkText(
-          'Link to Source Code',
-          'https://github.com/VHCBlade/VHCSite/tree/state-example',
-          context,
-        ),
+        EssayParagraphText(text: model.safeGetValue('example')),
+        EssayLinkText(
+            text: 'Link to Source Code',
+            link: 'https://github.com/VHCBlade/VHCSite/tree/state-example'),
       ],
     );
   }

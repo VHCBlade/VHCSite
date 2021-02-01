@@ -15,10 +15,10 @@ class EssayText extends StatelessWidget {
   }
 }
 
-class HeaderText extends StatelessWidget {
+class EssayHeaderText extends StatelessWidget {
   final String text;
 
-  const HeaderText({Key key, this.text}) : super(key: key);
+  const EssayHeaderText({Key key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,26 +28,41 @@ class HeaderText extends StatelessWidget {
   }
 }
 
+class EssayParagraphText extends StatelessWidget {
+  final String text;
+
+  const EssayParagraphText({Key key, this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(text, style: Theme.of(context).textTheme.subtitle1);
+  }
+}
+
+class EssayLinkText extends StatelessWidget {
+  final String link;
+  final String text;
+
+  const EssayLinkText({Key key, this.link, this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+            onTap: () => _clickLink(link, context),
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                  decoration: TextDecoration.underline,
+                  color: Theme.of(context).highlightColor),
+            )));
+  }
+}
+
 _clickLink(String link, BuildContext context) =>
     Provider.of<ProviderEventChannel>(context, listen: false)
         .fireEvent('url', link);
-
-Widget createLinkText(String text, String link, BuildContext context) {
-  return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-          onTap: () => _clickLink(link, context),
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
-                decoration: TextDecoration.underline,
-                color: Theme.of(context).highlightColor),
-          )));
-}
-
-Widget createText(String text, BuildContext context) {
-  return Text(text, style: Theme.of(context).textTheme.subtitle1);
-}
 
 /// Currently there's a bug with Rich Text and not getting the URL to work.
 /// So don't use this.
