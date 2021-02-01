@@ -4,6 +4,7 @@ import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/page_text_model.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/state/model_provider.dart';
+import 'package:vhcsite/ui/page/essay_layout.dart';
 import 'package:vhcsite/ui/page/essay_text.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 
@@ -24,15 +25,14 @@ class FlutterScreen extends StatelessWidget {
         },
         child: ScrollbarProvider(
             isAlwaysShown: true,
-            builder: (controller, _) => Align(
-                alignment: Alignment.topCenter,
-                child: SingleChildScrollView(
-                    controller: controller,
+            builder: (controller, _) => SingleChildScrollView(
+                controller: controller,
+                child: EssayLayout(
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 1200),
-                      padding: EdgeInsets.all(30),
-                      child: FlutterPageContent(),
-                    )))));
+                  constraints: BoxConstraints(maxWidth: 1200),
+                  padding: EdgeInsets.all(30),
+                  child: FlutterPageContent(),
+                )))));
   }
 }
 

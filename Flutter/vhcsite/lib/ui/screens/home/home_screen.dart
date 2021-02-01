@@ -8,27 +8,39 @@ class HomeScreen extends StatelessWidget {
     return ScrollbarProvider(
         isAlwaysShown: true,
         builder: (controller, _) => Center(
-              child: SingleChildScrollView(
+            child: SingleChildScrollView(
                 controller: controller,
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: 600),
-                  child: Column(children: [
-                    SelectableText(
-                      "Welcome to my Website!",
-                      style: Theme.of(context).textTheme.headline3,
-                      textAlign: TextAlign.center,
+                child: Stack(
+                  children: [
+                    Container(
+                      constraints: BoxConstraints(minWidth: double.infinity),
                     ),
-                    Image.asset('assets/img/Logo.png'),
-                    Align(
-                        alignment: Alignment.centerRight,
-                        child: SelectableText(
-                          "Powered by Flutter",
-                          style: Theme.of(context).textTheme.caption,
-                          textAlign: TextAlign.right,
-                        )),
-                  ]),
-                ),
-              ),
-            ));
+                    Center(child: _HomeContent())
+                  ],
+                ))));
+  }
+}
+
+class _HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints(maxWidth: 600),
+      child: Column(children: [
+        SelectableText(
+          "Welcome to my Website!",
+          style: Theme.of(context).textTheme.headline3,
+          textAlign: TextAlign.center,
+        ),
+        Image.asset('assets/img/Logo.png'),
+        Align(
+            alignment: Alignment.centerRight,
+            child: SelectableText(
+              "Powered by Flutter",
+              style: Theme.of(context).textTheme.caption,
+              textAlign: TextAlign.right,
+            )),
+      ]),
+    );
   }
 }
