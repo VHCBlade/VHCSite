@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/page_text_model.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/state/model_provider.dart';
 import 'package:vhcsite/ui/page/essay_text.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 
-const _PATH = ['assets', 'text', 'flutter', 'state'];
-const _IMAGE_PATH = 'assets/img/flutter/state/';
+const _PATH = ['assets', 'text', 'dev', 'flutter', 'state'];
+const _IMAGE_PATH = 'assets/img/dev/flutter/state/';
 
 class FlutterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ModelProvider(
         builder: (context, channel) {
-          final repo = Provider.of<TextRepository>(context, listen: false);
+          final repo = context.read<TextRepository>();
           final model = PageTextModel(
               parentChannel: channel, repository: repo, path: _PATH);
 
-          model.eventChannel.fireEvent('retrieve_text_files', '');
+          model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
           return model;
         },
         child: ScrollbarProvider(
@@ -68,13 +69,13 @@ class FlutterPageContent extends StatelessWidget {
         // Build
         EssayHeaderText(text: "Building on Provider"),
         EssayParagraphText(text: model.safeGetValue('build')),
-        Image.asset(_IMAGE_PATH + 'model.png'),
-        Image.asset(_IMAGE_PATH + 'notifier.png'),
-        Image.asset(_IMAGE_PATH + 'event.png'),
+        Image.asset('$_IMAGE_PATH/model.png'),
+        Image.asset('$_IMAGE_PATH/notifier.png'),
+        Image.asset('$_IMAGE_PATH/event.png'),
         EssayParagraphText(text: model.safeGetValue('solution')),
         // Example
         EssayHeaderText(text: "Lead by Example"),
-        Image.asset(_IMAGE_PATH + 'example.png'),
+        Image.asset('$_IMAGE_PATH/example.png'),
         EssayParagraphText(text: model.safeGetValue('example')),
         EssayLinkText(
             text: 'Link to Source Code',

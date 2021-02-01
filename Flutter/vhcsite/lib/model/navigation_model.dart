@@ -1,3 +1,4 @@
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
@@ -9,7 +10,7 @@ class NavigationModel with Model {
 
   NavigationModel({ProviderEventChannel parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
-    eventChannel.addEventListener("button", (payload) {
+    eventChannel.addEventListener(BUTTON_EVENT, (payload) {
       navigate(payload);
       return false;
     });

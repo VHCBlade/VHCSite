@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vhcsite/model/navigation_model.dart';
+import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/state/model_provider.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';

@@ -1,3 +1,4 @@
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model.dart';
@@ -12,13 +13,14 @@ class PageTextModel with Model {
   final values = <String, String>{};
 
   String safeGetValue(String value) => values[value] ?? '';
+  String get stringPath => path.reduce((a, b) => "$a/$b");
 
   PageTextModel(
       {ProviderEventChannel parentChannel, this.repository, this.path})
       : eventChannel = ProviderEventChannel(parentChannel) {
     assert(repository != null);
     eventChannel.addEventListener(
-        'retrieve_text_files', (dynamic) => _retrieveTextFiles());
+        TEXT_FILES_EVENT, (dynamic) => _retrieveTextFiles());
   }
 
   bool _retrieveTextFiles() {
