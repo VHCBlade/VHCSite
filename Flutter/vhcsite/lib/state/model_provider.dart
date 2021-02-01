@@ -30,7 +30,7 @@ class _ModelProviderState<T extends Model> extends State<ModelProvider<T>> {
     super.initState();
     ProviderEventChannel eventChannel;
     try {
-      eventChannel = Provider.of<ProviderEventChannel>(context, listen: false);
+      eventChannel = context.read<ProviderEventChannel>();
     } on dynamic {
       // If something goes wrong, just set it to null.
       eventChannel = null;

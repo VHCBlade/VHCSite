@@ -1,7 +1,0 @@
-Don't worry about the missing source code. There's a link to the github page for this website at the bottom of this page.
-
-First we have our Model Class. As the name suggests this will be our new model, and all of our Models will extend this Class. This model slots into the ModelNotifier, which extends the original model, ChangeNotifier. Calling updateModel on our model will automatically call notifyListeners. Now we no longer need to have our model depend on the Flutter Framework!
-
-Second, our Model class also comes with a List of functions to call in modelUpdated. Child Models can simple subscribe to the model updating of their parents with a specific action to take. Just make sure to not forget unsubscribe when the Child Model is disposed! (Probably should have added a dispose function to Model. I actually already have, just not in this version. Whoops!)
-
-Third, instead of having UI elements call methods in the model directly, we'll have them fire events up the nearest event channel instead. [Get the closest EventChannel with Provider.of<EventChannel>() :)]. Now we can do cool things like have our buttons only require a type parameter, and the model will simply listen for events. Hooray! This also has the added benefit of creating a canonical event channel that can be used to propagate any information from the leaves of our widget tree all the way to the root!

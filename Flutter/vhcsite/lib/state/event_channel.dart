@@ -1,3 +1,4 @@
+/// Event Listener, return value is true if the event is to be stopped from propagating
 typedef bool ProviderEventListener(dynamic);
 
 class ProviderEventChannel {
@@ -6,6 +7,8 @@ class ProviderEventChannel {
 
   ProviderEventChannel([this._parentChannel]);
 
+  /// Fires and event that is sent up the event channel, stopping only
+  /// when it reaches the top or an event stops the propagation.
   void fireEvent(String eventType, dynamic payload) {
     final shouldStopPropagation = _listenForEvent(eventType, payload);
 
@@ -14,6 +17,7 @@ class ProviderEventChannel {
     }
   }
 
+  /// Adds a listener for the specific event type.
   void addEventListener(String eventType, ProviderEventListener listener) {
     List<ProviderEventListener> potListeners = _listeners[eventType];
 

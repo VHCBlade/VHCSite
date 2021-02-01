@@ -4,6 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
+/// This is a page to hold all the rendering data on essay pages.
+
+/// General parent for all text.
 class EssayText extends StatelessWidget {
   final Widget child;
 
@@ -15,10 +18,11 @@ class EssayText extends StatelessWidget {
   }
 }
 
-class HeaderText extends StatelessWidget {
+/// Display for the headers.
+class EssayHeaderText extends StatelessWidget {
   final String text;
 
-  const HeaderText({Key key, this.text}) : super(key: key);
+  const EssayHeaderText({Key key, this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,26 +32,44 @@ class HeaderText extends StatelessWidget {
   }
 }
 
+/// Display for the general text of each paragraph
+class EssayParagraphText extends StatelessWidget {
+  final String text;
+
+  const EssayParagraphText({Key key, this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return EssayText(
+        child: Text(text, style: Theme.of(context).textTheme.subtitle1));
+  }
+}
+
+/// Display for links that go over everything.
+class EssayLinkText extends StatelessWidget {
+  final String link;
+  final String text;
+
+  const EssayLinkText({Key key, this.link, this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return EssayText(
+        child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+                onTap: () => _clickLink(link, context),
+                child: Text(
+                  text,
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      decoration: TextDecoration.underline,
+                      color: Theme.of(context).highlightColor),
+                ))));
+  }
+}
+
 _clickLink(String link, BuildContext context) =>
-    Provider.of<ProviderEventChannel>(context, listen: false)
-        .fireEvent('url', link);
-
-Widget createLinkText(String text, String link, BuildContext context) {
-  return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-          onTap: () => _clickLink(link, context),
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
-                decoration: TextDecoration.underline,
-                color: Theme.of(context).highlightColor),
-          )));
-}
-
-Widget createText(String text, BuildContext context) {
-  return Text(text, style: Theme.of(context).textTheme.subtitle1);
-}
+    context.read<ProviderEventChannel>().fireEvent('url', link);
 
 /// Currently there's a bug with Rich Text and not getting the URL to work.
 /// So don't use this.
