@@ -9,7 +9,7 @@ import 'package:vhcsite/ui/page/essay_text.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 
 const _PATH = ['assets', 'text', 'dev', 'flutter', 'state'];
-const _IMAGE_PATH = 'assets/img/dev/flutter/state/';
+const _IMAGE_PATH = 'assets/img/dev/flutter/state';
 
 class FlutterScreen extends StatelessWidget {
   @override
@@ -54,10 +54,7 @@ class FlutterPageContent extends StatelessWidget {
         EssayParagraphText(text: model.safeGetValue('love')),
         // State
         EssayHeaderText(text: "State of Ruin"),
-        Text(
-          model.safeGetValue('state'),
-          style: Theme.of(context).textTheme.subtitle1,
-        ),
+        EssayParagraphText(text: model.safeGetValue('state')),
         // Provider
         EssayHeaderText(text: "Lean on Your Provider"),
         EssayLinkText(
