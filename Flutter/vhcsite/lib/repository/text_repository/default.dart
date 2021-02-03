@@ -4,11 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 
 class DefaultTextRepository implements TextRepository {
-  Map<String, Object> assets;
+  Map<String, dynamic>? assets;
 
   /// Loads all text files from the given path.
   Future<Map<String, String>> loadTextRepository(List<String> path) async {
-    assert(path != null);
     assert(path.isNotEmpty);
 
     if (assets == null) {
@@ -20,7 +19,7 @@ class DefaultTextRepository implements TextRepository {
 
     final retVal = <String, String>{};
 
-    final list = await Future.wait(assets.keys
+    final list = await Future.wait(assets!.keys
         .where((element) => element.startsWith(fullPath))
         .where((element) => element.endsWith('.txt'))
         .map<Future<List>>((element) {
