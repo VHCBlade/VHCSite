@@ -8,7 +8,7 @@ class NavigationModel with Model {
   final ProviderEventChannel eventChannel;
   String navigationPath = "home";
 
-  NavigationModel({ProviderEventChannel parentChannel})
+  NavigationModel({ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener(BUTTON_EVENT, (payload) {
       navigate(payload);
