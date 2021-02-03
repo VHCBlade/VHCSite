@@ -18,7 +18,7 @@ class EssayLayout extends StatelessWidget {
   final child;
 
   /// Correctly layouts the child inside a SignleChildScrollView for an Essay.
-  const EssayLayout({Key key, this.child}) : super(key: key);
+  const EssayLayout({Key? key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class EssayScreen extends StatelessWidget {
   final List<String> path;
 
   /// Builds the essay screen with the [path] used to take the files from assets.
-  const EssayScreen({Key key, @required this.path}) : super(key: key);
+  const EssayScreen({Key? key, required this.path}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class EssayContent extends StatelessWidget {
   final String path;
 
   /// The Actual Content of the essay
-  const EssayContent({Key key, this.path}) : super(key: key);
+  const EssayContent({Key? key, required this.path}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class EssayContent extends StatelessWidget {
       return Center(child: CircularProgressIndicator());
     }
 
-    final manifest = model.safeGetValue('manifest');
+    final manifest = model.values['manifest'];
 
     if (manifest == null) {
       return EssayHeaderText(text: "Ooops!!! Failed to load this page!");
@@ -93,7 +93,8 @@ class LoadedEssayContent extends StatefulWidget {
   final PageTextModel model;
 
   /// The content of the essay once the assets have been loaded.
-  const LoadedEssayContent({Key key, this.manifest, this.model})
+  const LoadedEssayContent(
+      {Key? key, required this.manifest, required this.model})
       : super(key: key);
 
   @override
@@ -101,7 +102,7 @@ class LoadedEssayContent extends StatefulWidget {
 }
 
 class _LoadedEssayContentState extends State<LoadedEssayContent> {
-  List<List<String>> essayParts;
+  late final List<List<String>> essayParts;
 
   @override
   void initState() {

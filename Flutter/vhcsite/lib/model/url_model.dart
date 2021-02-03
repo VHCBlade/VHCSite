@@ -6,7 +6,7 @@ import 'package:vhcsite/state/model.dart';
 class UrlModel with Model {
   final ProviderEventChannel eventChannel;
 
-  UrlModel({ProviderEventChannel parentChannel})
+  UrlModel({ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener(URL_EVENT, (payload) {
       launch(payload);

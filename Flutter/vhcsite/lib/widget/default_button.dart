@@ -8,7 +8,7 @@ class DefaultButton extends StatelessWidget {
   final bool disabled;
 
   const DefaultButton(
-      {Key key, @required this.text, @required this.type, this.disabled})
+      {Key? key, required this.text, required this.type, this.disabled = false})
       : super(key: key);
 
   @override

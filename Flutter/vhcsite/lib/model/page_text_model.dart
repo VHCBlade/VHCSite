@@ -16,9 +16,10 @@ class PageTextModel with Model {
   String get stringPath => path.reduce((a, b) => "$a/$b");
 
   PageTextModel(
-      {ProviderEventChannel parentChannel, this.repository, this.path})
+      {ProviderEventChannel? parentChannel,
+      required this.repository,
+      required this.path})
       : eventChannel = ProviderEventChannel(parentChannel) {
-    assert(repository != null);
     eventChannel.addEventListener(
         TEXT_FILES_EVENT, (dynamic) => _retrieveTextFiles());
   }
