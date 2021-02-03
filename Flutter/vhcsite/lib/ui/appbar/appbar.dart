@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vhcsite/ui/appbar/nav_button.dart';
 import 'package:vhcsite/widget/textscale.dart';
 
-createAppBar(BuildContext context) => wrapInNoTextScale(
+PreferredSizeWidget createAppBar(BuildContext context) => wrapInNoTextScale(
     AppBar(
         title: Image.asset('assets/img/LogoWithName.png', height: 56),
         actions: [

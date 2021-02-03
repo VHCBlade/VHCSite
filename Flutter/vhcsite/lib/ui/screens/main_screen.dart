@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/navigation_model.dart';
 import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
+import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model_provider.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
 import 'package:vhcsite/ui/screens/flutter/flutter_screen.dart';
@@ -11,6 +13,10 @@ import 'package:provider/provider.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    context
+        .read<ProviderEventChannel>()
+        .fireEvent(MEDIA_QUERY, MediaQuery.of(context));
+
     return Provider<TextRepository>(
         create: (_) => DefaultTextRepository(),
         child: Scaffold(
