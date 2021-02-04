@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vhcsite/events/events.dart';
+import 'package:vhcsite/model/app_size_model.dart';
 import 'package:vhcsite/model/navigation_model.dart';
 import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
@@ -13,15 +14,18 @@ import 'package:provider/provider.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    context
+    Future.delayed(Duration()).then((value) => context
         .read<ProviderEventChannel>()
-        .fireEvent(MEDIA_QUERY, MediaQuery.of(context));
+        .fireEvent(MEDIA_QUERY, MediaQuery.of(context)));
+
+    final model = context.watch<ModelNotifier<AppSizeModel>>().model;
 
     return Provider<TextRepository>(
         create: (_) => DefaultTextRepository(),
         child: Scaffold(
-          appBar: createAppBar(context),
+          appBar: createAppBar(context, model.showState == 1),
           body: MainBody(),
+          drawer: model.showState == 1 ? null : ActionDrawer(),
         ));
   }
 }

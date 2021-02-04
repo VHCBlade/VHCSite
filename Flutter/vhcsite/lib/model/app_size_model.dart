@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/events/events.dart';
 
-const DEVICE_THRESHHOLD = 700;
+const DEVICE_THRESHHOLD = 400;
+
+// 1 refers to normal, 0 means smallest
 
 class AppSizeModel with Model {
   final ProviderEventChannel eventChannel;
@@ -13,14 +17,21 @@ class AppSizeModel with Model {
       : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener(MEDIA_QUERY, (value) {
       // MediaQueryData
-      final ratio = value.devicePixelRatio;
-      final width = value.size.width;
-
-      final newState = width / ratio > 700;
-      print(width);
-      print(width / ratio);
+      final newState = getStateFromMediaQuery(value);
+      if (newState != showState) {
+        showState = newState;
+        updateModel();
+      }
 
       return false;
     });
+  }
+
+  int getStateFromMediaQuery(dynamic query) {
+    final ratio = pow(query.devicePixelRatio, 1 / 3);
+    final width = query.size.width;
+    final adjustedWidth = width / ratio;
+
+    return adjustedWidth > DEVICE_THRESHHOLD ? 1 : 0;
   }
 }
