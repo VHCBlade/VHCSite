@@ -8,7 +8,7 @@ class DefaultButton extends StatelessWidget {
   final bool disabled;
 
   const DefaultButton(
-      {Key key, @required this.text, @required this.type, this.disabled})
+      {Key? key, required this.text, required this.type, this.disabled = false})
       : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class DefaultButton extends StatelessWidget {
         disabledColor: Theme.of(context).disabledColor,
         onPressed: disabled
             ? null
-            : () => Provider.of<ProviderEventChannel>(context, listen: false)
-                .fireEvent("button", type));
+            : () =>
+                context.read<ProviderEventChannel>().fireEvent("button", type));
   }
 }

@@ -7,6 +7,7 @@ ThemeData createTheme() {
       backgroundColor: SECONDARY_COLOR,
       canvasColor: SECONDARY_COLOR,
       disabledColor: DISABLED_COLOR,
+      cardColor: SECONDARY_COLOR,
       highlightColor: HIGHLIGHT_COLOR);
 
   return themeData.copyWith(

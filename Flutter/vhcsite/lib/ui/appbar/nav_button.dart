@@ -8,7 +8,7 @@ class NavButton extends StatelessWidget {
   final String text;
   final String type;
 
-  const NavButton({Key key, @required this.text, @required this.type})
+  const NavButton({Key? key, required this.text, required this.type})
       : super(key: key);
 
   @override

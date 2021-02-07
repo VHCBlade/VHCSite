@@ -4,10 +4,13 @@ class ScrollbarProvider extends StatefulWidget {
   final Widget Function(ScrollController controller, BuildContext context)
       builder;
   final bool isAlwaysShown;
-  final double thickness;
+  final double? thickness;
 
   const ScrollbarProvider(
-      {Key key, this.builder, this.isAlwaysShown, this.thickness})
+      {Key? key,
+      required this.builder,
+      this.isAlwaysShown = false,
+      this.thickness})
       : super(key: key);
 
   @override
@@ -15,7 +18,7 @@ class ScrollbarProvider extends StatefulWidget {
 }
 
 class _ScrollbarProviderState extends State<ScrollbarProvider> {
-  ScrollController controller;
+  late final ScrollController controller;
 
   @override
   void initState() {

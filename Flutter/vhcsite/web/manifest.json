@@ -1,11 +1,11 @@
 {
-    "name": "vhcsite",
-    "short_name": "vhcsite",
+    "name": "VHCBlade",
+    "short_name": "VHCBlade",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Site for VHCBlade",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
