@@ -18,6 +18,22 @@ class EssayText extends StatelessWidget {
   }
 }
 
+class EssayTitleText extends StatelessWidget {
+  final String text;
+
+  const EssayTitleText({Key? key, required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return EssayText(
+        child: SelectableText(text,
+            style: Theme.of(context)
+                .textTheme
+                .headline2
+                ?.copyWith(color: Theme.of(context).primaryColor)));
+  }
+}
+
 /// Display for the headers.
 class EssayHeaderText extends StatelessWidget {
   final String text;

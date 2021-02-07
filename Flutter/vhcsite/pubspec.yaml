@@ -24,5 +24,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img/
-    - assets/img/dev/flutter/state/
+    - assets/img/about/
+    - assets/text/about/
     - assets/text/dev/flutter/state/
+    - assets/img/dev/flutter/state/

@@ -1,0 +1,9 @@
+header\About Me
+paragraph\blurb
+header\The Logo
+image\logo.png
+link\Logo Maker - Niblitz!\https://www.instagram.com/art_niblitz/
+paragraph\logo
+header\The Code
+paragraph\code
+header\Others
