@@ -9,10 +9,8 @@ import 'package:vhcsite/widget/scrollbar_provider.dart';
 
 import 'essay_text.dart';
 
-const ASSETS_IMG_PATH = 'assets/img';
+const ASSETS_IMG_PATH = 'assets/img/';
 const ASSETS_TEXT_PATH = ['assets', 'text'];
-
-const _IMAGE_PATH = 'assets/img/dev/flutter/state';
 
 class EssayLayout extends StatelessWidget {
   final child;
@@ -33,9 +31,13 @@ class EssayLayout extends StatelessWidget {
 
 class EssayScreen extends StatelessWidget {
   final List<String> path;
+  final List<Widget> trailing;
 
   /// Builds the essay screen with the [path] used to take the files from assets.
-  const EssayScreen({Key? key, required this.path}) : super(key: key);
+  ///
+  /// [trailing] is placed in a row after the content loaded in the manifest.
+  const EssayScreen({Key? key, required this.path, this.trailing = const []})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,17 +60,21 @@ class EssayScreen extends StatelessWidget {
                   constraints: BoxConstraints(maxWidth: 1200),
                   padding: EdgeInsets.all(30),
                   child: EssayContent(
-                      path:
-                          "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}"),
+                      imagePath:
+                          "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
+                      trailing: trailing),
                 )))));
   }
 }
 
 class EssayContent extends StatelessWidget {
-  final String path;
+  final String imagePath;
+  final List<Widget> trailing;
 
   /// The Actual Content of the essay
-  const EssayContent({Key? key, required this.path}) : super(key: key);
+  const EssayContent(
+      {Key? key, required this.imagePath, required this.trailing})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,17 +90,27 @@ class EssayContent extends StatelessWidget {
       return EssayHeaderText(text: "Ooops!!! Failed to load this page!");
     }
 
-    return LoadedEssayContent(manifest: manifest, model: model);
+    return LoadedEssayContent(
+        imagePath: imagePath,
+        manifest: manifest,
+        model: model,
+        trailing: trailing);
   }
 }
 
 class LoadedEssayContent extends StatefulWidget {
   final String manifest;
+  final List<Widget> trailing;
   final PageTextModel model;
+  final String imagePath;
 
   /// The content of the essay once the assets have been loaded.
   const LoadedEssayContent(
-      {Key? key, required this.manifest, required this.model})
+      {Key? key,
+      required this.manifest,
+      required this.model,
+      required this.trailing,
+      required this.imagePath})
       : super(key: key);
 
   @override
@@ -116,12 +132,14 @@ class _LoadedEssayContentState extends State<LoadedEssayContent> {
     switch (part[0]) {
       case 'paragraph':
         return EssayParagraphText(text: widget.model.safeGetValue(part[1]));
+      case 'title':
+        return EssayTitleText(text: part[1]);
       case 'header':
         return EssayHeaderText(text: part[1]);
       case 'link':
         return EssayLinkText(text: part[1], link: part[2]);
       case 'image':
-        return Image.asset('$_IMAGE_PATH/${part[1]}');
+        return Image.asset('${widget.imagePath}/${part[1]}');
       default:
         return EssayHeaderText(text: "Failed to Load...");
     }
@@ -129,7 +147,9 @@ class _LoadedEssayContentState extends State<LoadedEssayContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-        runSpacing: 10, children: essayParts.map(_buildEssayPart).toList());
+    final page = essayParts.map(_buildEssayPart).toList();
+    page.addAll(widget.trailing);
+
+    return Wrap(runSpacing: 10, children: page);
   }
 }

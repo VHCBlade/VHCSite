@@ -2,7 +2,7 @@ import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
-const _POSSIBLE_NAVIGATIONS = {"home", "flutter"};
+const _POSSIBLE_NAVIGATIONS = {"home", "flutter", "about"};
 
 class NavigationModel with Model {
   final ProviderEventChannel eventChannel;

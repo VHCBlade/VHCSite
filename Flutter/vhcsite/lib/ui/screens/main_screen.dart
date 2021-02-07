@@ -7,6 +7,7 @@ import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model_provider.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
+import 'package:vhcsite/ui/screens/about/about_screen.dart';
 import 'package:vhcsite/ui/screens/flutter/flutter_screen.dart';
 import 'package:vhcsite/ui/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -35,9 +36,14 @@ class MainBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.watch<ModelNotifier<NavigationModel>>().model;
 
-    if (model.navigationPath == 'flutter') {
-      return FlutterScreen();
+    switch (model.navigationPath) {
+      case 'flutter':
+        return FlutterScreen();
+      case 'about':
+        return AboutScreen();
+      case 'home':
+      default:
+        return HomeScreen();
     }
-    return HomeScreen();
   }
 }

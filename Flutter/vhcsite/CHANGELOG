@@ -1,6 +1,8 @@
 1.1.0 - February 6, 2021
 
+- Added handling for when there isn't enough space for the actions in the appbar. Turns the actions into a drawer instead.
 - Fixed Scroll Issue (Can now use the scroll wheel from negative space)
+- Added About Page
 
 1.0.0 - January 31, 2021
 
