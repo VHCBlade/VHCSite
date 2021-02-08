@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vhcsite/model/app_size_model.dart';
-import 'package:vhcsite/model/navigation_model.dart';
+import 'package:vhcsite/model/navigation/navigation_model.dart';
 import 'package:vhcsite/model/url_model.dart';
 import 'package:vhcsite/ui/screens/main_screen.dart';
 import 'package:vhcsite/ui/theme.dart';

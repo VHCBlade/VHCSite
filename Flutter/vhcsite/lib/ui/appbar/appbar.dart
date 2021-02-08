@@ -10,7 +10,12 @@ const IMAGE_LOCATION = 'assets/img/LogoWithName.png';
 PreferredSizeWidget createAppBar(BuildContext context, bool addActions) =>
     wrapInNoTextScale(
         AppBar(
-            title: Image.asset(IMAGE_LOCATION, height: 56),
+            title: Image.asset(IMAGE_LOCATION,
+                frameBuilder: (context, widget, frame, loaded) =>
+                    loaded || frame != null
+                        ? widget
+                        : CircularProgressIndicator(),
+                height: 56),
             actions: addActions
                 ? [
                     NavButton(text: "Home", type: "home"),
@@ -31,7 +36,6 @@ class ActionDrawer extends StatelessWidget {
               ProviderEventChannel(context.read<ProviderEventChannel>());
 
           channel.addEventListener(BUTTON_EVENT, (val) {
-            print("Passed Through");
             Navigator.pop(context);
             return false;
           });
