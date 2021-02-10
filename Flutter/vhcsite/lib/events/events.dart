@@ -1,5 +1,9 @@
-const String BUTTON_EVENT = 'button';
-const String URL_EVENT = 'url';
+const BUTTON_EVENT = 'button';
+const URL_EVENT = 'url';
+const MAIN_NAVIGATION_EVENT = 'main_navigation';
+const SUB_NAVIGATION_EVENT = 'navigation';
 
-const String TEXT_FILES_EVENT = 'text_files';
-const String MEDIA_QUERY = 'media_query';
+const TEXT_FILES_EVENT = 'text_files';
+const MEDIA_QUERY_EVENT = 'media_query';
+
+const UPDATE_SCROLL = 'update_scroll';
