@@ -15,7 +15,8 @@ class NavigationModel with Model {
       return false;
     });
     eventChannel.addEventListener(MAIN_NAVIGATION_EVENT, (payload) {
-      navigate(payload, true);
+      // treat empty as home
+      navigate(payload == '' ? 'home' : payload, true);
       return false;
     });
   }
