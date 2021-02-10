@@ -16,15 +16,15 @@ class NavigationModel with Model {
     });
     eventChannel.addEventListener(MAIN_NAVIGATION_EVENT, (payload) {
       // treat empty as home
-      navigate(payload == '' ? 'home' : payload, true);
+      navigate(payload == '' ? 'home' : payload, false);
       return false;
     });
   }
 
   void navigate(String navigate, bool errorOnFail) {
     if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
-      if (errorOnFail && navigationPath != 'home') {
-        navigationPath = 'home';
+      if (errorOnFail && navigationPath != 'error') {
+        navigationPath = 'error';
         updateModel();
       }
       return;
