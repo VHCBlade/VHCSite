@@ -40,11 +40,19 @@ class MainBody extends StatelessWidget {
     late final Widget widget;
 
     switch (model.navigationPath) {
-      case 'flutter':
+      case 'dev':
         widget = FlutterScreen();
         break;
       case 'about':
         widget = AboutScreen();
+        break;
+      case 'error':
+        widget = Center(
+            child: Text('Could not find the page you are looking for.',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3
+                    ?.copyWith(color: Theme.of(context).primaryColor)));
         break;
       case 'home':
       default:

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vhcsite/model/app_size_model.dart';
@@ -6,6 +7,7 @@ import 'package:vhcsite/model/url_model.dart';
 import 'package:vhcsite/ui/screens/main_screen.dart';
 import 'package:vhcsite/ui/theme/theme.dart';
 import 'package:vhcsite/state/model_provider.dart';
+import 'package:vhcsite/ui/web_app.dart';
 
 class MainApp extends StatelessWidget {
   @override
@@ -17,7 +19,12 @@ class MainApp extends StatelessWidget {
         child: ModelProvider(
           create: (_, channel) => NavigationModel(parentChannel: channel),
           child: MaterialApp(
-              title: 'VHCBlade', theme: createTheme(), home: MainScreen()),
+              title: 'VHCBlade',
+              theme: createTheme(),
+              onGenerateRoute: (_) => null,
+              builder: (_, _a) => kIsWeb
+                  ? WebAppNavHandler(child: MainScreen())
+                  : MainScreen()),
         ),
       ),
     );

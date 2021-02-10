@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/state/event_channel.dart';
@@ -26,6 +25,7 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
   late final ProviderEventChannel channel;
 
   bool _updating = false;
+  bool isDisposed = false;
 
   @override
   void initState() {
@@ -39,9 +39,11 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
       if (!_updating) {
         _updating = true;
         // This forces the controller to update.
-        Future.delayed(Duration(milliseconds: 100)).then((_) {
-          controller.position.didUpdateScrollPositionBy(-0.1);
-          _updating = false;
+        Future.delayed(Duration()).then((_) {
+          if (!isDisposed) {
+            controller.position.didUpdateScrollPositionBy(-0.1);
+            _updating = false;
+          }
         });
       }
 
@@ -52,6 +54,7 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
 
   @override
   void dispose() {
+    isDisposed = true;
     super.dispose();
     controller.dispose();
     channel.dispose();
