@@ -41,19 +41,25 @@ class EssayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ModelProvider(
-        builder: (context, channel) {
-          final textPath = <String>[]..addAll(ASSETS_TEXT_PATH)..addAll(path);
-          final repo = context.read<TextRepository>();
-          final model = PageTextModel(
-              parentChannel: channel, repository: repo, path: textPath);
+    return ScrollbarProvider(
+        isAlwaysShown: true,
+        builder: (controller, _) => ModelProvider(
+            create: (context, channel) {
+              final textPath = <String>[]
+                ..addAll(ASSETS_TEXT_PATH)
+                ..addAll(path);
+              final repo = context.read<TextRepository>();
+              final model = PageTextModel(
+                  parentChannel: channel, repository: repo, path: textPath);
 
-          model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
-          return model;
-        },
-        child: ScrollbarProvider(
-            isAlwaysShown: true,
-            builder: (controller, _) => SingleChildScrollView(
+              model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
+
+              // Do this to update the controller.
+              model.modelUpdated
+                  .add(() => model.eventChannel.fireEvent(UPDATE_SCROLL, ''));
+              return model;
+            },
+            child: SingleChildScrollView(
                 controller: controller,
                 child: EssayLayout(
                     child: Container(
@@ -64,6 +70,14 @@ class EssayScreen extends StatelessWidget {
                           "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
                       trailing: trailing),
                 )))));
+  }
+}
+
+class EssayScrollable extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
 
@@ -139,7 +153,8 @@ class _LoadedEssayContentState extends State<LoadedEssayContent> {
       case 'link':
         return EssayLinkText(text: part[1], link: part[2]);
       case 'image':
-        return Image.asset('${widget.imagePath}/${part[1]}');
+        return InteractiveViewer(
+            child: Image.asset('${widget.imagePath}/${part[1]}'));
       default:
         return EssayHeaderText(text: "Failed to Load...");
     }

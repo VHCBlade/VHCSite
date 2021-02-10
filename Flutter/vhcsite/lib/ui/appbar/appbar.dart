@@ -31,39 +31,45 @@ class ActionDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-        create: (context) {
-          final channel =
-              ProviderEventChannel(context.read<ProviderEventChannel>());
+      create: (context) {
+        final channel =
+            ProviderEventChannel(context.read<ProviderEventChannel>());
 
-          channel.addEventListener(BUTTON_EVENT, (val) {
-            Navigator.pop(context);
-            return false;
-          });
+        channel.addEventListener(BUTTON_EVENT, (val) {
+          Navigator.pop(context);
+          return false;
+        });
 
-          return channel;
-        },
-        child: SizedBox(
-          width: 240,
-          child: Drawer(
-            child: Column(
-              children: [
-                Container(
-                    padding: EdgeInsets.all(5),
-                    child: Image.asset(IMAGE_LOCATION),
-                    color: Theme.of(context).primaryColor),
-                Expanded(
-                    child: ListView(
-                  children: [
-                    DrawerButton(text: "Home", type: "home"),
-                    DrawerButton(text: "Flutter", type: "flutter"),
-                    DrawerButton(text: "YouTube", type: "youtube"),
-                    DrawerButton(text: "About", type: "about"),
-                  ],
-                )),
-              ],
-            ),
+        return channel;
+      },
+      child: SizedBox(
+        width: 240,
+        child: Drawer(
+          child: Column(
+            children: [
+              Container(
+                  padding: EdgeInsets.all(5),
+                  child: Image.asset(IMAGE_LOCATION),
+                  color: Theme.of(context).primaryColor),
+              DrawerPortion()
+            ],
           ),
-        ));
+        ),
+      ),
+    );
+  }
+}
+
+class DrawerPortion extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+        child: Column(children: [
+      DrawerButton(text: "Home", type: "home"),
+      DrawerButton(text: "Flutter", type: "flutter"),
+      DrawerButton(text: "YouTube", type: "youtube"),
+      DrawerButton(text: "About", type: "about"),
+    ]));
   }
 }
 
@@ -76,8 +82,8 @@ class DrawerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 5),
+    return Container(
+      constraints: BoxConstraints(minWidth: double.infinity),
       child: NavButton(text: text, type: type),
     );
   }

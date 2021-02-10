@@ -4,3 +4,5 @@ const NAVIGATION_EVENT = 'navigation';
 
 const TEXT_FILES_EVENT = 'text_files';
 const MEDIA_QUERY_EVENT = 'media_query';
+
+const UPDATE_SCROLL = 'update_scroll';

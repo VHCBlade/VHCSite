@@ -17,7 +17,7 @@ class NavigationModel with Model {
   }
 
   void navigate(String navigate) {
-    if (!_POSSIBLE_NAVIGATIONS.contains(navigate)) {
+    if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
       return;
     }
 

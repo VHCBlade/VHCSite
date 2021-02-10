@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(Duration()).then((value) => context
         .read<ProviderEventChannel>()
-        .fireEvent(MEDIA_QUERY, MediaQuery.of(context)));
+        .fireEvent(MEDIA_QUERY_EVENT, MediaQuery.of(context)));
 
     final model = context.watch<ModelNotifier<AppSizeModel>>().model;
 

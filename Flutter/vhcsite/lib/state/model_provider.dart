@@ -13,9 +13,9 @@ class ModelNotifier<T extends Model> with ChangeNotifier {
 
 class ModelProvider<T extends Model> extends StatefulWidget {
   final Widget child;
-  final T Function(BuildContext, ProviderEventChannel?) builder;
+  final T Function(BuildContext, ProviderEventChannel?) create;
 
-  const ModelProvider({Key? key, required this.child, required this.builder})
+  const ModelProvider({Key? key, required this.child, required this.create})
       : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ class _ModelProviderState<T extends Model> extends State<ModelProvider<T>> {
       eventChannel = null;
     }
 
-    model = widget.builder(context, eventChannel);
+    model = widget.create(context, eventChannel);
   }
 
   @override
