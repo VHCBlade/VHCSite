@@ -1,5 +1,6 @@
 1.2.0 - February 12, 2021
 
+- Integrated with Web Navigation and Back and Forward! Can now easily share links!
 - Scrollbars can now be used to control the Scroll Position. Thanks Flutter Update!
 - Fixed Bug that Scrollbars wouldn't show up until a scroll actually happened in Flutter and About Page.
 
