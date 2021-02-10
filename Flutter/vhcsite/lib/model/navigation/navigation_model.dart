@@ -6,7 +6,7 @@ const POSSIBLE_NAVIGATIONS = <String>{"home", "dev", "about", "error"};
 
 class NavigationModel with Model {
   final ProviderEventChannel eventChannel;
-  String navigationPath = "home";
+  String navigationPath = 'home';
 
   NavigationModel({ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
@@ -23,8 +23,8 @@ class NavigationModel with Model {
 
   void navigate(String navigate, bool errorOnFail) {
     if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
-      if (errorOnFail && navigationPath != 'error') {
-        navigationPath = 'error';
+      if (errorOnFail && navigationPath != 'home') {
+        navigationPath = 'home';
         updateModel();
       }
       return;

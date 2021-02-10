@@ -39,7 +39,7 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
       if (!_updating) {
         _updating = true;
         // This forces the controller to update.
-        Future.delayed(Duration()).then((_) {
+        Future.delayed(Duration(milliseconds: 100)).then((_) {
           if (!isDisposed) {
             controller.position.didUpdateScrollPositionBy(-0.1);
             _updating = false;
