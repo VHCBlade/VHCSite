@@ -19,18 +19,13 @@ class NavigationModel with Model {
       navigate(payload == '' ? 'home' : payload, true);
       return false;
     });
-    eventChannel.addEventListener(INITIAL_NAVIGATION_EVENT, (payload) {
-      // treat empty as home
-      navigate(payload == '' ? 'home' : payload, true, false);
-      return false;
-    });
   }
 
-  void navigate(String navigate, bool errorOnFail,
-      [bool shouldUpdateModel = true]) {
+  void navigate(String navigate, bool errorOnFail) {
     if (navigationPath == navigate) {
       return;
     }
+
     // Check if the navigation is actually valid.
     if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
       // Check if the navigation path should be changed to error.
@@ -43,8 +38,6 @@ class NavigationModel with Model {
       navigationPath = navigate;
     }
 
-    if (shouldUpdateModel) {
-      updateModel();
-    }
+    updateModel();
   }
 }

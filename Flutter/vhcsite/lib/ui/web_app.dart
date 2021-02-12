@@ -26,9 +26,7 @@ class _WebAppNavHandlerState extends State<WebAppNavHandler> {
     final href = window.location.href;
     final path = href.substring(href.indexOf(_PATH) + _PATH.length);
 
-    context
-        .read<ProviderEventChannel>()
-        .fireEvent(INITIAL_NAVIGATION_EVENT, path);
+    context.read<ProviderEventChannel>().fireEvent(MAIN_NAVIGATION_EVENT, path);
   }
 
   @override
