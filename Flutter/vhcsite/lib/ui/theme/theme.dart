@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vhcsite/ui/colors.dart';
+import 'package:vhcsite/ui/theme/colors.dart';
+import 'package:vhcsite/ui/theme/material_state.dart';
 
 ThemeData createTheme() {
   final themeData = ThemeData(
@@ -8,7 +9,10 @@ ThemeData createTheme() {
       canvasColor: SECONDARY_COLOR,
       disabledColor: DISABLED_COLOR,
       cardColor: SECONDARY_COLOR,
-      highlightColor: HIGHLIGHT_COLOR);
+      highlightColor: HIGHLIGHT_COLOR,
+      scrollbarTheme: ScrollbarThemeData(
+          thumbColor:
+              ScrollbarMaterialStateColor(HIGHLIGHT_COLOR, PRIMARY_COLOR)));
 
   return themeData.copyWith(
       textTheme: themeData.textTheme

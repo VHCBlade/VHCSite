@@ -24,7 +24,7 @@ class EssayLayout extends StatelessWidget {
       Container(
         constraints: BoxConstraints(minWidth: double.infinity),
       ),
-      Align(alignment: Alignment.topCenter, child: child)
+      Center(child: child)
     ]);
   }
 }
@@ -41,29 +41,39 @@ class EssayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ModelProvider(
-        builder: (context, channel) {
+    return ScrollbarProvider(
+      isAlwaysShown: true,
+      builder: (controller, _) => ModelProvider(
+        create: (context, channel) {
           final textPath = <String>[]..addAll(ASSETS_TEXT_PATH)..addAll(path);
           final repo = context.read<TextRepository>();
           final model = PageTextModel(
               parentChannel: channel, repository: repo, path: textPath);
 
           model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
+
+          // Do this to update the controller.
+          model.modelUpdated
+              .add(() => model.eventChannel.fireEvent(UPDATE_SCROLL, ''));
           return model;
         },
-        child: ScrollbarProvider(
-            isAlwaysShown: true,
-            builder: (controller, _) => SingleChildScrollView(
-                controller: controller,
-                child: EssayLayout(
-                    child: Container(
-                  constraints: BoxConstraints(maxWidth: 1200),
-                  padding: EdgeInsets.all(30),
-                  child: EssayContent(
-                      imagePath:
-                          "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
-                      trailing: trailing),
-                )))));
+        child: Center(
+          child: SingleChildScrollView(
+            controller: controller,
+            child: EssayLayout(
+              child: Container(
+                constraints: BoxConstraints(maxWidth: 1200),
+                padding: EdgeInsets.all(30),
+                child: EssayContent(
+                    imagePath:
+                        "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
+                    trailing: trailing),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -81,7 +91,7 @@ class EssayContent extends StatelessWidget {
     final model = context.watch<ModelNotifier<PageTextModel>>().model;
 
     if (!model.loaded) {
-      return Center(child: CircularProgressIndicator());
+      return CircularProgressIndicator();
     }
 
     final manifest = model.values['manifest'];
@@ -139,7 +149,8 @@ class _LoadedEssayContentState extends State<LoadedEssayContent> {
       case 'link':
         return EssayLinkText(text: part[1], link: part[2]);
       case 'image':
-        return Image.asset('${widget.imagePath}/${part[1]}');
+        return InteractiveViewer(
+            child: Image.asset('${widget.imagePath}/${part[1]}'));
       default:
         return EssayHeaderText(text: "Failed to Load...");
     }

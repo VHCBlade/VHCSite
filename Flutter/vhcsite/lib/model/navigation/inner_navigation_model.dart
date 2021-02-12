@@ -1,14 +1,17 @@
 import 'package:vhcsite/events/events.dart';
+import 'package:vhcsite/model/navigation/navigation_model.dart';
 import 'package:vhcsite/state/model.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
-const _POSSIBLE_NAVIGATIONS = {"home", "flutter", "about"};
-
-class NavigationModel with Model {
+class InnerNavigationModel with Model {
   final ProviderEventChannel eventChannel;
-  String navigationPath = "home";
+  final NavigationModel navigationModel;
 
-  NavigationModel({ProviderEventChannel? parentChannel})
+  final map = Map.fromIterable(POSSIBLE_NAVIGATIONS,
+      key: (val) => val, value: (_) => <String>[]);
+
+  InnerNavigationModel(this.navigationModel,
+      {ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener(BUTTON_EVENT, (payload) {
       navigate(payload);
@@ -17,15 +20,6 @@ class NavigationModel with Model {
   }
 
   void navigate(String navigate) {
-    if (!_POSSIBLE_NAVIGATIONS.contains(navigate)) {
-      return;
-    }
-
-    if (navigationPath == navigate) {
-      return;
-    }
-
-    navigationPath = navigate;
     updateModel();
   }
 }

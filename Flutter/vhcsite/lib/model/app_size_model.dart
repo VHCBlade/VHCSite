@@ -15,7 +15,7 @@ class AppSizeModel with Model {
 
   AppSizeModel({ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
-    eventChannel.addEventListener(MEDIA_QUERY, (value) {
+    eventChannel.addEventListener(MEDIA_QUERY_EVENT, (value) {
       // MediaQueryData
       final newState = getStateFromMediaQuery(value);
       if (newState != showState) {

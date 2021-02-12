@@ -29,7 +29,7 @@ class EssayTitleText extends StatelessWidget {
         child: SelectableText(text,
             style: Theme.of(context)
                 .textTheme
-                .headline2
+                .headline3
                 ?.copyWith(color: Theme.of(context).primaryColor)));
   }
 }
