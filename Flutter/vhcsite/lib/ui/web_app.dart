@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/navigation/navigation_model.dart';
+import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model_provider.dart';
 
 import 'dart:html';
@@ -21,6 +23,12 @@ class _WebAppNavHandlerState extends State<WebAppNavHandler> {
   @override
   void initState() {
     super.initState();
+    final href = window.location.href;
+    final path = href.substring(href.indexOf(_PATH) + _PATH.length);
+
+    context
+        .read<ProviderEventChannel>()
+        .fireEvent(INITIAL_NAVIGATION_EVENT, path);
   }
 
   @override

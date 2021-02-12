@@ -16,25 +16,35 @@ class NavigationModel with Model {
     });
     eventChannel.addEventListener(MAIN_NAVIGATION_EVENT, (payload) {
       // treat empty as home
-      navigate(payload == '' ? 'home' : payload, false);
+      navigate(payload == '' ? 'home' : payload, true);
+      return false;
+    });
+    eventChannel.addEventListener(INITIAL_NAVIGATION_EVENT, (payload) {
+      // treat empty as home
+      navigate(payload == '' ? 'home' : payload, true, false);
       return false;
     });
   }
 
-  void navigate(String navigate, bool errorOnFail) {
-    if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
-      if (errorOnFail && navigationPath != 'error') {
-        navigationPath = 'error';
-        updateModel();
-      }
-      return;
-    }
-
+  void navigate(String navigate, bool errorOnFail,
+      [bool shouldUpdateModel = true]) {
     if (navigationPath == navigate) {
       return;
     }
+    // Check if the navigation is actually valid.
+    if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
+      // Check if the navigation path should be changed to error.
+      if (!(errorOnFail && navigationPath != 'error')) {
+        return;
+      }
 
-    navigationPath = navigate;
-    updateModel();
+      navigationPath = 'error';
+    } else {
+      navigationPath = navigate;
+    }
+
+    if (shouldUpdateModel) {
+      updateModel();
+    }
   }
 }

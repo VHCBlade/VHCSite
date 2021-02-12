@@ -34,3 +34,13 @@ class DefaultTextRepository implements TextRepository {
     return retVal;
   }
 }
+
+class DelayedDefaultTextRepository implements TextRepository {
+  final DefaultTextRepository defaultRepository = DefaultTextRepository();
+
+  @override
+  Future<Map<String, String>> loadTextRepository(List<String> path) async {
+    await Future.delayed(Duration(seconds: 1));
+    return await defaultRepository.loadTextRepository(path);
+  }
+}

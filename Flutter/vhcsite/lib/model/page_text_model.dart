@@ -29,10 +29,8 @@ class PageTextModel with Model {
       _loading = true;
     }
 
-    repository
-        .loadTextRepository(path)
-        .then((a) => values.addAll(a))
-        .whenComplete(() {
+    repository.loadTextRepository(path).then((a) {
+      values.addAll(a);
       loaded = true;
       updateModel();
     });

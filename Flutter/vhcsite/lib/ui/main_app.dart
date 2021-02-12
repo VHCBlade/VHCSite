@@ -32,25 +32,17 @@ class _InnerApp extends StatelessWidget {
     return MaterialApp(
         title: 'VHCBlade',
         theme: createTheme(),
-        onGenerateInitialRoutes: (string) {
-          pushRoute(context, string);
-          return [MaterialPageRoute(builder: (_) => MainScreen())];
-        },
+        onGenerateInitialRoutes: (path) =>
+            [MaterialPageRoute(builder: (_) => MainScreen())],
         onGenerateRoute: (settings) {
-          pushRoute(context, settings.name);
+          if (settings.name != null) {
+            context
+                .read<ProviderEventChannel>()
+                .fireEvent(MAIN_NAVIGATION_EVENT, settings.name!.substring(1));
+          }
           return null;
         },
         builder: (_, child) =>
             kIsWeb ? WebAppNavHandler(child: child!) : child!);
-  }
-
-  void pushRoute(BuildContext context, String? path) {
-    if (path == null) {
-      return;
-    }
-
-    context
-        .read<ProviderEventChannel>()
-        .fireEvent(MAIN_NAVIGATION_EVENT, path.substring(1));
   }
 }
