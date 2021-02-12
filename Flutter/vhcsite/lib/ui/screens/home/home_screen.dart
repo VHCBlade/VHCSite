@@ -6,18 +6,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollbarProvider(
-        isAlwaysShown: true,
-        builder: (controller, _) => Center(
-            child: SingleChildScrollView(
-                controller: controller,
-                child: Stack(
-                  children: [
-                    Container(
-                      constraints: BoxConstraints(minWidth: double.infinity),
-                    ),
-                    Center(child: _HomeContent())
-                  ],
-                ))));
+      isAlwaysShown: true,
+      builder: (controller, _) => Center(
+        child: SingleChildScrollView(
+          controller: controller,
+          child: Stack(
+            children: [
+              Container(
+                constraints: BoxConstraints(minWidth: double.infinity),
+              ),
+              Center(child: _HomeContent())
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
