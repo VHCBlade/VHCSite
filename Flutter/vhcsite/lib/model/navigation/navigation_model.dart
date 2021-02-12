@@ -6,7 +6,7 @@ const POSSIBLE_NAVIGATIONS = <String>{"home", "dev", "about", "error"};
 
 class NavigationModel with Model {
   final ProviderEventChannel eventChannel;
-  String navigationPath = "home";
+  String navigationPath = 'home';
 
   NavigationModel({ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
@@ -15,7 +15,8 @@ class NavigationModel with Model {
       return false;
     });
     eventChannel.addEventListener(MAIN_NAVIGATION_EVENT, (payload) {
-      navigate(payload, true);
+      // treat empty as home
+      navigate(payload == '' ? 'home' : payload, false);
       return false;
     });
   }
