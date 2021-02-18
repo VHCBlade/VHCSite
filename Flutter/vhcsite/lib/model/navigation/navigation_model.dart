@@ -22,22 +22,21 @@ class NavigationModel with Model {
   }
 
   void navigate(String navigate, bool errorOnFail) {
-    if (navigationPath == navigate) {
-      return;
-    }
+    updateModelOnChange(
+      tracker: () => [navigate],
+      change: () {
+        // Check if the navigation is actually valid.
+        if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
+          // Check if the navigation path should be changed to error.
+          if (!errorOnFail) {
+            return;
+          }
 
-    // Check if the navigation is actually valid.
-    if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
-      // Check if the navigation path should be changed to error.
-      if (!(errorOnFail && navigationPath != 'error')) {
-        return;
-      }
-
-      navigationPath = 'error';
-    } else {
-      navigationPath = navigate;
-    }
-
-    updateModel();
+          navigationPath = 'error';
+        } else {
+          navigationPath = navigate;
+        }
+      },
+    );
   }
 }
