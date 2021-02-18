@@ -149,8 +149,7 @@ class _LoadedEssayContentState extends State<LoadedEssayContent> {
       case 'link':
         return EssayLinkText(text: part[1], link: part[2]);
       case 'image':
-        return InteractiveViewer(
-            child: Image.asset('${widget.imagePath}/${part[1]}'));
+        return EssayImage(imagePath: '${widget.imagePath}/${part[1]}');
       default:
         return EssayHeaderText(text: "Failed to Load...");
     }
