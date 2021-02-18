@@ -16,11 +16,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ModelProvider(
-        create: (_, channel) {
-          final model = AppSizeModel(parentChannel: channel);
-          model.modelUpdated.add(() => print("Hey"));
-          return model;
-        },
+        create: (_, channel) => AppSizeModel(parentChannel: channel),
         child: ModelProvider(
           create: (_, channel) => UrlModel(parentChannel: channel),
           child: ModelProvider(

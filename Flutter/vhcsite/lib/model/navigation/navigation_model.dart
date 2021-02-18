@@ -23,7 +23,7 @@ class NavigationModel with Model {
 
   void navigate(String navigate, bool errorOnFail) {
     updateModelOnChange(
-      tracker: () => [navigate],
+      tracker: () => [navigationPath],
       change: () {
         // Check if the navigation is actually valid.
         if (!POSSIBLE_NAVIGATIONS.contains(navigate)) {
