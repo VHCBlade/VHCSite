@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
 /// This is a page to hold all the rendering data on essay pages.
@@ -31,6 +32,23 @@ class EssayTitleText extends StatelessWidget {
                 .textTheme
                 .headline3
                 ?.copyWith(color: Theme.of(context).primaryColor)));
+  }
+}
+
+class EssayImage extends StatelessWidget {
+  final String imagePath;
+
+  const EssayImage({Key? key, required this.imagePath}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(imagePath, frameBuilder: (_, widget, frame, _a) {
+      // TODO Find a more efficient way to do this.
+      if (frame != null) {
+        context.read<ProviderEventChannel>().fireEvent(UPDATE_SCROLL, '');
+      }
+      return widget;
+    });
   }
 }
 

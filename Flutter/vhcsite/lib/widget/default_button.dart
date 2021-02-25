@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/state/event_channel.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -20,5 +21,17 @@ class DefaultButton extends StatelessWidget {
             ? null
             : () =>
                 context.read<ProviderEventChannel>().fireEvent("button", type));
+  }
+}
+
+class VHCBackButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+        onPressed: () => context
+            .read<ProviderEventChannel>()
+            .fireEvent(SUB_NAVIGATION_EVENT, "back"),
+        color: Theme.of(context).primaryColor,
+        child: Text("Back", style: Theme.of(context).textTheme.button));
   }
 }
