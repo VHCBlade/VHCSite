@@ -37,14 +37,14 @@ class _WebAppNavHandlerState extends State<WebAppNavHandler> {
     final href = window.location.href;
     final path = href.substring(href.indexOf(_PATH) + _PATH.length);
 
+    final fullNavigation = model.fullNavigation;
     // Skip if the path is the same.
-    if (path == model.navigationPath) {
+    if (path == fullNavigation) {
       return;
     }
 
     window.location.assign(
-        href.substring(0, href.indexOf(_PATH) + _PATH.length) +
-            model.navigationPath);
+        href.substring(0, href.indexOf(_PATH) + _PATH.length) + fullNavigation);
   }
 
   @override
