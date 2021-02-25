@@ -35,6 +35,11 @@ class _HomeContent extends StatelessWidget {
           style: Theme.of(context).textTheme.headline3,
           textAlign: TextAlign.center,
         ),
+        SelectableText(
+          "VHCBlade - Do what you're good at!",
+          style: Theme.of(context).textTheme.headline5,
+          textAlign: TextAlign.center,
+        ),
         Image.asset('assets/img/Logo.png'),
         Align(
             alignment: Alignment.centerRight,

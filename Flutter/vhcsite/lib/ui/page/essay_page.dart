@@ -31,12 +31,18 @@ class EssayLayout extends StatelessWidget {
 
 class EssayScreen extends StatelessWidget {
   final List<String> path;
+  final List<Widget> leading;
   final List<Widget> trailing;
 
   /// Builds the essay screen with the [path] used to take the files from assets.
   ///
+  /// [leading] is placed in a row before the content loaded in the manifest.
   /// [trailing] is placed in a row after the content loaded in the manifest.
-  const EssayScreen({Key? key, required this.path, this.trailing = const []})
+  const EssayScreen(
+      {Key? key,
+      required this.path,
+      this.trailing = const [],
+      this.leading = const []})
       : super(key: key);
 
   @override
@@ -65,9 +71,11 @@ class EssayScreen extends StatelessWidget {
                 constraints: BoxConstraints(maxWidth: 1200),
                 padding: EdgeInsets.all(30),
                 child: EssayContent(
-                    imagePath:
-                        "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
-                    trailing: trailing),
+                  imagePath:
+                      "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
+                  trailing: trailing,
+                  leading: leading,
+                ),
               ),
             ),
           ),
@@ -80,10 +88,14 @@ class EssayScreen extends StatelessWidget {
 class EssayContent extends StatelessWidget {
   final String imagePath;
   final List<Widget> trailing;
+  final List<Widget> leading;
 
   /// The Actual Content of the essay
   const EssayContent(
-      {Key? key, required this.imagePath, required this.trailing})
+      {Key? key,
+      required this.imagePath,
+      required this.trailing,
+      required this.leading})
       : super(key: key);
 
   @override
@@ -104,12 +116,14 @@ class EssayContent extends StatelessWidget {
         imagePath: imagePath,
         manifest: manifest,
         model: model,
+        leading: leading,
         trailing: trailing);
   }
 }
 
 class LoadedEssayContent extends StatefulWidget {
   final String manifest;
+  final List<Widget> leading;
   final List<Widget> trailing;
   final PageTextModel model;
   final String imagePath;
@@ -120,6 +134,7 @@ class LoadedEssayContent extends StatefulWidget {
       required this.manifest,
       required this.model,
       required this.trailing,
+      required this.leading,
       required this.imagePath})
       : super(key: key);
 
@@ -157,9 +172,12 @@ class _LoadedEssayContentState extends State<LoadedEssayContent> {
 
   @override
   Widget build(BuildContext context) {
-    final page = essayParts.map(_buildEssayPart).toList();
+    final page = <Widget>[];
+
+    page.addAll(widget.leading);
+    page.addAll(essayParts.map(_buildEssayPart).toList());
     page.addAll(widget.trailing);
 
-    return Wrap(runSpacing: 10, children: page);
+    return Wrap(runSpacing: 10, spacing: 10, children: page);
   }
 }
