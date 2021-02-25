@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/state/event_channel.dart';
+import 'package:flutter/services.dart';
 import 'package:vhcsite/ui/page/essay_page.dart';
-import 'package:provider/provider.dart';
+import 'package:vhcsite/ui/page/essay_text.dart';
+import 'package:vhcsite/widget/default_button.dart';
 
-class ChangelogScreen extends StatelessWidget {
+class ChangelogScreen extends StatefulWidget {
+  @override
+  _ChangelogScreenState createState() => _ChangelogScreenState();
+}
+
+class _ChangelogScreenState extends State<ChangelogScreen> {
+  String? changelog;
+
+  @override
+  void initState() {
+    super.initState();
+    print('Changelog');
+    rootBundle.loadString('CHANGELOG').then((value) {
+      setState(() => changelog = value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return EssayScreen(leading: [
-      FlatButton(
-          onPressed: () => context
-              .read<ProviderEventChannel>()
-              .fireEvent(SUB_NAVIGATION_EVENT, "back"),
-          color: Theme.of(context).primaryColor,
-          child: Text("Back", style: Theme.of(context).textTheme.button)),
-    ], path: [
-      'about'
-    ]);
+    return EssayScroll(
+        child: Wrap(runSpacing: 10, spacing: 10, children: [
+      Container(width: double.infinity),
+      VHCBackButton(),
+      changelog == null
+          ? CircularProgressIndicator()
+          : EssayParagraphText(text: changelog!)
+    ]));
   }
 }

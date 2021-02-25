@@ -29,6 +29,30 @@ class EssayLayout extends StatelessWidget {
   }
 }
 
+class EssayScroll extends StatelessWidget {
+  final Widget child;
+
+  const EssayScroll({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ScrollbarProvider(
+      isAlwaysShown: true,
+      builder: (controller, _) => Center(
+        child: SingleChildScrollView(
+          controller: controller,
+          child: EssayLayout(
+            child: Container(
+                constraints: BoxConstraints(maxWidth: 1200),
+                padding: EdgeInsets.all(30),
+                child: child),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class EssayScreen extends StatelessWidget {
   final List<String> path;
   final List<Widget> leading;
@@ -47,38 +71,25 @@ class EssayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScrollbarProvider(
-      isAlwaysShown: true,
-      builder: (controller, _) => ModelProvider(
-        create: (context, channel) {
-          final textPath = <String>[]..addAll(ASSETS_TEXT_PATH)..addAll(path);
-          final repo = context.read<TextRepository>();
-          final model = PageTextModel(
-              parentChannel: channel, repository: repo, path: textPath);
+    return ModelProvider(
+      create: (context, channel) {
+        final textPath = <String>[]..addAll(ASSETS_TEXT_PATH)..addAll(path);
+        final repo = context.read<TextRepository>();
+        final model = PageTextModel(
+            parentChannel: channel, repository: repo, path: textPath);
 
-          model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
+        model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
 
-          // Do this to update the controller.
-          model.modelUpdated
-              .add(() => model.eventChannel.fireEvent(UPDATE_SCROLL, ''));
-          return model;
-        },
-        child: Center(
-          child: SingleChildScrollView(
-            controller: controller,
-            child: EssayLayout(
-              child: Container(
-                constraints: BoxConstraints(maxWidth: 1200),
-                padding: EdgeInsets.all(30),
-                child: EssayContent(
-                  imagePath:
-                      "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
-                  trailing: trailing,
-                  leading: leading,
-                ),
-              ),
-            ),
-          ),
+        // Do this to update the controller.
+        model.modelUpdated
+            .add(() => model.eventChannel.fireEvent(UPDATE_SCROLL, ''));
+        return model;
+      },
+      child: EssayScroll(
+        child: EssayContent(
+          imagePath: "$ASSETS_IMG_PATH${path.reduce((a, b) => '$a/$b')}",
+          trailing: trailing,
+          leading: leading,
         ),
       ),
     );

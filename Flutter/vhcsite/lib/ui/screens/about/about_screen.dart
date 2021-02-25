@@ -18,8 +18,7 @@ class AboutScreen extends StatelessWidget {
 
     late final Widget widget;
 
-    if (equality
-        .equals(model.getSpecificSubNavigation('about'), const ["changelog"])) {
+    if (equality.equals(model.subNavigation, const ["changelog"])) {
       widget = ChangelogScreen();
     } else {
       widget = AboutHomeScreen();

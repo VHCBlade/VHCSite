@@ -38,7 +38,7 @@ class InnerNavigation {
       return false;
     }
 
-    navigationPath.removeLast();
+    navigationPath = navigationPath.sublist(0, navigationPath.length - 1);
 
     return true;
   }

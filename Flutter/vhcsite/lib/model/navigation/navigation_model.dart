@@ -29,12 +29,12 @@ class NavigationModel with Model {
   NavigationModel({ProviderEventChannel? parentChannel})
       : eventChannel = ProviderEventChannel(parentChannel) {
     eventChannel.addEventListener(BUTTON_EVENT, (payload) {
-      navigate(payload, false);
+      navigate(payload, false, true);
       return false;
     });
     eventChannel.addEventListener(MAIN_NAVIGATION_EVENT, (payload) {
       // treat empty as home
-      navigate(payload == '' ? 'home' : payload, true);
+      navigate(payload == '' ? 'home' : payload, true, false);
       return false;
     });
     eventChannel.addEventListener(SUB_NAVIGATION_EVENT, (payload) {
@@ -47,7 +47,11 @@ class NavigationModel with Model {
   ///
   /// If [errorOnFail] is true, if [navigate] is invalid, will navigate to
   /// the error screen.
-  void navigate(String navigate, bool errorOnFail) {
+  ///
+  /// If [keepSubNavigation] is true, if [navigate] is only a main Navigation,
+  /// will set subNavigation to the last valid value. If False, if [navigate]
+  /// is only a main Navigation, will go set subNavigation to root.
+  void navigate(String navigate, bool errorOnFail, bool keepSubNavigation) {
     updateModelOnChange(
       tracker: () => [navigationPath, subNavigation],
       change: () {
@@ -68,6 +72,10 @@ class NavigationModel with Model {
         navigationPath = mainNav;
 
         if (firstSlash < 0) {
+          if (!keepSubNavigation) {
+            // Pop until hits root.
+            while (innerNavigation.popNavigation()) {}
+          }
           return;
         }
 
@@ -88,6 +96,12 @@ class NavigationModel with Model {
   ///
   /// If [payload] == 'back' then the navigation will pop.
   void subNavigate(String payload, bool errorOnFail) {
+    switch (payload) {
+      case "back":
+        popNavigate();
+        return;
+    }
+
     updateModelOnChange(
       tracker: () => [navigationPath, subNavigation],
       change: () {
@@ -105,5 +119,17 @@ class NavigationModel with Model {
         }
       },
     );
+  }
+
+  /// Pops the navigation
+  void popNavigate() {
+    updateModelOnChange(
+        tracker: () => [navigationPath, subNavigation],
+        change: () {
+          final popped = innerNavigation.popNavigation();
+          if (!popped) {
+            navigationPath = 'home';
+          }
+        });
   }
 }
