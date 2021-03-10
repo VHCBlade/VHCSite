@@ -1,11 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/state/event_channel.dart';
 import 'package:vhcsite/state/model.dart';
-
-// TODO Update when either universal HTML is done updating or url_launcher web is migrated to null-type safety.
-import 'dart:html' as html;
 
 class UrlModel with Model {
   final ProviderEventChannel eventChannel;
@@ -27,10 +23,6 @@ class UrlModel with Model {
 
   // TODO Transfer this to a repo
   void _launch(String target) {
-    if (kIsWeb) {
-      html.window.open(target, 'MyName');
-    } else {
-      launch(target);
-    }
+    launch(target);
   }
 }
