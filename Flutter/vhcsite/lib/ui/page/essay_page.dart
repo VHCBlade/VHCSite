@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/page_text_model.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
-import 'package:vhcsite/state/model_provider.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 
@@ -71,17 +71,17 @@ class EssayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ModelProvider(
+    return BlocProvider(
       create: (context, channel) {
         final textPath = <String>[]..addAll(ASSETS_TEXT_PATH)..addAll(path);
         final repo = context.read<TextRepository>();
-        final model = PageTextModel(
+        final model = PageTextBloc(
             parentChannel: channel, repository: repo, path: textPath);
 
         model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
 
         // Do this to update the controller.
-        model.modelUpdated
+        model.blocUpdated
             .add(() => model.eventChannel.fireEvent(UPDATE_SCROLL, ''));
         return model;
       },
@@ -111,7 +111,7 @@ class EssayContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<ModelNotifier<PageTextModel>>().model;
+    final model = context.watch<BlocNotifier<PageTextBloc>>().bloc;
 
     if (!model.loaded) {
       return CircularProgressIndicator();
@@ -136,7 +136,7 @@ class LoadedEssayContent extends StatefulWidget {
   final String manifest;
   final List<Widget> leading;
   final List<Widget> trailing;
-  final PageTextModel model;
+  final PageTextBloc model;
   final String imagePath;
 
   /// The content of the essay once the assets have been loaded.

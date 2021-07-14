@@ -2,9 +2,8 @@ import 'package:animations/animations.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/model/navigation/navigation_model.dart';
-import 'package:vhcsite/state/event_channel.dart';
-import 'package:vhcsite/state/model_provider.dart';
+import 'package:vhcsite/model/navigation/navigation_bloc.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:vhcsite/ui/page/essay_page.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/ui/screens/about/changelog_screen.dart';
@@ -14,7 +13,7 @@ final equality = ListEquality();
 class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<ModelNotifier<NavigationModel>>().model;
+    final model = context.watch<BlocNotifier<NavigationBloc>>().bloc;
 
     late final Widget widget;
 
@@ -52,7 +51,7 @@ class AboutHomeScreen extends StatelessWidget {
           child: Text("Licenses", style: Theme.of(context).textTheme.button)),
       FlatButton(
           onPressed: () => context
-              .read<ProviderEventChannel>()
+              .read<BlocEventChannel>()
               .fireEvent(SUB_NAVIGATION_EVENT, "changelog"),
           color: Theme.of(context).primaryColor,
           child: Text("Changelog", style: Theme.of(context).textTheme.button))

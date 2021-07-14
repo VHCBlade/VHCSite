@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vhcsite/model/navigation/navigation_model.dart';
+import 'package:vhcsite/model/navigation/navigation_bloc.dart';
 import 'package:vhcsite/widget/default_button.dart';
-import 'package:vhcsite/state/model_provider.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:provider/provider.dart';
 
 class NavButton extends StatelessWidget {
@@ -13,7 +13,7 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<ModelNotifier<NavigationModel>>().model;
+    final model = context.watch<BlocNotifier<NavigationBloc>>().bloc;
     return DefaultButton(
         text: text, type: type, disabled: type == model.navigationPath);
   }

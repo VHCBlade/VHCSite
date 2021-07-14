@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/state/event_channel.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:vhcsite/ui/appbar/nav_button.dart';
 import 'package:vhcsite/widget/textscale.dart';
 
@@ -19,7 +19,7 @@ PreferredSizeWidget createAppBar(BuildContext context, bool addActions) =>
             actions: addActions
                 ? [
                     NavButton(text: "Home", type: "home"),
-                    NavButton(text: "Software", type: "dev"),
+                    NavButton(text: "Flutter", type: "dev"),
                     NavButton(text: "YouTube", type: "youtube"),
                     NavButton(text: "About", type: "about"),
                     Container(width: 10)
@@ -32,8 +32,7 @@ class ActionDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (context) {
-        final channel =
-            ProviderEventChannel(context.read<ProviderEventChannel>());
+        final channel = BlocEventChannel(context.read<BlocEventChannel>());
 
         channel.addEventListener(BUTTON_EVENT, (val) {
           Navigator.pop(context);

@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:vhcsite/config.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/app_size_model.dart';
-import 'package:vhcsite/model/navigation/navigation_model.dart';
+import 'package:vhcsite/model/navigation/navigation_bloc.dart';
 import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
-import 'package:vhcsite/state/event_channel.dart';
-import 'package:vhcsite/state/model_provider.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
 import 'package:vhcsite/ui/screens/about/about_screen.dart';
 import 'package:vhcsite/ui/screens/error/error_screen.dart';
@@ -19,10 +18,10 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration()).then((value) => context
-        .read<ProviderEventChannel>()
+        .read<BlocEventChannel>()
         .fireEvent(MEDIA_QUERY_EVENT, MediaQuery.of(context)));
 
-    final model = context.watch<ModelNotifier<AppSizeModel>>().model;
+    final model = context.watch<BlocNotifier<AppSizeBloc>>().bloc;
 
     return Provider<TextRepository>(
         create: (_) => CURRENT_CONFIG == RunConfig.debug
@@ -39,7 +38,7 @@ class MainScreen extends StatelessWidget {
 class MainBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<ModelNotifier<NavigationModel>>().model;
+    final model = context.watch<BlocNotifier<NavigationBloc>>().bloc;
 
     late final Widget widget;
 
