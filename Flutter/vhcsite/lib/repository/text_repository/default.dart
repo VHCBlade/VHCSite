@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 
-class DefaultTextRepository implements TextRepository {
+class DefaultTextRepository extends TextRepository {
   Map<String, dynamic>? assets;
 
   /// Loads all text files from the given path.
@@ -35,7 +35,7 @@ class DefaultTextRepository implements TextRepository {
   }
 }
 
-class DelayedDefaultTextRepository implements TextRepository {
+class DelayedDefaultTextRepository extends TextRepository {
   final DefaultTextRepository defaultRepository = DefaultTextRepository();
 
   @override

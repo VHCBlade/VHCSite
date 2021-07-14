@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/state/event_channel.dart';
+import 'package:event_bloc/event_bloc.dart';
 
 class ScrollbarProvider extends StatefulWidget {
   final Widget Function(ScrollController controller, BuildContext context)
@@ -22,7 +22,7 @@ class ScrollbarProvider extends StatefulWidget {
 
 class _ScrollbarProviderState extends State<ScrollbarProvider> {
   late final ScrollController controller;
-  late final ProviderEventChannel channel;
+  late final BlocEventChannel channel;
 
   bool _updating = false;
   bool isDisposed = false;
@@ -34,7 +34,7 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
 
     /// Assume that there will always be a Provider Event Channel, probably fix
     /// this later.
-    channel = ProviderEventChannel(context.read<ProviderEventChannel>());
+    channel = BlocEventChannel(context.read<BlocEventChannel>());
     channel.addEventListener(UPDATE_SCROLL, (_) {
       if (!_updating) {
         _updating = true;

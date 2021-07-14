@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/model/navigation/navigation_model.dart';
-import 'package:vhcsite/state/event_channel.dart';
-import 'package:vhcsite/state/model_provider.dart';
-
-// TODO Replace with Universal HTML Eventually
-import 'dart:html';
+import 'package:vhcsite/model/navigation/navigation_bloc.dart';
+import 'package:event_bloc/event_bloc.dart';
+import 'package:universal_html/html.dart';
 
 const _PATH = "/#/";
 
@@ -27,13 +24,13 @@ class _WebAppNavHandlerState extends State<WebAppNavHandler> {
     final href = window.location.href;
     final path = href.substring(href.indexOf(_PATH) + _PATH.length);
 
-    context.read<ProviderEventChannel>().fireEvent(MAIN_NAVIGATION_EVENT, path);
+    context.read<BlocEventChannel>().fireEvent(MAIN_NAVIGATION_EVENT, path);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final model = context.watch<ModelNotifier<NavigationModel>>().model;
+    final model = context.watch<BlocNotifier<NavigationBloc>>().bloc;
 
     final href = window.location.href;
     final path = href.substring(href.indexOf(_PATH) + _PATH.length);

@@ -1,13 +1,12 @@
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/navigation/inner/inner_navigation.dart';
 import 'package:vhcsite/model/navigation/inner/navigations.dart';
-import 'package:vhcsite/state/model.dart';
-import 'package:vhcsite/state/event_channel.dart';
+import 'package:event_bloc/event_bloc.dart';
 
 const POSSIBLE_NAVIGATIONS = <String>{"home", "dev", "about", "error"};
 
-class NavigationModel with Model {
-  final ProviderEventChannel eventChannel;
+class NavigationBloc with Bloc {
+  final BlocEventChannel eventChannel;
   String navigationPath = 'home';
   final _storedNavigations = createInnerNavigationMap();
 
@@ -26,8 +25,8 @@ class NavigationModel with Model {
     return specificPath.navigationPath;
   }
 
-  NavigationModel({ProviderEventChannel? parentChannel})
-      : eventChannel = ProviderEventChannel(parentChannel) {
+  NavigationBloc({BlocEventChannel? parentChannel})
+      : eventChannel = BlocEventChannel(parentChannel) {
     eventChannel.addEventListener(BUTTON_EVENT, (payload) {
       navigate(payload, false, true);
       return false;
@@ -52,7 +51,7 @@ class NavigationModel with Model {
   /// will set subNavigation to the last valid value. If False, if [navigate]
   /// is only a main Navigation, will go set subNavigation to root.
   void navigate(String navigate, bool errorOnFail, bool keepSubNavigation) {
-    updateModelOnChange(
+    updateBlocOnChange(
       tracker: () => [navigationPath, subNavigation],
       change: () {
         final firstSlash = navigate.indexOf('/');
@@ -102,7 +101,7 @@ class NavigationModel with Model {
         return;
     }
 
-    updateModelOnChange(
+    updateBlocOnChange(
       tracker: () => [navigationPath, subNavigation],
       change: () {
         // Attempt to Navigate further.
@@ -123,7 +122,7 @@ class NavigationModel with Model {
 
   /// Pops the navigation
   void popNavigate() {
-    updateModelOnChange(
+    updateBlocOnChange(
         tracker: () => [navigationPath, subNavigation],
         change: () {
           final popped = innerNavigation.popNavigation();

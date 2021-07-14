@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/state/event_channel.dart';
+import 'package:event_bloc/event_bloc.dart';
 
 /// This is a page to hold all the rendering data on essay pages.
 
@@ -45,7 +45,7 @@ class EssayImage extends StatelessWidget {
     return Image.asset(imagePath, frameBuilder: (_, widget, frame, _a) {
       // TODO Find a more efficient way to do this.
       if (frame != null) {
-        context.read<ProviderEventChannel>().fireEvent(UPDATE_SCROLL, '');
+        context.read<BlocEventChannel>().fireEvent(UPDATE_SCROLL, '');
       }
       return widget;
     });
@@ -104,7 +104,7 @@ class EssayLinkText extends StatelessWidget {
 }
 
 _clickLink(String? link, BuildContext context) =>
-    context.read<ProviderEventChannel>().fireEvent('url', link);
+    context.read<BlocEventChannel>().fireEvent('url', link);
 
 /// Currently there's a bug with Rich Text and not getting the URL to work.
 /// So don't use this.

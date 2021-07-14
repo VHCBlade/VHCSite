@@ -1,23 +1,22 @@
 import 'dart:math';
 
-import 'package:vhcsite/state/event_channel.dart';
-import 'package:vhcsite/state/model.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:vhcsite/events/events.dart';
 
 const DEVICE_THRESHHOLD = 400;
 
 // 1 refers to normal, 0 means smallest
 
-class AppSizeModel with Model {
-  final ProviderEventChannel eventChannel;
+class AppSizeBloc with Bloc {
+  final BlocEventChannel eventChannel;
 
   int showState = 1;
 
-  AppSizeModel({ProviderEventChannel? parentChannel})
-      : eventChannel = ProviderEventChannel(parentChannel) {
+  AppSizeBloc({BlocEventChannel? parentChannel})
+      : eventChannel = BlocEventChannel(parentChannel) {
     eventChannel.addEventListener(MEDIA_QUERY_EVENT, (value) {
       // MediaQueryData
-      updateModelOnChange(
+      updateBlocOnChange(
           tracker: () => [showState],
           change: () => showState = getStateFromMediaQuery(value));
 
