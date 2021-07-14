@@ -19,7 +19,7 @@ PreferredSizeWidget createAppBar(BuildContext context, bool addActions) =>
             actions: addActions
                 ? [
                     NavButton(text: "Home", type: "home"),
-                    NavButton(text: "Software", type: "dev"),
+                    NavButton(text: "Flutter", type: "dev"),
                     NavButton(text: "YouTube", type: "youtube"),
                     NavButton(text: "About", type: "about"),
                     Container(width: 10)
