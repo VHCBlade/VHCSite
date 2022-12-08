@@ -35,20 +35,19 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
     /// Assume that there will always be a Provider Event Channel, probably fix
     /// this later.
     channel = BlocEventChannel(context.read<BlocEventChannel>());
-    channel.addEventListener(UPDATE_SCROLL, (_) {
-      if (!_updating) {
-        _updating = true;
-        // This forces the controller to update.
-        Future.delayed(Duration(milliseconds: 100)).then((_) {
-          if (!isDisposed) {
-            controller.position.didUpdateScrollPositionBy(-0.1);
-            _updating = false;
-          }
-        });
+    channel.addEventListener(UIEvent.updateScroll.event, (event, val) {
+      event.propagate = false;
+      if (_updating) {
+        return;
       }
-
-      // Always absorb the event.
-      return true;
+      _updating = true;
+      // This forces the controller to update.
+      Future.delayed(Duration(milliseconds: 100)).then((_) {
+        if (!isDisposed) {
+          controller.position.didUpdateScrollPositionBy(-0.1);
+          _updating = false;
+        }
+      });
     });
   }
 

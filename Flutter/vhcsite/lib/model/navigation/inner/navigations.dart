@@ -1,30 +1,13 @@
-import 'package:vhcsite/model/navigation/inner/inner_navigation.dart';
-import 'package:vhcsite/model/navigation/navigation_bloc.dart';
+import 'package:event_navigation/event_navigation.dart';
 
-HandleNavigation _defaultNav = (b) {
-  return null;
-};
-
-HandleNavigation _aboutNav = (b) {
-  if (b == 'changelog') {
-    return const ['changelog'];
-  }
-
-  return null;
-};
-
-Map<String, InnerNavigation> createInnerNavigationMap() {
-  final map = <String, InnerNavigation>{};
-
-  for (final a in POSSIBLE_NAVIGATIONS) {
-    switch (a) {
-      case "about":
-        map[a] = InnerNavigation(_aboutNav);
-        break;
-      default:
-        map[a] = InnerNavigation(_defaultNav);
+class AboutDeepNavigationStrategy
+    implements DeepNavigationStrategy<String> {
+  @override
+  bool shouldAcceptNavigation(String subNavigation, DeepNavigationNode? root) {
+    if (root == null) {
+      return subNavigation == "changelog";
     }
-  }
 
-  return map;
+    return false;
+  }
 }

@@ -1,12 +1,20 @@
 // UI Events
-const BUTTON_EVENT = 'button';
-const URL_EVENT = 'url';
-const UPDATE_SCROLL = 'update_scroll';
+import 'package:event_bloc/event_bloc.dart';
+import 'package:flutter/material.dart';
 
-// Navigation Events
-const MAIN_NAVIGATION_EVENT = 'main_navigation';
-const SUB_NAVIGATION_EVENT = 'sub_navigation';
+enum UIEvent<T> {
+  button<String>(),
+  url<String>(),
+  updateScroll<void>(),
+  ;
 
-// Data Events
-const TEXT_FILES_EVENT = 'text_files';
-const MEDIA_QUERY_EVENT = 'media_query';
+  BlocEventType<T> get event => BlocEventType.fromObject(this);
+}
+
+enum DataEvent<T> {
+  textFiles<void>(),
+  mediaQuery<MediaQueryData>(),
+  ;
+
+  BlocEventType<T> get event => BlocEventType.fromObject(this);
+}

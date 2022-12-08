@@ -1,23 +1,18 @@
 import 'package:animations/animations.dart';
-import 'package:collection/collection.dart';
+import 'package:event_bloc/event_bloc_widgets.dart';
+import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/model/navigation/navigation_bloc.dart';
-import 'package:event_bloc/event_bloc.dart';
 import 'package:vhcsite/ui/page/essay_page.dart';
-import 'package:provider/provider.dart';
 import 'package:vhcsite/ui/screens/about/changelog_screen.dart';
-
-final equality = ListEquality();
 
 class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<BlocNotifier<NavigationBloc>>().bloc;
+    final model = context.watchBloc<MainNavigationBloc<String>>();
 
     late final Widget widget;
 
-    if (equality.equals(model.subNavigation, const ["changelog"])) {
+    if (model.currentDeepNavigation?.value == "changelog") {
       widget = ChangelogScreen();
     } else {
       widget = AboutHomeScreen();
@@ -45,15 +40,13 @@ class AboutHomeScreen extends StatelessWidget {
     return EssayScreen(path: [
       'about'
     ], trailing: [
-      FlatButton(
+      TextButton(
           onPressed: () => showLicensePage(context: context),
-          color: Theme.of(context).primaryColor,
+          // color: Theme.of(context).primaryColor,
           child: Text("Licenses", style: Theme.of(context).textTheme.button)),
-      FlatButton(
-          onPressed: () => context
-              .read<BlocEventChannel>()
-              .fireEvent(SUB_NAVIGATION_EVENT, "changelog"),
-          color: Theme.of(context).primaryColor,
+      TextButton(
+          onPressed: () => context.pushDeepNavigation("changelog"),
+          // color: Theme.of(context).primaryColor,
           child: Text("Changelog", style: Theme.of(context).textTheme.button))
     ]);
   }

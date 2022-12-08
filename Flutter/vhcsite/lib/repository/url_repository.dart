@@ -4,16 +4,15 @@ import 'package:event_bloc/event_bloc.dart';
 
 class UrlRepository extends Repository {
   /// Generates the listener map that this [Repository] will add to the
-  Map<String, BlocEventListener> generateListenerMap() => {
-        URL_EVENT:
-            BlocEventChannel.simpleListener((payload) => _launch(payload)),
-        BUTTON_EVENT: ((payload) {
-          if (payload == 'youtube') {
+  List<BlocEventListener> generateListeners(BlocEventChannel eventChannel) => [
+        eventChannel.addEventListener<String>(
+            UIEvent.url.event, (_, val) => _launch(val)),
+        eventChannel.addEventListener<String>(UIEvent.button.event, (_, val) {
+          if (val == 'youtube') {
             _launch('https://www.youtube.com/channel/UCZ-JaDp28rir6URCI0Gws7Q');
           }
-          return false;
         }),
-      };
+      ];
 
   void _launch(String target) {
     launch(target);

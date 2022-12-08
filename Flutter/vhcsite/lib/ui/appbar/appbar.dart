@@ -19,7 +19,7 @@ PreferredSizeWidget createAppBar(BuildContext context, bool addActions) =>
             actions: addActions
                 ? [
                     NavButton(text: "Home", type: "home"),
-                    NavButton(text: "Flutter", type: "dev"),
+                    NavButton(text: "Software", type: "dev"),
                     NavButton(text: "YouTube", type: "youtube"),
                     NavButton(text: "About", type: "about"),
                     Container(width: 10)
@@ -34,10 +34,8 @@ class ActionDrawer extends StatelessWidget {
       create: (context) {
         final channel = BlocEventChannel(context.read<BlocEventChannel>());
 
-        channel.addEventListener(BUTTON_EVENT, (val) {
-          Navigator.pop(context);
-          return false;
-        });
+        channel.addEventListener<String>(
+            UIEvent.button.event, (_, val) => Navigator.pop(context));
 
         return channel;
       },

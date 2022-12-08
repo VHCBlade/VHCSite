@@ -2,8 +2,7 @@ import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:event_bloc/event_bloc.dart';
 
-class PageTextBloc with Bloc {
-  final BlocEventChannel eventChannel;
+class PageTextBloc extends Bloc {
   final TextRepository repository;
   final List<String> path;
 
@@ -15,12 +14,9 @@ class PageTextBloc with Bloc {
   String get stringPath => path.reduce((a, b) => "$a/$b");
 
   PageTextBloc(
-      {BlocEventChannel? parentChannel,
-      required this.repository,
-      required this.path})
-      : eventChannel = BlocEventChannel(parentChannel) {
+      {super.parentChannel, required this.repository, required this.path}) {
     eventChannel.addEventListener(
-        TEXT_FILES_EVENT, (dynamic) => _retrieveTextFiles());
+        DataEvent.textFiles.event, (_, val) => _retrieveTextFiles());
   }
 
   bool _retrieveTextFiles() {

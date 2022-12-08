@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:event_bloc/src/event_bloc/event_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 
@@ -33,6 +34,9 @@ class DefaultTextRepository extends TextRepository {
 
     return retVal;
   }
+
+  @override
+  List<BlocEventListener> generateListeners(BlocEventChannel channel) => [];
 }
 
 class DelayedDefaultTextRepository extends TextRepository {
@@ -43,4 +47,7 @@ class DelayedDefaultTextRepository extends TextRepository {
     await Future.delayed(Duration(seconds: 1));
     return await defaultRepository.loadTextRepository(path);
   }
+
+  @override
+  List<BlocEventListener> generateListeners(BlocEventChannel channel) => [];
 }

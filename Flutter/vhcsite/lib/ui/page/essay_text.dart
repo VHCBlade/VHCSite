@@ -1,9 +1,9 @@
+import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
-import 'package:vhcsite/events/events.dart';
 import 'package:event_bloc/event_bloc.dart';
+import 'package:vhcsite/events/events.dart';
 
 /// This is a page to hold all the rendering data on essay pages.
 
@@ -45,7 +45,7 @@ class EssayImage extends StatelessWidget {
     return Image.asset(imagePath, frameBuilder: (_, widget, frame, _a) {
       // TODO Find a more efficient way to do this.
       if (frame != null) {
-        context.read<BlocEventChannel>().fireEvent(UPDATE_SCROLL, '');
+        context.fireEvent<void>(UIEvent.updateScroll.event, null);
       }
       return widget;
     });
@@ -93,7 +93,7 @@ class EssayLinkText extends StatelessWidget {
         child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-                onTap: () => _clickLink(link, context),
+                onTap: () => _clickLink(link ?? "", context),
                 child: Text(
                   text,
                   style: Theme.of(context).textTheme.subtitle1?.copyWith(
@@ -103,8 +103,8 @@ class EssayLinkText extends StatelessWidget {
   }
 }
 
-_clickLink(String? link, BuildContext context) =>
-    context.read<BlocEventChannel>().fireEvent('url', link);
+_clickLink(String link, BuildContext context) =>
+    context.fireEvent<String>(UIEvent.url.event, link);
 
 /// Currently there's a bug with Rich Text and not getting the URL to work.
 /// So don't use this.

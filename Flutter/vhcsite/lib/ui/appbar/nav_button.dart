@@ -1,8 +1,7 @@
+import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/model/navigation/navigation_bloc.dart';
 import 'package:vhcsite/widget/default_button.dart';
-import 'package:event_bloc/event_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:event_bloc/event_bloc_widgets.dart';
 
 class NavButton extends StatelessWidget {
   final String text;
@@ -13,8 +12,16 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<BlocNotifier<NavigationBloc>>().bloc;
-    return DefaultButton(
-        text: text, type: type, disabled: type == model.navigationPath);
+    final bloc = context.watchBloc<MainNavigationBloc<String>>();
+    return SizedBox(
+      width: 85,
+      child: DefaultButton(
+        text: text,
+        type: type,
+        disabled: type == bloc.currentMainNavigation,
+        onPressedOverride:
+            type == "youtube" ? null : () => context.changeMainNavigation(type),
+      ),
+    );
   }
 }

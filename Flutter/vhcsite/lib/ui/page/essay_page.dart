@@ -1,3 +1,4 @@
+import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/events/events.dart';
@@ -73,16 +74,18 @@ class EssayScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context, channel) {
-        final textPath = <String>[]..addAll(ASSETS_TEXT_PATH)..addAll(path);
+        final textPath = <String>[]
+          ..addAll(ASSETS_TEXT_PATH)
+          ..addAll(path);
         final repo = context.read<TextRepository>();
         final model = PageTextBloc(
             parentChannel: channel, repository: repo, path: textPath);
 
-        model.eventChannel.fireEvent(TEXT_FILES_EVENT, '');
+        model.eventChannel.fireEvent<void>(DataEvent.textFiles.event, null);
 
         // Do this to update the controller.
-        model.blocUpdated
-            .add(() => model.eventChannel.fireEvent(UPDATE_SCROLL, ''));
+        model.blocUpdated.add(() => model.eventChannel
+            .fireEvent<void>(UIEvent.updateScroll.event, null));
         return model;
       },
       child: EssayScroll(
