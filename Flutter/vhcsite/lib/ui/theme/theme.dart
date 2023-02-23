@@ -7,7 +7,7 @@ ThemeData createSiteTheme() {
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
           backgroundColor: textButtonBackgroundColor,
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+          shape: MaterialStateProperty.all(const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(3)))),
           overlayColor: textButtonOverlayColor,
           surfaceTintColor: MaterialStateProperty.all(HIGHLIGHT_COLOR),

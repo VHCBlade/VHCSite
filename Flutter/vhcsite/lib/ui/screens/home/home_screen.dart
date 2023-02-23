@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ScrollbarProvider(
@@ -12,7 +14,7 @@ class HomeScreen extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                constraints: BoxConstraints(minWidth: double.infinity),
+                constraints: const BoxConstraints(minWidth: double.infinity),
               ),
               Center(child: _HomeContent())
             ],
@@ -27,7 +29,7 @@ class _HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 600),
+      constraints: const BoxConstraints(maxWidth: 600),
       child: Column(children: [
         SelectableText(
           "Welcome to my Website!",

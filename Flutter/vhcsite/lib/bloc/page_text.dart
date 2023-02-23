@@ -8,9 +8,8 @@ class PageTextBloc extends Bloc {
 
   bool loaded = false;
   bool _loading = false;
-  final values = <String, String>{};
+  String value = "";
 
-  String safeGetValue(String value) => values[value] ?? '';
   String get stringPath => path.reduce((a, b) => "$a/$b");
 
   PageTextBloc(
@@ -19,17 +18,16 @@ class PageTextBloc extends Bloc {
         DataEvent.textFiles.event, (_, val) => _retrieveTextFiles());
   }
 
-  bool _retrieveTextFiles() {
-    if (!_loading) {
-      _loading = true;
+  void _retrieveTextFiles() async {
+    if (_loading) {
+      return;
     }
 
-    repository.loadTextRepository(path).then((a) {
-      values.addAll(a);
-      loaded = true;
-      updateBloc();
-    });
+    value = await repository.loadText(path);
 
-    return true;
+    _loading = false;
+    loaded = true;
+    updateBloc();
+    return;
   }
 }

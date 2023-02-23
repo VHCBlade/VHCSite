@@ -1,5 +1,6 @@
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/bloc/page_text.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
@@ -12,16 +13,16 @@ const ASSETS_IMG_PATH = 'assets/img/';
 const ASSETS_TEXT_PATH = ['assets', 'text'];
 
 class EssayLayout extends StatelessWidget {
-  final child;
+  final Widget child;
 
   /// Correctly layouts the child inside a SignleChildScrollView for an Essay.
-  const EssayLayout({Key? key, this.child}) : super(key: key);
+  const EssayLayout({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-        constraints: BoxConstraints(minWidth: double.infinity),
+        constraints: const BoxConstraints(minWidth: double.infinity),
       ),
       Center(child: child)
     ]);
@@ -42,8 +43,8 @@ class EssayScroll extends StatelessWidget {
           controller: controller,
           child: EssayLayout(
             child: Container(
-                constraints: BoxConstraints(maxWidth: 1200),
-                padding: EdgeInsets.all(30),
+                constraints: const BoxConstraints(maxWidth: 1200),
+                padding: const EdgeInsets.all(30),
                 child: child),
           ),
         ),
@@ -72,19 +73,16 @@ class EssayScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context, channel) {
-        final textPath = <String>[]
-          ..addAll(ASSETS_TEXT_PATH)
-          ..addAll(path);
+        final textPath = <String>[...ASSETS_TEXT_PATH, ...path];
         final repo = context.read<TextRepository>();
-        final model = PageTextBloc(
+        final bloc = PageTextBloc(
             parentChannel: channel, repository: repo, path: textPath);
 
-        model.eventChannel.fireEvent<void>(DataEvent.textFiles.event, null);
+        bloc.eventChannel.fireEvent<void>(DataEvent.textFiles.event, null);
 
-        // Do this to update the controller.
-        model.blocUpdated.add(() => model.eventChannel
+        bloc.blocUpdated.add(() => bloc.eventChannel
             .fireEvent<void>(UIEvent.updateScroll.event, null));
-        return model;
+        return bloc;
       },
       child: EssayScroll(
         child: EssayContent(
@@ -112,83 +110,54 @@ class EssayContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<BlocNotifier<PageTextBloc>>().bloc;
+    final bloc = context.watch<BlocNotifier<PageTextBloc>>().bloc;
 
-    if (!model.loaded) {
-      return CircularProgressIndicator();
+    if (!bloc.loaded) {
+      return const CircularProgressIndicator();
     }
 
-    final manifest = model.values['manifest'];
-
-    if (manifest == null) {
-      return EssayHeaderText(text: "Ooops!!! Failed to load this page!");
+    if (bloc.value.isEmpty) {
+      return const EssayTitleText(text: "Ooops!!! Failed to load this page!");
     }
 
     return LoadedEssayContent(
-        imagePath: imagePath,
-        manifest: manifest,
-        model: model,
-        leading: leading,
-        trailing: trailing);
+      value: bloc.value,
+      leading: leading,
+      trailing: trailing,
+    );
   }
 }
 
-class LoadedEssayContent extends StatefulWidget {
-  final String manifest;
+class LoadedEssayContent extends StatelessWidget {
+  final String value;
   final List<Widget> leading;
   final List<Widget> trailing;
-  final PageTextBloc model;
-  final String imagePath;
 
-  /// The content of the essay once the assets have been loaded.
-  const LoadedEssayContent(
-      {Key? key,
-      required this.manifest,
-      required this.model,
-      required this.trailing,
-      required this.leading,
-      required this.imagePath})
-      : super(key: key);
-
-  @override
-  _LoadedEssayContentState createState() => _LoadedEssayContentState();
-}
-
-class _LoadedEssayContentState extends State<LoadedEssayContent> {
-  late final List<List<String>> essayParts;
-
-  @override
-  void initState() {
-    super.initState();
-    essayParts =
-        widget.manifest.split("\r\n").map((a) => a.split("\\")).toList();
-  }
-
-  /// Build Essay part, the first argument says what kind of part is.
-  Widget _buildEssayPart(List<String> part) {
-    switch (part[0]) {
-      case 'paragraph':
-        return EssayParagraphText(text: widget.model.safeGetValue(part[1]));
-      case 'title':
-        return EssayTitleText(text: part[1]);
-      case 'header':
-        return EssayHeaderText(text: part[1]);
-      case 'link':
-        return EssayLinkText(text: part[1], link: part[2]);
-      case 'image':
-        return EssayImage(imagePath: '${widget.imagePath}/${part[1]}');
-      default:
-        return EssayHeaderText(text: "Failed to Load...");
-    }
-  }
+  const LoadedEssayContent({
+    super.key,
+    required this.value,
+    required this.leading,
+    required this.trailing,
+  });
 
   @override
   Widget build(BuildContext context) {
     final page = <Widget>[];
 
-    page.addAll(widget.leading);
-    page.addAll(essayParts.map(_buildEssayPart).toList());
-    page.addAll(widget.trailing);
+    page.addAll(leading);
+    page.add(Markdown(
+      selectable: true,
+      data: value,
+      onTapLink: (text, href, title) =>
+          context.fireEvent<String>(UIEvent.url.event, href!),
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
+          a: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              decoration: TextDecoration.underline,
+              color: Theme.of(context).primaryColor)),
+    ));
+    page.addAll(trailing);
 
     return Wrap(runSpacing: 10, spacing: 10, children: page);
   }

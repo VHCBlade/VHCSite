@@ -14,20 +14,22 @@ PreferredSizeWidget createAppBar(BuildContext context, bool addActions) =>
                 frameBuilder: (context, widget, frame, loaded) =>
                     loaded || frame != null
                         ? widget
-                        : CircularProgressIndicator(),
+                        : const CircularProgressIndicator(),
                 height: 56),
             actions: addActions
                 ? [
-                    NavButton(text: "Home", type: "home"),
-                    NavButton(text: "Blog", type: "dev"),
-                    NavButton(text: "YouTube", type: "youtube"),
-                    NavButton(text: "About", type: "about"),
+                    const NavButton(text: "Home", type: "home"),
+                    const NavButton(text: "Blog", type: "dev"),
+                    const NavButton(text: "YouTube", type: "youtube"),
+                    const NavButton(text: "About", type: "about"),
                     Container(width: 10)
                   ]
                 : null),
         context);
 
 class ActionDrawer extends StatelessWidget {
+  const ActionDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Provider(
@@ -45,10 +47,10 @@ class ActionDrawer extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                  padding: EdgeInsets.all(5),
-                  child: Image.asset(IMAGE_LOCATION),
-                  color: Theme.of(context).primaryColor),
-              DrawerPortion()
+                  padding: const EdgeInsets.all(5),
+                  color: Theme.of(context).primaryColor,
+                  child: Image.asset(IMAGE_LOCATION)),
+              const DrawerPortion()
             ],
           ),
         ),
@@ -58,10 +60,12 @@ class ActionDrawer extends StatelessWidget {
 }
 
 class DrawerPortion extends StatelessWidget {
+  const DrawerPortion({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(children: [
+        child: Column(children: const [
       DrawerButton(text: "Home", type: "home"),
       DrawerButton(text: "Blog", type: "dev"),
       DrawerButton(text: "YouTube", type: "youtube"),
@@ -80,7 +84,7 @@ class DrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minWidth: double.infinity),
+      constraints: const BoxConstraints(minWidth: double.infinity),
       child: NavButton(
         text: text,
         type: type,
