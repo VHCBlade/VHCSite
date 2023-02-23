@@ -15,7 +15,7 @@ class _ChangelogScreenState extends State<ChangelogScreen> {
   @override
   void initState() {
     super.initState();
-    rootBundle.loadString('CHANGELOG').then((value) {
+    rootBundle.loadString('CHANGELOG.md').then((value) {
       setState(() => changelog = value);
     });
   }

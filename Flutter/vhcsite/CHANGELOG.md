@@ -1,7 +1,10 @@
-3.0.0 - 
+3.0.0 - February 23, 2023
 
 - Updated event_bloc to 4.2.0
 - Removed navigation package and replaced it with event_navigation - https://pub.dev/packages/event_navigation
+- Added Apps Page
+- Converted custom rendering to instead use flutter_markdown
+- Moved theme to use vhcblade_theme instead - https://pub.dev/packages/vhcblade_theme
 - Upgraded to Flutter 3!
 
 2.0.0 - July 14, 2021

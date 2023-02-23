@@ -31,7 +31,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - CHANGELOG
+    - CHANGELOG.md
     - assets/img/
     - assets/img/about/
     - assets/text/about/
