@@ -151,6 +151,7 @@ class LoadedEssayContent extends StatelessWidget {
       onTapLink: (text, href, title) =>
           context.fireEvent<String>(UIEvent.url.event, href!),
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
           a: Theme.of(context).textTheme.bodyMedium?.copyWith(

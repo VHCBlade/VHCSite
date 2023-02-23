@@ -1,4 +1,4 @@
-package com.example.vhcsite
+package com.vhcblade.vhcsite
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-## Weight Blade
+# Weight Blade
 
 ![Weight Blade](https://vhcblade.com/assets/assets/img/apps/weight.png)
 

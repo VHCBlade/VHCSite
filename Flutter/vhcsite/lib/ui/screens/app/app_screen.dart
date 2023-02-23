@@ -17,13 +17,15 @@ class AppsScreen extends StatelessWidget {
     final adjustedWidth = width / ratio;
 
     final items = max(adjustedWidth ~/ 600, 1);
-    return FlexibleGrid(
-        itemCount: apps.length,
-        builder: (index, _) => Card(
-              child: EssayScreen(
-                path: ["apps", apps[index]],
+    return SingleChildScrollView(
+      child: FlexibleGrid(
+          itemCount: apps.length,
+          builder: (index, _) => Card(
+                child: EssayScreen(
+                  path: ["apps", apps[index]],
+                ),
               ),
-            ),
-        itemsPerRow: items);
+          itemsPerRow: items),
+    );
   }
 }
