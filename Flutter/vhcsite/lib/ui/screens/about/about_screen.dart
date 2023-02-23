@@ -6,6 +6,8 @@ import 'package:vhcsite/ui/page/essay_page.dart';
 import 'package:vhcsite/ui/screens/about/changelog_screen.dart';
 
 class AboutScreen extends StatelessWidget {
+  const AboutScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final model = context.watchBloc<MainNavigationBloc<String>>();
@@ -13,9 +15,9 @@ class AboutScreen extends StatelessWidget {
     late final Widget widget;
 
     if (model.currentDeepNavigation?.value == "changelog") {
-      widget = ChangelogScreen();
+      widget = const ChangelogScreen();
     } else {
-      widget = AboutHomeScreen();
+      widget = const AboutHomeScreen();
     }
 
     return PageTransitionSwitcher(
@@ -26,26 +28,29 @@ class AboutScreen extends StatelessWidget {
           Animation<double> secondaryAnimation,
         ) =>
             FadeThroughTransition(
-              child: child,
               animation: primaryAnimation,
               secondaryAnimation: secondaryAnimation,
+              child: child,
             ),
         child: widget);
   }
 }
 
 class AboutHomeScreen extends StatelessWidget {
+  const AboutHomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return EssayScreen(path: [
+    return EssayScreen(path: const [
+      'about',
       'about'
     ], trailing: [
       ElevatedButton(
           onPressed: () => showLicensePage(context: context),
-          child: Text("Licenses")),
+          child: const Text("Licenses")),
       ElevatedButton(
           onPressed: () => context.pushDeepNavigation("changelog"),
-          child: Text("Changelog"))
+          child: const Text("Changelog"))
     ]);
   }
 }

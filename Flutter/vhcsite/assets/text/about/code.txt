@@ -1,3 +1,0 @@
-The code of this website is made open source. I wanted to make a good example website that new Flutter developers can just take advantage of. While I don't claim to be some kind of Flutter guru, I think that seeing a project with some amount of complexity is generally helpful.
-
-Also because I myself have benefitted from open source projects, I want others to potentially benefit me as well. The freer the code the freer the people!

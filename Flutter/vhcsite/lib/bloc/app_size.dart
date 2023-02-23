@@ -23,7 +23,6 @@ class AppSizeBloc extends Bloc {
     final ratio = pow(query.devicePixelRatio, 1 / 3);
     final width = query.size.width;
     final adjustedWidth = width / ratio;
-    print(adjustedWidth);
 
     return adjustedWidth > DEVICE_THRESHHOLD ? 1 : 0;
   }

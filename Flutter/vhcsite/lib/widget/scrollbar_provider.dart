@@ -17,7 +17,7 @@ class ScrollbarProvider extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ScrollbarProviderState createState() => _ScrollbarProviderState();
+  State<ScrollbarProvider> createState() => _ScrollbarProviderState();
 }
 
 class _ScrollbarProviderState extends State<ScrollbarProvider> {
@@ -42,7 +42,7 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
       }
       _updating = true;
       // This forces the controller to update.
-      Future.delayed(Duration(milliseconds: 100)).then((_) {
+      Future.delayed(const Duration(milliseconds: 100)).then((_) {
         if (!isDisposed) {
           controller.position.didUpdateScrollPositionBy(-0.1);
           _updating = false;

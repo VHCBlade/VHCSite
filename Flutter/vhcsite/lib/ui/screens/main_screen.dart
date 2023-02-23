@@ -9,12 +9,15 @@ import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
 import 'package:vhcsite/ui/screens/about/about_screen.dart';
+import 'package:vhcsite/ui/screens/app/app_screen.dart';
 import 'package:vhcsite/ui/screens/error/error_screen.dart';
 import 'package:vhcsite/ui/screens/flutter/flutter_screen.dart';
 import 'package:vhcsite/ui/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Future.microtask(() => context.fireEvent<MediaQueryData>(
@@ -28,13 +31,15 @@ class MainScreen extends StatelessWidget {
             : DefaultTextRepository(),
         child: Scaffold(
           appBar: createAppBar(context, model.showState == 1),
-          body: MainBody(),
-          drawer: model.showState == 1 ? null : ActionDrawer(),
+          body: const MainBody(),
+          drawer: model.showState == 1 ? null : const ActionDrawer(),
         ));
   }
 }
 
 class MainBody extends StatelessWidget {
+  const MainBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     final model =
@@ -44,17 +49,20 @@ class MainBody extends StatelessWidget {
 
     switch (model.currentMainNavigation) {
       case 'dev':
-        widget = FlutterScreen();
+        widget = const FlutterScreen();
         break;
       case 'about':
-        widget = AboutScreen();
+        widget = const AboutScreen();
         break;
       case 'error':
-        widget = ErrorScreen();
+        widget = const ErrorScreen();
+        break;
+      case 'apps':
+        widget = const AppsScreen();
         break;
       case 'home':
       default:
-        widget = HomeScreen();
+        widget = const HomeScreen();
     }
 
     return PageTransitionSwitcher(
@@ -65,9 +73,9 @@ class MainBody extends StatelessWidget {
           Animation<double> secondaryAnimation,
         ) =>
             FadeThroughTransition(
-              child: child,
               animation: primaryAnimation,
               secondaryAnimation: secondaryAnimation,
+              child: child,
             ),
         child: widget);
   }

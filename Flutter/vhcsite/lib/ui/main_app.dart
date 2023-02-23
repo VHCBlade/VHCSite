@@ -8,6 +8,8 @@ import 'package:vhcsite/ui/screens/main_screen.dart';
 import 'package:vhcsite/ui/theme/theme.dart';
 
 class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
@@ -32,7 +34,7 @@ class _InnerApp extends StatelessWidget {
           OverlayEntry(
             builder: (context) => Navigator(
               onGenerateRoute: (_) => MaterialPageRoute(
-                builder: (_) => MainScreen(),
+                builder: (_) => const MainScreen(),
               ),
             ),
           ),

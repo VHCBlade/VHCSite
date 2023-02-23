@@ -5,8 +5,10 @@ import 'package:vhcsite/ui/page/essay_text.dart';
 import 'package:vhcsite/widget/default_button.dart';
 
 class ChangelogScreen extends StatefulWidget {
+  const ChangelogScreen({super.key});
+
   @override
-  _ChangelogScreenState createState() => _ChangelogScreenState();
+  State<ChangelogScreen> createState() => _ChangelogScreenState();
 }
 
 class _ChangelogScreenState extends State<ChangelogScreen> {
@@ -25,9 +27,9 @@ class _ChangelogScreenState extends State<ChangelogScreen> {
     return EssayScroll(
         child: Wrap(runSpacing: 10, spacing: 10, children: [
       Container(width: double.infinity),
-      VHCBackButton(),
+      const VHCBackButton(),
       changelog == null
-          ? CircularProgressIndicator()
+          ? const CircularProgressIndicator()
           : EssayParagraphText(text: changelog!)
     ]));
   }

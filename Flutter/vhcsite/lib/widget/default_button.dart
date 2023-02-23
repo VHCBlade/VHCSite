@@ -20,18 +20,21 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        child: Text(text),
         onPressed: disabled
             ? null
             : onPressedOverride ??
-                () => context.fireEvent<String>(UIEvent.button.event, type));
+                () => context.fireEvent<String>(UIEvent.button.event, type),
+        child: Text(text));
   }
 }
 
 class VHCBackButton extends StatelessWidget {
+  const VHCBackButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () => context.popDeepNavigation(), child: Text("Back"));
+        onPressed: () => context.popDeepNavigation(),
+        child: const Text("Back"));
   }
 }
