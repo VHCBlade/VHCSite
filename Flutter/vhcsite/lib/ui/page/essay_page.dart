@@ -1,10 +1,8 @@
 import 'package:event_bloc/event_bloc_widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/model/page_text_model.dart';
+import 'package:vhcsite/bloc/page_text.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
-import 'package:event_bloc/event_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 

@@ -40,14 +40,12 @@ class AboutHomeScreen extends StatelessWidget {
     return EssayScreen(path: [
       'about'
     ], trailing: [
-      TextButton(
+      ElevatedButton(
           onPressed: () => showLicensePage(context: context),
-          // color: Theme.of(context).primaryColor,
-          child: Text("Licenses", style: Theme.of(context).textTheme.button)),
-      TextButton(
+          child: Text("Licenses")),
+      ElevatedButton(
           onPressed: () => context.pushDeepNavigation("changelog"),
-          // color: Theme.of(context).primaryColor,
-          child: Text("Changelog", style: Theme.of(context).textTheme.button))
+          child: Text("Changelog"))
     ]);
   }
 }

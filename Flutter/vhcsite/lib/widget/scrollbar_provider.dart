@@ -64,10 +64,9 @@ class _ScrollbarProviderState extends State<ScrollbarProvider> {
     return Provider.value(
         value: channel,
         child: Scrollbar(
-            isAlwaysShown: widget.isAlwaysShown,
+            thumbVisibility: true,
             controller: controller,
             thickness: widget.thickness,
-            hoverThickness: widget.thickness,
             child: widget.builder(controller, context)));
   }
 }

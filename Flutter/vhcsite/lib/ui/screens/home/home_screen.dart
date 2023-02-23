@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/widget/scrollbar_provider.dart';
 
@@ -32,12 +31,12 @@ class _HomeContent extends StatelessWidget {
       child: Column(children: [
         SelectableText(
           "Welcome to my Website!",
-          style: Theme.of(context).textTheme.headline3,
+          style: Theme.of(context).textTheme.displaySmall,
           textAlign: TextAlign.center,
         ),
         SelectableText(
           "VHCBlade - Do what you're good at!",
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.headlineSmall,
           textAlign: TextAlign.center,
         ),
         Image.asset('assets/img/Logo.png'),
@@ -45,7 +44,7 @@ class _HomeContent extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: SelectableText(
               "Powered by Flutter",
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.right,
             )),
       ]),

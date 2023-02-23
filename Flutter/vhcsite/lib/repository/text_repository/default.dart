@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:event_bloc/src/event_bloc/event_channel.dart';
+import 'package:event_bloc/event_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 

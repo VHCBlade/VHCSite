@@ -5,7 +5,6 @@ import 'package:vhcsite/ui/theme/material_state.dart';
 ThemeData createTheme() {
   final themeData = ThemeData(
     primaryColor: PRIMARY_COLOR,
-    backgroundColor: SECONDARY_COLOR,
     canvasColor: SECONDARY_COLOR,
     disabledColor: DISABLED_COLOR,
     cardColor: SECONDARY_COLOR,

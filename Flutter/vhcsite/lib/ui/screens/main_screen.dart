@@ -4,7 +4,7 @@ import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/config.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/model/app_size_model.dart';
+import 'package:vhcsite/bloc/app_size.dart';
 import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';

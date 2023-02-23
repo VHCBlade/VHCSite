@@ -1,8 +1,6 @@
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:event_bloc/event_bloc.dart';
 import 'package:vhcsite/events/events.dart';
 
 /// This is a page to hold all the rendering data on essay pages.
@@ -30,7 +28,7 @@ class EssayTitleText extends StatelessWidget {
         child: SelectableText(text,
             style: Theme.of(context)
                 .textTheme
-                .headline3
+                .displaySmall
                 ?.copyWith(color: Theme.of(context).primaryColor)));
   }
 }
@@ -61,8 +59,8 @@ class EssayHeaderText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EssayText(
-        child:
-            SelectableText(text, style: Theme.of(context).textTheme.headline3));
+        child: SelectableText(text,
+            style: Theme.of(context).textTheme.displaySmall));
   }
 }
 
@@ -75,7 +73,7 @@ class EssayParagraphText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EssayText(
-        child: Text(text, style: Theme.of(context).textTheme.subtitle1));
+        child: Text(text, style: Theme.of(context).textTheme.titleMedium));
   }
 }
 
@@ -96,7 +94,7 @@ class EssayLinkText extends StatelessWidget {
                 onTap: () => _clickLink(link ?? "", context),
                 child: Text(
                   text,
-                  style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       decoration: TextDecoration.underline,
                       color: Theme.of(context).highlightColor),
                 ))));
@@ -117,7 +115,7 @@ TextSpan createLinkTextSpan(String text, String link, BuildContext context,
     text: text,
     recognizer: recognizer,
     children: children,
-    style: Theme.of(context).textTheme.subtitle1?.copyWith(
+    style: Theme.of(context).textTheme.titleMedium?.copyWith(
         decoration: TextDecoration.underline,
         color: Theme.of(context).highlightColor),
   );
@@ -127,7 +125,7 @@ TextSpan createTextSpan(String text, BuildContext context,
     [List<TextSpan>? children]) {
   return TextSpan(
     text: text,
-    style: Theme.of(context).textTheme.subtitle1,
+    style: Theme.of(context).textTheme.titleMedium,
     children: children,
   );
 }

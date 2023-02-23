@@ -20,7 +20,7 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        child: Text(text, style: Theme.of(context).textTheme.button),
+        child: Text(text),
         onPressed: disabled
             ? null
             : onPressedOverride ??
@@ -32,8 +32,6 @@ class VHCBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () => context.popDeepNavigation(),
-        // color: Theme.of(context).primaryColor,
-        child: Text("Back", style: Theme.of(context).textTheme.button));
+        onPressed: () => context.popDeepNavigation(), child: Text("Back"));
   }
 }

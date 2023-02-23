@@ -1,9 +1,0 @@
-While Provider is good, there are some things about it that I take issue with. 
-
-First, ChangeNotifier, the class suggested to hold our Model, has a dependency on the Flutter Framework! While this isn't a big issue, it just feels disgusting. This is also makes it impossible to have our model be purely dart code.
-
-Second, there isn't a canonical way to have a ChangeNotifier that relies on a Parent ChangeNotifier get an update from the Parent. This can lead to some confusion within large teams about what the right way to update children is. 
-
-Third, it requires our buttons and other low level UI to have a dependency on the Model. This leads to a lot boilerplate code being repeated and makes it more difficult to make changes to our code.
-
-Luckily, Provider is powerful enough that we can easily fix this with a few lines of code.

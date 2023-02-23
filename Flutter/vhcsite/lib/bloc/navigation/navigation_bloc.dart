@@ -1,6 +1,6 @@
 import 'package:event_navigation/event_navigation.dart';
 import 'package:event_bloc/event_bloc.dart';
-import 'package:vhcsite/model/navigation/inner/navigations.dart';
+import 'package:vhcsite/bloc/navigation/inner/navigations.dart';
 
 const POSSIBLE_NAVIGATIONS = <String>{"home", "dev", "about", "error"};
 

@@ -1,8 +1,8 @@
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/model/app_size_model.dart';
-import 'package:vhcsite/model/navigation/navigation_bloc.dart';
+import 'package:vhcsite/bloc/app_size.dart';
+import 'package:vhcsite/bloc/navigation/navigation_bloc.dart';
 import 'package:vhcsite/repository/url_repository.dart';
 import 'package:vhcsite/ui/screens/main_screen.dart';
 import 'package:vhcsite/ui/theme/theme.dart';
