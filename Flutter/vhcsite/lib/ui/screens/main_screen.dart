@@ -9,6 +9,7 @@ import 'package:vhcsite/repository/text_repository/default.dart';
 import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
 import 'package:vhcsite/ui/screens/about/about_screen.dart';
+import 'package:vhcsite/ui/screens/app/app_screen.dart';
 import 'package:vhcsite/ui/screens/error/error_screen.dart';
 import 'package:vhcsite/ui/screens/flutter/flutter_screen.dart';
 import 'package:vhcsite/ui/screens/home/home_screen.dart';
@@ -55,6 +56,9 @@ class MainBody extends StatelessWidget {
         break;
       case 'error':
         widget = const ErrorScreen();
+        break;
+      case 'apps':
+        widget = const AppsScreen();
         break;
       case 'home':
       default:

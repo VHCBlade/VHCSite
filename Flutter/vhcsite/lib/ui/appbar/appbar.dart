@@ -19,6 +19,7 @@ PreferredSizeWidget createAppBar(BuildContext context, bool addActions) =>
             actions: addActions
                 ? [
                     const NavButton(text: "Home", type: "home"),
+                    const NavButton(text: "Apps", type: "apps"),
                     const NavButton(text: "Blog", type: "dev"),
                     const NavButton(text: "YouTube", type: "youtube"),
                     const NavButton(text: "About", type: "about"),
@@ -67,6 +68,7 @@ class DrawerPortion extends StatelessWidget {
     return SingleChildScrollView(
         child: Column(children: const [
       DrawerButton(text: "Home", type: "home"),
+      DrawerButton(text: "Apps", type: "apps"),
       DrawerButton(text: "Blog", type: "dev"),
       DrawerButton(text: "YouTube", type: "youtube"),
       DrawerButton(text: "About", type: "about"),
