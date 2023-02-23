@@ -81,7 +81,11 @@ class DrawerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(minWidth: double.infinity),
-      child: NavButton(text: text, type: type),
+      child: NavButton(
+        text: text,
+        type: type,
+        afterNavigation: (context) => Navigator.of(context).pop(),
+      ),
     );
   }
 }

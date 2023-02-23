@@ -26,7 +26,7 @@ class _InnerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return EventNavigationApp(
       title: 'VHCBlade',
-      theme: createTheme(),
+      theme: createSiteTheme(),
       builder: (_) => Overlay(
         initialEntries: [
           OverlayEntry(
