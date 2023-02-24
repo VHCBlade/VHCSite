@@ -16,7 +16,7 @@ class AppsScreen extends StatelessWidget {
     final width = query.size.width;
     final adjustedWidth = width / ratio;
 
-    final items = max(adjustedWidth ~/ 300, 1);
+    final items = min(max(adjustedWidth ~/ 300, 1), 4);
     return EssayScroll(
       child: FlexibleGrid(
           itemCount: apps.length,
