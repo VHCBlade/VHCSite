@@ -4,6 +4,6 @@
 version=$(cat pubspec.yaml | grep "version" | awk '{print $2}' | tr -d "'" | tr -d '"')
 
 # Create and push git tag
-# git tag -a "v$version" -m "Version $version"
-# git push origin "v$version"
-echo $version
+git tag -a "v$version" -m "Version $version"
+git push origin "v$version"
+# echo $version
