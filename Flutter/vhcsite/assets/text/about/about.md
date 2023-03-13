@@ -2,7 +2,7 @@
 
 Hello there! I'm your resident Generation Z Security/Software Engineer that is into Philosophy and Psychology and dabbles a little in music. Or put in a non-pretentious way, I'm a script kiddie that codes and likes hearing his own voice. I also like Skateboarding but I'm way too bad at it to brag about it. Mabuhay ang Pilipinas!
 
-I started making YouTube videos because I wanted a reason to write. And since I already had the essays of my ideas, it just seemed natural to start turning them into YouTube videos. Creating this website is just another extension of the exact same idea. I've also made this entire website open source so that if some other developer wants to make their own website, they can use this as a springboard.
+I'm an independent Software Developer based in the Philippines. I specialize in making apps and websites, and I've deployed a number of web servers in my time as well. If you want to hire me or ask about a project, you can send your inquiry at <inquiry@vhcblade.com>. If you want to see some of my work, click on the apps tab which will bring you to [some of the apps I've made](https://vhcblade.com/#/apps). You can also view the source code of some of the projects I made at my [GitHub](https://github.com/VHCBlade).
 
 # The Logo
 
