@@ -6,7 +6,7 @@ I'm an independent Software Developer based in the Philippines. I specialize in 
 
 # The Logo
 
-![VHCBlade Logo](https://vhcblade.com/assets/assets/img/about/logo.png)
+![VHCBlade Logo](assets/assets/img/about/logo.png)
 
 [Logo Maker - Niblitz!](https://www.instagram.com/art_niblitz/)
 

@@ -5,6 +5,7 @@ import 'package:vhcblade_theme/vhcblade_widget.dart';
 import 'package:vhcsite/ui/page/essay_page.dart';
 
 const apps = ["reviewer", "weight"];
+const otherApps = ["pearls"];
 
 class AppsScreen extends StatelessWidget {
   const AppsScreen({super.key});
@@ -18,14 +19,48 @@ class AppsScreen extends StatelessWidget {
 
     final items = min(max(adjustedWidth ~/ 300, 1), 4);
     return EssayScroll(
-      child: FlexibleGrid(
-          itemCount: apps.length,
-          builder: (index, _) => Card(
-                child: EssayScreen(
-                  path: ["apps", apps[index]],
-                ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                "My Apps",
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.left,
+              )),
+          FlexibleGrid(
+            shrinkWrap: true,
+            itemCount: apps.length,
+            rowAlignment: CrossAxisAlignment.start,
+            builder: (index, _) => Card(
+              child: EssayScreen(
+                path: ["apps", apps[index]],
               ),
-          itemsPerRow: items),
+            ),
+            itemsPerRow: items,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text(
+              "Apps Made for Others",
+              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.left,
+            ),
+          ),
+          FlexibleGrid(
+            shrinkWrap: true,
+            itemCount: otherApps.length,
+            rowAlignment: CrossAxisAlignment.start,
+            builder: (index, _) => Card(
+              child: EssayScreen(
+                path: ["apps", otherApps[index]],
+              ),
+            ),
+            itemsPerRow: items,
+          ),
+        ],
+      ),
     );
   }
 }

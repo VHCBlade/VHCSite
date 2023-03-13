@@ -1,3 +1,13 @@
+3.1.0 - March 14, 2023
+
+- Upgraded to vhcblade_theme 0.2.2
+- Changed Apps to be cross-aligned by start, to make the different sizes feel better.
+- Changed images from hard links to relative links to improve display in different domains.
+- Updated Weight Blade Logo to the official logo
+- Added Apps Made for Others section in Apps
+  - Added Pearls of Asia
+- Changed YouTube Reference to Software Development Referencec
+
 3.0.0 - February 23, 2023
 
 - Updated event_bloc to 4.2.0

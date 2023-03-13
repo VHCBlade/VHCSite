@@ -20,7 +20,7 @@ ThemeData createSiteTheme() {
 MaterialStateProperty<Color> get textButtonBackgroundColor =>
     MaterialStateProperty.resolveWith((states) {
       if (states.contains(MaterialState.disabled)) {
-        return DISABLED_COLOR;
+        return const Color(0x80000000);
       }
       if (states.contains(MaterialState.hovered) &&
           !states.contains(MaterialState.disabled)) {

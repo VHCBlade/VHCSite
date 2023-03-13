@@ -154,9 +154,11 @@ class LoadedEssayContent extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
-          a: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              decoration: TextDecoration.underline,
-              color: Theme.of(context).primaryColor)),
+        a: Theme.of(context).textTheme.titleMedium?.copyWith(
+            decoration: TextDecoration.underline,
+            color: Theme.of(context).primaryColor),
+        p: Theme.of(context).textTheme.titleMedium,
+      ),
     ));
     page.addAll(trailing);
 
