@@ -2,7 +2,7 @@
 
 # Pearls of Asia
 
-An business simulator game set in the Modern Day Philippines. Play as both historical and modern figures to thrive in the economic landscape of the Philippines!
+A business simulator game set in the Modern Day Philippines. Play as both historical and modern figures to thrive in the economic landscape of the Philippines!
 
 [Web Demo](https://pearl.reviewerblade.com)
 

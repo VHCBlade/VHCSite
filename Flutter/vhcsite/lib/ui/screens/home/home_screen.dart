@@ -1,5 +1,5 @@
+import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/widget/scrollbar_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

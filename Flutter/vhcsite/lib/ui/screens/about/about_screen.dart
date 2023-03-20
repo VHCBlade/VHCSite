@@ -1,8 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:event_bloc/event_bloc_widgets.dart';
+import 'package:event_essay/event_essay.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/ui/page/essay_page.dart';
 import 'package:vhcsite/ui/screens/about/changelog_screen.dart';
 
 class AboutScreen extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcblade_theme/vhcblade_widget.dart';
-import 'package:vhcsite/ui/page/essay_page.dart';
 
 const apps = ["reviewer", "weight"];
 const otherApps = ["pearls"];

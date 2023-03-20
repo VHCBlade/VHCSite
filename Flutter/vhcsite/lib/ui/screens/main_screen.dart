@@ -1,12 +1,11 @@
 import 'package:animations/animations.dart';
 import 'package:event_bloc/event_bloc_widgets.dart';
+import 'package:event_essay/event_essay.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/config.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/bloc/app_size.dart';
-import 'package:vhcsite/repository/text_repository/default.dart';
-import 'package:vhcsite/repository/text_repository/text_repository.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
 import 'package:vhcsite/ui/screens/about/about_screen.dart';
 import 'package:vhcsite/ui/screens/app/app_screen.dart';

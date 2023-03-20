@@ -1,3 +1,9 @@
+3.2.0 - March 20, 2023
+
+- Removed essay package and replaced it with event_essay - https://pub.dev/packages/event_essay
+- Updated blog markdown
+- Updated weight blade to reflect the fact that it is now publicly available on the play store.
+
 3.1.0 - March 14, 2023
 
 - Upgraded to vhcblade_theme 0.2.2

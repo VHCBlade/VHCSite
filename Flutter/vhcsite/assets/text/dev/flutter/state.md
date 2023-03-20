@@ -1,22 +1,26 @@
 # I Love Flutter
+----------------
 
 [Flutter](https://flutter.dev) is awesome! It's remarkably easy to learn, since all of the code is in a single modern language (Google's Dart). No more dealing with Markup Languages that require copy pasting a lot of code or cryptic CSS Files. Of course the greatest selling point of Flutter is that it can be deployed pretty much anywhere while reusing all your code. 
 
 Flutter does all of this while maintaining a consistent beauty with lightning fast rendering times. It started with iOS and Android and now you can deploy Flutter anywhere. Even on a website, just like this one!
 
 # State of Ruin
+---------------
 
 Of course, everything has a tradeoff. Whenever you go into a new technology there is a greater chance of running into problems that don't have solutions yet. This becomes less of a concern as Flutter continues to mature, however there is one pitfall that can make using Flutter incredibly difficult. STATE MANAGEMENT. 
 
 Choosing a cumbersome one can lead to productivity drains that just suck away all the fun of using Flutter. I've lost so many nights of sleep thinking about the right way to handle State Management. But thankfully, we can learn from our mistakes, as well as the mistakes of others.
 
 # Lean on Your Provider
+-----------------------
 
 [Provider](https://pub.dev/packages/provider) to the rescue! Provider gives us a way to avoid this trap. If you aren't yet familiar with Provider, I suggest clicking on the link to their package site and reading the documentation and example. You can also easily find some resources about Provider made by other people with just a quick Google Search. [Some even come from the Google Team!](https://www.youtube.com/watch?v=d_m5csmrf7I) 
 
 Combining related information to form one state under a ChangeNotifier strikes the perfect balance between individual states and developer usability. Provider gives us a good baseline from which our state management solution can spring.
 
 # Building on Provider
+----------------------
 
 While Provider is good, there are some things about it that I take issue with. 
 
@@ -87,6 +91,7 @@ Third, instead of having UI elements call methods in the model directly, we'll h
 Now we can do cool things like have our buttons only require a type parameter, and the model will simply listen for events. Hooray! This also has the added benefit of creating a canonical event channel that can be used to propagate any information from the leaves of our widget tree all the way to the root!
 
 # Lead by Example
+-----------------
 
 ```dart
 import 'package:vhcsite/state/model.dart';

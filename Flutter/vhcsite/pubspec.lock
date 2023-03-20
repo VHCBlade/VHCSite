@@ -121,6 +121,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.0"
+  event_essay:
+    dependency: "direct main"
+    description:
+      path: "../../../event_essay"
+      relative: true
+    source: path
+    version: "0.1.0"
   event_navigation:
     dependency: "direct main"
     description:
@@ -469,5 +476,5 @@ packages:
     source: hosted
     version: "3.0.1"
 sdks:
-  dart: ">=2.19.2 <3.0.0"
+  dart: ">=2.19.4 <3.0.0"
   flutter: ">=3.0.0"

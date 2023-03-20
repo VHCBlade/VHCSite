@@ -1,7 +1,6 @@
+import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vhcsite/ui/page/essay_page.dart';
-import 'package:vhcsite/ui/page/essay_text.dart';
 import 'package:vhcsite/widget/default_button.dart';
 
 class ChangelogScreen extends StatefulWidget {
