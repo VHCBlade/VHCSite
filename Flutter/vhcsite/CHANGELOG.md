@@ -1,3 +1,7 @@
+3.2.1 - March 21, 2023
+
+- Removed animations package and used vhcblade_theme instead.
+
 3.2.0 - March 20, 2023
 
 - Removed essay package and replaced it with event_essay - https://pub.dev/packages/event_essay

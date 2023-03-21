@@ -1,8 +1,8 @@
-import 'package:animations/animations.dart';
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_essay/event_essay.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:vhcblade_theme/vhcblade_widget.dart';
 import 'package:vhcsite/ui/screens/about/changelog_screen.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -20,19 +20,7 @@ class AboutScreen extends StatelessWidget {
       widget = const AboutHomeScreen();
     }
 
-    return PageTransitionSwitcher(
-        duration: const Duration(milliseconds: 500),
-        transitionBuilder: (
-          Widget child,
-          Animation<double> primaryAnimation,
-          Animation<double> secondaryAnimation,
-        ) =>
-            FadeThroughTransition(
-              animation: primaryAnimation,
-              secondaryAnimation: secondaryAnimation,
-              child: child,
-            ),
-        child: widget);
+    return FadeThroughWidgetSwitcher(builder: (_) => widget);
   }
 }
 

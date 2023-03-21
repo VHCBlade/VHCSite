@@ -2,7 +2,7 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   animations:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: animations
       sha256: e519481cd689328e6b94b9d5bd45d685febac5b6804fbd5769e0ab35addcf2c3
@@ -124,9 +124,10 @@ packages:
   event_essay:
     dependency: "direct main"
     description:
-      path: "../../../event_essay"
-      relative: true
-    source: path
+      name: event_essay
+      sha256: "72158cccddf63c200ac07b8d90ba4c64aae9a75dbfdf1ca72abe85615e28a6f7"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.0"
   event_navigation:
     dependency: "direct main"
@@ -455,10 +456,10 @@ packages:
     dependency: "direct main"
     description:
       name: vhcblade_theme
-      sha256: ec111bbc3e16bcfa3aa9610a4abb20cdb9c0ef802ed918babb299fb8f17323fd
+      sha256: "555e1c90bea3614493a9454152a6ea9e9fa3a3266df3b296e4910406fea47dbf"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.2"
+    version: "0.2.4"
   vm_service:
     dependency: transitive
     description:

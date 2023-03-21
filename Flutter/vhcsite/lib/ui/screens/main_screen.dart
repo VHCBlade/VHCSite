@@ -1,8 +1,8 @@
-import 'package:animations/animations.dart';
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_essay/event_essay.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:vhcblade_theme/vhcblade_widget.dart';
 import 'package:vhcsite/config.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/bloc/app_size.dart';
@@ -64,18 +64,6 @@ class MainBody extends StatelessWidget {
         widget = const HomeScreen();
     }
 
-    return PageTransitionSwitcher(
-        duration: const Duration(milliseconds: 500),
-        transitionBuilder: (
-          Widget child,
-          Animation<double> primaryAnimation,
-          Animation<double> secondaryAnimation,
-        ) =>
-            FadeThroughTransition(
-              animation: primaryAnimation,
-              secondaryAnimation: secondaryAnimation,
-              child: child,
-            ),
-        child: widget);
+    return FadeThroughWidgetSwitcher(builder: (_) => widget);
   }
 }

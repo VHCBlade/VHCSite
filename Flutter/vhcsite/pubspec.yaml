@@ -11,15 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  animations: ^2.0.0
   collection: ^1.15.0
 
   event_bloc: ^4.2.0
-  # event_essay: ^0.1.0
-  event_essay:
-    path: ../../../event_essay
+  event_essay: ^0.1.0
+  # event_essay:
+  #   path: ../../../event_essay
   event_navigation: ^0.6.0
-  vhcblade_theme: ^0.2.2
+  vhcblade_theme: ^0.2.4
   # vhcblade_theme: 
   #   path: ../../../vhcblade_theme
 
