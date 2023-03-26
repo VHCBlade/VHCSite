@@ -1,3 +1,8 @@
+3.2.2 - March 26, 2023
+
+- Updated weight.md
+- Adjusted apps displayed in apps tab to max 3 per row.
+
 3.2.1 - March 21, 2023
 
 - Removed animations package and used vhcblade_theme instead.

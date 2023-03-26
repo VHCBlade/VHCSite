@@ -17,7 +17,7 @@ class AppsScreen extends StatelessWidget {
     final width = query.size.width;
     final adjustedWidth = width / ratio;
 
-    final items = min(max(adjustedWidth ~/ 300, 1), 4);
+    final items = min(max(adjustedWidth ~/ 350, 1), 3);
     return EssayScroll(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
