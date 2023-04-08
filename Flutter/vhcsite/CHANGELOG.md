@@ -1,3 +1,8 @@
+3.2.3 - April 8, 2023
+
+- Updated index.html
+- Changed the default blog that shows up
+
 3.2.2 - March 26, 2023
 
 - Updated weight.md

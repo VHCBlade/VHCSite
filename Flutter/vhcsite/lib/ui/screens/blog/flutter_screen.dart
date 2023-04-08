@@ -7,15 +7,15 @@ class FlutterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EssayScreen(leading: [
-      Text("Flutter State Management",
+      Text("Why I Don't Report People",
           style: Theme.of(context)
               .textTheme
               .headlineMedium
               ?.copyWith(color: Theme.of(context).primaryColor)),
     ], path: const [
-      'dev',
-      'flutter',
-      'state'
+      'blog',
+      'games',
+      'report'
     ]);
   }
 }
