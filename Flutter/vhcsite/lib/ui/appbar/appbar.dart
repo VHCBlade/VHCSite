@@ -65,8 +65,8 @@ class DrawerPortion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(children: const [
+    return const SingleChildScrollView(
+        child: Column(children: [
       DrawerButton(text: "Home", type: "home"),
       DrawerButton(text: "Apps", type: "apps"),
       DrawerButton(text: "Blog", type: "dev"),

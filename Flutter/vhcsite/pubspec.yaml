@@ -13,7 +13,7 @@ dependencies:
 
   collection: ^1.15.0
 
-  event_bloc: ^4.2.0
+  event_bloc: ^4.4.0
   event_essay: ^0.1.0
   # event_essay:
   #   path: ../../../event_essay
@@ -30,6 +30,8 @@ dependencies:
   url_launcher: ^6.0.0
 
 dev_dependencies:
+  event_db_tester: ^0.1.0
+
   flutter_test:
     sdk: flutter
   integration_test:
