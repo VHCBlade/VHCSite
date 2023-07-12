@@ -1,4 +1,4 @@
-## 3.3.0
+## 3.3.0 - July 12, 2023
 
 - Added Blog Selection Screen
 - Moved dev to blog

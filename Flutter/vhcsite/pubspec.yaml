@@ -50,6 +50,7 @@ flutter:
     - assets/text/about/
     - assets/text/apps/
     # Blog
+    - assets/text/manifest.json
     - assets/text/blog/
     - assets/text/blog/flutter/
     - assets/text/blog/games/
