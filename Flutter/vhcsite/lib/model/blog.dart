@@ -6,6 +6,9 @@ class BlogManifest extends GenericModel {
   late String name;
   late DateTime uploadDate;
 
+  String? next;
+  String? previous;
+
   List<String> get convertedPath => path.split('/');
   String get category => convertedPath[1];
 

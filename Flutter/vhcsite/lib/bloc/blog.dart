@@ -1,8 +1,43 @@
+import 'dart:convert';
+
 import 'package:event_bloc/event_bloc.dart';
+import 'package:flutter/services.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/blog.dart';
 
 class BlogBloc extends Bloc {
-  var blogMap = <String, Map<String, BlogManifest>>{};
+  BlogBloc({required super.parentChannel}) {
+    eventChannel.addEventListener(
+        UIEvent.loadBlog.event, (event, value) => initialize());
+  }
+  bool initialized = false;
+  bool initializing = false;
 
-  BlogBloc({required super.parentChannel});
+  final blogMap = <String, BlogManifest>{};
+  final blogList = <String>[];
+
+  void initialize() async {
+    if (initialized || initializing) {
+      return;
+    }
+    initializing = true;
+    try {
+      final bundle = await rootBundle.loadString('text/manifest.json');
+      final decoded = (json.decode(bundle) as List<dynamic>)
+          .map((e) => BlogManifest()..loadFromMap(e))
+          .toList();
+      for (int i = 0; i < decoded.length; i++) {
+        blogMap[decoded[i].path] = decoded[i];
+        if (i > 0) {
+          decoded[i].next = decoded[i - 1].path;
+          decoded[i - 1].previous = decoded[i].path;
+        }
+        blogList.add(decoded[i].path);
+      }
+      initialized = true;
+    } finally {
+      initializing = false;
+      updateBloc();
+    }
+  }
 }

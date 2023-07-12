@@ -1,24 +1,40 @@
-3.2.3 - April 8, 2023
+## 3.3.0
+
+- Added Blog Selection Screen
+- Moved dev to blog
+- Added Next and Previous buttons to Blog posts
+- Changed Changelog to use EssayScreen
+- Used EssayScroll in more places where it was appropriate
+- Upgraded event_bloc to 4.5.1
+- Upgraded event_essay to 0.1.5
+- Upgraded event_navigation to 0.6.6
+
+-------------------------
+## 3.2.3 - April 8, 2023
 
 - Updated index.html
 - Changed the default blog that shows up
 
-3.2.2 - March 26, 2023
+-------------------------
+## 3.2.2 - March 26, 2023
 
 - Updated weight.md
 - Adjusted apps displayed in apps tab to max 3 per row.
 
-3.2.1 - March 21, 2023
+-------------------------
+## 3.2.1 - March 21, 2023
 
 - Removed animations package and used vhcblade_theme instead.
 
-3.2.0 - March 20, 2023
+-------------------------
+## 3.2.0 - March 20, 2023
 
 - Removed essay package and replaced it with event_essay - https://pub.dev/packages/event_essay
 - Updated blog markdown
 - Updated weight blade to reflect the fact that it is now publicly available on the play store.
 
-3.1.0 - March 14, 2023
+-------------------------
+## 3.1.0 - March 14, 2023
 
 - Upgraded to vhcblade_theme 0.2.2
 - Changed Apps to be cross-aligned by start, to make the different sizes feel better.
@@ -28,7 +44,8 @@
   - Added Pearls of Asia
 - Changed YouTube Reference to Software Development Referencec
 
-3.0.0 - February 23, 2023
+-------------------------
+## 3.0.0 - February 23, 2023
 
 - Updated event_bloc to 4.2.0
 - Removed navigation package and replaced it with event_navigation - https://pub.dev/packages/event_navigation
@@ -37,33 +54,39 @@
 - Moved theme to use vhcblade_theme instead - https://pub.dev/packages/vhcblade_theme
 - Upgraded to Flutter 3!
 
-2.0.0 - July 14, 2021
+-------------------------
+## 2.0.0 - July 14, 2021
 
 - Removed State Package and replaced it with event_bloc - https://pub.dev/packages/event_bloc
 - Reinvigorated with hopes and dreams.
 
-1.3.1 - March 10, 2021
+-------------------------
+## 1.3.1 - March 10, 2021
 
 - Built with Flutter 2.
 
-1.3.0 - February 25, 2021
+-------------------------
+## 1.3.0 - February 25, 2021
 
 - Added Changelog to About Screen.
 - Sub Navigation has been enabled.
 - Removed Strange Scrolling on Images.
 
-1.2.0 - February 12, 2021
+-------------------------
+## 1.2.0 - February 12, 2021
 
 - Integrated with Web Navigation and Back and Forward! Can now easily share links!
 - Scrollbars can now be used to control the Scroll Position. Thanks Flutter Update!
 - Fixed Bug that Scrollbars wouldn't show up until a scroll actually happened in Flutter and About Page.
 
-1.1.0 - February 6, 2021
+-------------------------
+## 1.1.0 - February 6, 2021
 
 - Added handling for when there isn't enough space for the actions in the appbar. Turns the actions into a drawer instead.
 - Fixed Scroll Issue (Can now use the scroll wheel from negative space)
 - Added About Page.
 
-1.0.0 - January 31, 2021
+-------------------------
+## 1.0.0 - January 31, 2021
 
 - Released the Website!

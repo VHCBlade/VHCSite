@@ -2,6 +2,7 @@ import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/bloc/app_size.dart';
+import 'package:vhcsite/bloc/blog.dart';
 import 'package:vhcsite/bloc/navigation/navigation_bloc.dart';
 import 'package:vhcsite/repository/url_repository.dart';
 import 'package:vhcsite/ui/screens/main_screen.dart';
@@ -13,13 +14,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
-        create: (_) => UrlRepository(),
-        child: BlocProvider(
-          create: (_, channel) => AppSizeBloc(parentChannel: channel),
-          child: BlocProvider(
-              create: (_, channel) => generateNavigationBloc(channel),
-              child: _InnerApp()),
-        ));
+      create: (_) => UrlRepository(),
+      child: MultiBlocProvider(
+        blocBuilders: [
+          BlocBuilder<AppSizeBloc>((reader, parentChannel) =>
+              AppSizeBloc(parentChannel: parentChannel)),
+          BlocBuilder<MainNavigationBloc<String>>(
+              (reader, parentChannel) => generateNavigationBloc(parentChannel)),
+          BlocBuilder<BlogBloc>((reader, parentChannel) =>
+              BlogBloc(parentChannel: parentChannel)),
+        ],
+        child: _InnerApp(),
+      ),
+    );
   }
 }
 

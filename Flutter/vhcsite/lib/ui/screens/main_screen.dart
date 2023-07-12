@@ -9,8 +9,8 @@ import 'package:vhcsite/bloc/app_size.dart';
 import 'package:vhcsite/ui/appbar/appbar.dart';
 import 'package:vhcsite/ui/screens/about/about_screen.dart';
 import 'package:vhcsite/ui/screens/app/app_screen.dart';
+import 'package:vhcsite/ui/screens/blog/blog_screen.dart';
 import 'package:vhcsite/ui/screens/error/error_screen.dart';
-import 'package:vhcsite/ui/screens/blog/flutter_screen.dart';
 import 'package:vhcsite/ui/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -47,8 +47,9 @@ class MainBody extends StatelessWidget {
     late final Widget widget;
 
     switch (model.currentMainNavigation) {
-      case 'dev':
-        widget = const FlutterScreen();
+      case 'blog':
+        context.fireEvent(UIEvent.loadBlog.event, null, withDelay: true);
+        widget = const BlogScreen();
         break;
       case 'about':
         widget = const AboutScreen();

@@ -29,7 +29,7 @@ class _ChangelogScreenState extends State<ChangelogScreen> {
       const VHCBackButton(),
       changelog == null
           ? const CircularProgressIndicator()
-          : EssayParagraphText(text: changelog!)
+          : const EssayScreen(path: ['..', '..', 'CHANGELOG'])
     ]));
   }
 }
