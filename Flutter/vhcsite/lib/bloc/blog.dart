@@ -22,7 +22,7 @@ class BlogBloc extends Bloc {
     }
     initializing = true;
     try {
-      final bundle = await rootBundle.loadString('text/manifest.json');
+      final bundle = await rootBundle.loadString('assets/text/manifest.json');
       final decoded = (json.decode(bundle) as List<dynamic>)
           .map((e) => BlogManifest()..loadFromMap(e))
           .toList();
