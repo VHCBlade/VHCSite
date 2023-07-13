@@ -5,12 +5,12 @@ Growing up, my brother and I would often poke fun at our parents' ability to spe
 
 And yet time and time again, my mother will say something that just floors me. My father will impart some knowledge that just completely eludes me. And I am once again reminded that there is still an ocean of wisdom they can give me. The path I am carefully exploring is one that is already familiar to my parents. After all, they have more than twice the life experiences I do (Even more when you consider that school shouldn't really count Hahahaha). Wisdom that can only come with age is bequeath to me by the lips of my parents.
 
-And I find myself once again humbled. And it is only through this humilty that I am able accept the bequest of wisdom. Had I chosen to believe only in myself, I would have refused this gift; simply stumbling through unseen shocks because of my solitary psyche.
+And I find myself once again humbled. And it is only through this humility that I am able accept the bequest of wisdom. Had I chosen to believe only in myself, I would have refused this gift; simply stumbling through unseen shocks because of my solitary psyche.
 
 # Buried by Vainglory
 ---------------------------
 
-"Fake it 'til you make it" is a common refrain nowadays. This saying seems to me to be very prideful, and only prophesy destruction. I could 'fake' being wiser than my parents, however this would rob me from benefitting from their real wisdom. After all, why would someone wiser listen to the unwise? It is only through recongnizing my lack of wisdom that I am able to become wiser. Conversely, deceiving myself into believing that I am wiser than I am prevents me from ever becoming as wise as I could be.
+"Fake it 'til you make it" is a common refrain nowadays. This saying seems to me to be very prideful, and only prophesy destruction. I could 'fake' being wiser than my parents, however this would rob me from benefiting from their real wisdom. After all, why would someone wiser listen to the unwise? It is only through recognizing my lack of wisdom that I am able to become wiser. Conversely, deceiving myself into believing that I am wiser than I am prevents me from ever becoming as wise as I could be.
 
 Vainglory is not just unprofitable, it prevents profit all together. A Chess player who believes himself to be the best intrinsically would have no reason to practice. A software developer who believes his knowledge sufficient will quickly be left behind by the progress of technology. Vainglory binds us to our current state. A paralytic poison that is common and can only be cured in one way. The antidote to vainglory, is humility.
 
