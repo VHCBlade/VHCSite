@@ -9,7 +9,6 @@ class BlogHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(manifest.next);
     return Row(children: [
       ElevatedButton(
         onPressed: manifest.previous == null
