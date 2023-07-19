@@ -1,0 +1,1 @@
+dart script/release_blog.dart
