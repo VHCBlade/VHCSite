@@ -58,7 +58,7 @@ void actOnMarkdownFiles(
       .toList();
 
   markdownFiles.forEach((file) {
-    final filePath = file.path;
+    final filePath = file.path.replaceAll('\\', '/');
     action(filePath);
   });
 }
