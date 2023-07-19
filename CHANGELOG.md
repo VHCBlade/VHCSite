@@ -1,3 +1,7 @@
+## 3.3.2 - July 19, 2023
+
+- Added Category Picker to filter the blogs in the blog list
+
 ## 3.3.1 - July 13, 2023
 
 - Reorganized folder structure so that Flutter is in the root folder

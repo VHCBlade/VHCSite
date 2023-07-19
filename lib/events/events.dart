@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 enum UIEvent<T> {
   button<String>(),
   loadBlog<void>(),
+  pickBlogCategory<String?>(),
   ;
 
   BlocEventType<T> get event => BlocEventType.fromObject(this);

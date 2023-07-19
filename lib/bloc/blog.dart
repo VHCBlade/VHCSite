@@ -8,10 +8,23 @@ import 'package:vhcsite/model/blog.dart';
 class BlogBloc extends Bloc {
   BlogBloc({required super.parentChannel}) {
     eventChannel.addEventListener(
-        UIEvent.loadBlog.event, (event, value) => initialize());
+      UIEvent.loadBlog.event,
+      (event, value) => initialize(),
+    );
+    eventChannel.addEventListener<String?>(
+      UIEvent.pickBlogCategory.event,
+      (event, value) => updateBlocOnChange(
+          change: () => category = value, tracker: () => [category]),
+    );
   }
   bool initialized = false;
   bool initializing = false;
+
+  String? category;
+
+  bool inCategory(BlogManifest manifest) {
+    return category == null || manifest.category == category;
+  }
 
   final blogMap = <String, BlogManifest>{};
   final blogList = <String>[];

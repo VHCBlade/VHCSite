@@ -4,6 +4,7 @@ import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vhcsite/bloc/blog.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/blog.dart';
 import 'package:vhcsite/ui/screens/blog/category.dart';
 import 'package:vhcsite/ui/screens/blog/individual_blog.dart';
@@ -54,7 +55,33 @@ class BlogSelectionScreen extends StatelessWidget {
             textAlign: TextAlign.left,
           ),
           const SizedBox(height: 10),
-          ...bloc.blogList.map((e) => BlogSelection(manifest: bloc.blogMap[e]!))
+          Row(
+            children: [
+              const Text('Blog Category'),
+              const Expanded(child: SizedBox()),
+              DropdownButton<String?>(
+                items: const [
+                  DropdownMenuItem(value: 'flutter', child: Text('Flutter')),
+                  DropdownMenuItem(value: 'games', child: Text('Games')),
+                  DropdownMenuItem(value: 'life', child: Text('Life')),
+                  DropdownMenuItem(child: Text('All')),
+                ],
+                value: bloc.category,
+                onChanged: (value) =>
+                    context.fireEvent(UIEvent.pickBlogCategory.event, value),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          ...bloc.blogList.map((e) {
+            final manifest = bloc.blogMap[e]!;
+
+            if (!bloc.inCategory(manifest)) {
+              return const SizedBox();
+            }
+
+            return BlogSelection(manifest: manifest);
+          })
         ],
       ),
     );
