@@ -1,6 +1,7 @@
 import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vhcsite/ui/page/refresh.dart';
 import 'package:vhcsite/widget/default_button.dart';
 
 class ChangelogScreen extends StatefulWidget {
@@ -23,13 +24,20 @@ class _ChangelogScreenState extends State<ChangelogScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return EssayScroll(
-        child: Wrap(runSpacing: 10, spacing: 10, children: [
-      Container(width: double.infinity),
-      const VHCBackButton(),
-      changelog == null
-          ? const CircularProgressIndicator()
-          : const EssayScreen(path: ['..', '..', 'CHANGELOG'])
-    ]));
+    return WebRefresh(
+      child: EssayScroll(
+        child: Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          children: [
+            Container(width: double.infinity),
+            const VHCBackButton(),
+            changelog == null
+                ? const CircularProgressIndicator()
+                : const EssayScreen(path: ['..', '..', 'CHANGELOG'])
+          ],
+        ),
+      ),
+    );
   }
 }

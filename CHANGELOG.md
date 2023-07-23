@@ -1,8 +1,8 @@
-## 3.4.0 - July 23, 2023
+## 3.3.3 - July 23, 2023
 
-- Added TextScaleFactor Override if web
 - Added current version to Home Page to more easily spot version differences
-- Added Force Refresh button for Web in Home Page
+- Added Refresh Functionality to all scrollable screens
+- Added TextScaleFactor Override if web - DISABLED because it doesn't solve the problem I thought it would
 
 ## 3.3.2 - July 19, 2023
 

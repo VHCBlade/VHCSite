@@ -1,22 +1,23 @@
 import 'package:event_essay/event_essay.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:universal_html/html.dart';
+import 'package:vhcsite/ui/page/refresh.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return EssayScroll(
-      child: Stack(
-        children: [
-          Container(
-            constraints: const BoxConstraints(minWidth: double.infinity),
-          ),
-          Center(child: _HomeContent())
-        ],
+    return WebRefresh(
+      child: EssayScroll(
+        child: Stack(
+          children: [
+            Container(
+              constraints: const BoxConstraints(minWidth: double.infinity),
+            ),
+            Center(child: _HomeContent())
+          ],
+        ),
       ),
     );
   }
@@ -35,7 +36,7 @@ class _HomeContentState extends State<_HomeContent> {
     super.initState();
     rootBundle
         .loadString('assets/VERSION')
-        .then((value) => setState(() => version = value));
+        .then((value) => setState(() => version = value.split('\n')[0]));
   }
 
   @override
@@ -70,11 +71,6 @@ class _HomeContentState extends State<_HomeContent> {
             )
           ],
         ),
-        if (kIsWeb)
-          ElevatedButton(
-            onPressed: () => window.location.reload(),
-            child: const Text('Force Refresh Page'),
-          )
       ]),
     );
   }

@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:vhcsite/bloc/blog.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/blog.dart';
+import 'package:vhcsite/ui/page/refresh.dart';
 import 'package:vhcsite/ui/screens/blog/category.dart';
 import 'package:vhcsite/ui/screens/blog/individual_blog.dart';
 
@@ -37,52 +38,54 @@ class BlogSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.watchBloc<BlogBloc>();
-    return EssayScroll(
-      alignment: Alignment.topCenter,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(width: double.infinity),
-          Text(
-            'Blogs',
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            'Welcome to my blog! Here you can find all of my current blogs in reverse chronological order.',
-            style: Theme.of(context).textTheme.titleMedium,
-            textAlign: TextAlign.left,
-          ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              const Text('Blog Category'),
-              const Expanded(child: SizedBox()),
-              DropdownButton<String?>(
-                items: const [
-                  DropdownMenuItem(value: 'flutter', child: Text('Flutter')),
-                  DropdownMenuItem(value: 'games', child: Text('Games')),
-                  DropdownMenuItem(value: 'life', child: Text('Life')),
-                  DropdownMenuItem(child: Text('All')),
-                ],
-                value: bloc.category,
-                onChanged: (value) =>
-                    context.fireEvent(UIEvent.pickBlogCategory.event, value),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          ...bloc.blogList.map((e) {
-            final manifest = bloc.blogMap[e]!;
+    return WebRefresh(
+      child: EssayScroll(
+        alignment: Alignment.topCenter,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(width: double.infinity),
+            Text(
+              'Blogs',
+              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.left,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Welcome to my blog! Here you can find all of my current blogs in reverse chronological order.',
+              style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.left,
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                const Text('Blog Category'),
+                const Expanded(child: SizedBox()),
+                DropdownButton<String?>(
+                  items: const [
+                    DropdownMenuItem(value: 'flutter', child: Text('Flutter')),
+                    DropdownMenuItem(value: 'games', child: Text('Games')),
+                    DropdownMenuItem(value: 'life', child: Text('Life')),
+                    DropdownMenuItem(child: Text('All')),
+                  ],
+                  value: bloc.category,
+                  onChanged: (value) =>
+                      context.fireEvent(UIEvent.pickBlogCategory.event, value),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            ...bloc.blogList.map((e) {
+              final manifest = bloc.blogMap[e]!;
 
-            if (!bloc.inCategory(manifest)) {
-              return const SizedBox();
-            }
+              if (!bloc.inCategory(manifest)) {
+                return const SizedBox();
+              }
 
-            return BlogSelection(manifest: manifest);
-          })
-        ],
+              return BlogSelection(manifest: manifest);
+            })
+          ],
+        ),
       ),
     );
   }
