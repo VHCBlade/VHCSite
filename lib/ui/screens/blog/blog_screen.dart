@@ -4,11 +4,12 @@ import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vhcsite/bloc/blog.dart';
-import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/blog.dart';
 import 'package:vhcsite/ui/page/refresh.dart';
 import 'package:vhcsite/ui/screens/blog/category.dart';
 import 'package:vhcsite/ui/screens/blog/individual_blog.dart';
+import 'package:vhcsite/ui/screens/blog/selection/category.dart';
+import 'package:vhcsite/ui/screens/blog/selection/search.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});
@@ -57,25 +58,10 @@ class BlogSelectionScreen extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 10),
-            Row(
-              children: [
-                const Text('Blog Category'),
-                const Expanded(child: SizedBox()),
-                DropdownButton<String?>(
-                  items: const [
-                    DropdownMenuItem(value: 'flutter', child: Text('Flutter')),
-                    DropdownMenuItem(value: 'games', child: Text('Games')),
-                    DropdownMenuItem(value: 'life', child: Text('Life')),
-                    DropdownMenuItem(child: Text('All')),
-                  ],
-                  value: bloc.category,
-                  onChanged: (value) =>
-                      context.fireEvent(UIEvent.pickBlogCategory.event, value),
-                ),
-              ],
-            ),
+            const CategoryPickerWidget(),
+            const BlogSearchWidget(),
             const SizedBox(height: 10),
-            ...bloc.blogList.map((e) {
+            ...bloc.sortedSearchList.list.map((e) {
               final manifest = bloc.blogMap[e]!;
 
               if (!bloc.inCategory(manifest)) {

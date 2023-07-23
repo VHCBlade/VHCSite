@@ -48,7 +48,7 @@ class MainBody extends StatelessWidget {
 
     switch (model.currentMainNavigation) {
       case 'blog':
-        context.fireEvent(UIEvent.loadBlog.event, null, withDelay: true);
+        context.fireEvent(VHCSiteEvent.loadBlog.event, null, withDelay: true);
         widget = const BlogScreen();
         break;
       case 'about':

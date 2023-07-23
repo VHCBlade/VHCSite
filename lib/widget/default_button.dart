@@ -23,7 +23,8 @@ class DefaultButton extends StatelessWidget {
         onPressed: disabled
             ? null
             : onPressedOverride ??
-                () => context.fireEvent<String>(UIEvent.button.event, type),
+                () =>
+                    context.fireEvent<String>(VHCSiteEvent.button.event, type),
         child: Text(text));
   }
 }

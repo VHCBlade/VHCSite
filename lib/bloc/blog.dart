@@ -2,32 +2,80 @@ import 'dart:convert';
 
 import 'package:event_bloc/event_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:search_me_up/search_me_up.dart';
 import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/model/blog.dart';
 
+final _dateFormat = DateFormat.yMMMMd();
+
 class BlogBloc extends Bloc {
   BlogBloc({required super.parentChannel}) {
-    eventChannel.addEventListener(
-      UIEvent.loadBlog.event,
-      (event, value) => initialize(),
-    );
-    eventChannel.addEventListener<String?>(
-      UIEvent.pickBlogCategory.event,
-      (event, value) => updateBlocOnChange(
-          change: () => category = value, tracker: () => [category]),
-    );
+    eventChannel
+      ..addEventListener(
+        VHCSiteEvent.loadBlog.event,
+        (event, value) => initialize(),
+      )
+      ..addEventListener<String?>(
+        VHCSiteEvent.pickBlogCategory.event,
+        (event, value) => updateBlocOnChange(
+            change: () => category = value, tracker: () => [category]),
+      )
+      ..addEventListener<String?>(
+        VHCSiteEvent.changeBlogSearchTerm.event,
+        (event, value) {
+          if (value == searchTerm) {
+            return;
+          }
+          searchTerm = value;
+          generateSearchList();
+
+          updateBloc();
+        },
+      );
   }
   bool initialized = false;
   bool initializing = false;
 
   String? category;
+  String? searchTerm;
+
+  String? get sanitizedSearchTerm {
+    if (searchTerm == null) {
+      return searchTerm;
+    }
+
+    return searchTerm!.trim();
+  }
 
   bool inCategory(BlogManifest manifest) {
     return category == null || manifest.category == category;
   }
 
   final blogMap = <String, BlogManifest>{};
-  final blogList = <String>[];
+
+  final sortedSearchList = SortedSearchList<BlogManifest, String>(
+    comparator: (a, b) => b.uploadDate.compareTo(a.uploadDate),
+    converter: (a) => a.path,
+  );
+
+  void generateSearchList() {
+    sortedSearchList.generateSearchList(
+      searchTerm: sanitizedSearchTerm,
+      values: blogMap.values,
+      searchMeUp: SearchMeUp(
+        DefaultSearchMeUpDelegate(
+          converters: [
+            (manifest) => [
+                  manifest.name,
+                  _dateFormat.format(manifest.uploadDate),
+                  manifest.category,
+                ]
+          ],
+        ),
+      ),
+    );
+  }
 
   void initialize() async {
     if (initialized || initializing) {
@@ -45,8 +93,8 @@ class BlogBloc extends Bloc {
           decoded[i].next = decoded[i - 1].path;
           decoded[i - 1].previous = decoded[i].path;
         }
-        blogList.add(decoded[i].path);
       }
+      generateSearchList();
       initialized = true;
     } finally {
       initializing = false;

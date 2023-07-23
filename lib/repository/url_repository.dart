@@ -9,7 +9,8 @@ class UrlRepository extends Repository {
   List<BlocEventListener> generateListeners(BlocEventChannel eventChannel) => [
         eventChannel.addEventListener<String>(
             EssayEvent.url.event, (_, val) => _launch(val)),
-        eventChannel.addEventListener<String>(UIEvent.button.event, (_, val) {
+        eventChannel.addEventListener<String>(VHCSiteEvent.button.event,
+            (_, val) {
           if (val == 'youtube') {
             _launch('https://www.youtube.com/channel/UCZ-JaDp28rir6URCI0Gws7Q');
           }

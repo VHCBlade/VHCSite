@@ -20,6 +20,7 @@ dependencies:
   event_navigation: ^0.6.6
   event_db: ^0.1.20
   event_hive: ^0.1.6
+  search_me_up: ^0.1.1
   vhcblade_theme: ^0.2.4
   # vhcblade_theme: 
   #   path: ../../../vhcblade_theme

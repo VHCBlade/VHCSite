@@ -1,8 +1,12 @@
 ## 3.3.3 - July 23, 2023
 
+- Refactored Bloc Category Picker into its own Widget
+- Added Searchbar in Blog List
 - Added current version to Home Page to more easily spot version differences
 - Added Refresh Functionality to all scrollable screens
 - Added TextScaleFactor Override if web - DISABLED because it doesn't solve the problem I thought it would
+- Renamed UIEvent to VHCSiteEvent
+- Deleted old_setup folder
 
 ## 3.3.2 - July 19, 2023
 

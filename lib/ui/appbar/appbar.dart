@@ -38,7 +38,7 @@ class ActionDrawer extends StatelessWidget {
         final channel = BlocEventChannel(context.read<BlocEventChannel>());
 
         channel.addEventListener<String>(
-            UIEvent.button.event, (_, val) => Navigator.pop(context));
+            VHCSiteEvent.button.event, (_, val) => Navigator.pop(context));
 
         return channel;
       },
