@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 enum UIEvent<T> {
   button<String>(),
+  setTextScale<double>(),
   loadBlog<void>(),
   pickBlogCategory<String?>(),
   ;

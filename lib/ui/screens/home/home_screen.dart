@@ -1,5 +1,6 @@
 import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,7 +20,22 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _HomeContent extends StatelessWidget {
+class _HomeContent extends StatefulWidget {
+  @override
+  State<_HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<_HomeContent> {
+  String? version;
+
+  @override
+  void initState() {
+    super.initState();
+    rootBundle
+        .loadString('assets/VERSION')
+        .then((value) => setState(() => version = value));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,13 +52,22 @@ class _HomeContent extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         Image.asset('assets/img/Logo.png'),
-        Align(
-            alignment: Alignment.centerRight,
-            child: SelectableText(
+        Row(
+          children: [
+            if (version != null)
+              SelectableText(
+                "v$version",
+                style: Theme.of(context).textTheme.bodySmall,
+                textAlign: TextAlign.left,
+              ),
+            const Expanded(child: SizedBox()),
+            SelectableText(
               "Powered by Flutter",
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.right,
-            )),
+            )
+          ],
+        ),
       ]),
     );
   }

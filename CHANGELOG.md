@@ -1,3 +1,8 @@
+## 3.3.3 - July 23, 2023
+
+- Added TextScaleFactor Override if web
+- Added current version to About Screen to more easily spot version differences
+
 ## 3.3.2 - July 19, 2023
 
 - Added Category Picker to filter the blogs in the blog list
