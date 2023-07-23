@@ -1,6 +1,8 @@
 import 'package:event_essay/event_essay.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:universal_html/html.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -68,6 +70,11 @@ class _HomeContentState extends State<_HomeContent> {
             )
           ],
         ),
+        if (kIsWeb)
+          ElevatedButton(
+            onPressed: () => window.location.reload(),
+            child: const Text('Force Refresh Page'),
+          )
       ]),
     );
   }
