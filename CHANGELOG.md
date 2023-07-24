@@ -1,3 +1,8 @@
+## 3.3.4 - July 24, 2023
+
+- Added Sort for Blog List
+- Added onSubmitted to Search TextField so that hitting enter would initiate the search as well
+
 ## 3.3.3 - July 23, 2023
 
 - Refactored Bloc Category Picker into its own Widget

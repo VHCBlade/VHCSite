@@ -10,6 +10,7 @@ import 'package:vhcsite/ui/screens/blog/category.dart';
 import 'package:vhcsite/ui/screens/blog/individual_blog.dart';
 import 'package:vhcsite/ui/screens/blog/selection/category.dart';
 import 'package:vhcsite/ui/screens/blog/selection/search.dart';
+import 'package:vhcsite/ui/screens/blog/selection/sort.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});
@@ -52,14 +53,10 @@ class BlogSelectionScreen extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 10),
-            Text(
-              'Welcome to my blog! Here you can find all of my current blogs in reverse chronological order.',
-              style: Theme.of(context).textTheme.titleMedium,
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(height: 10),
             const CategoryPickerWidget(),
             const BlogSearchWidget(),
+            const SizedBox(height: 10),
+            const BlogSortWidget(),
             const SizedBox(height: 10),
             ...bloc.sortedSearchList.list.map((e) {
               final manifest = bloc.blogMap[e]!;
@@ -69,7 +66,7 @@ class BlogSelectionScreen extends StatelessWidget {
               }
 
               return BlogSelection(manifest: manifest);
-            })
+            }),
           ],
         ),
       ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/bloc/blog.dart';
@@ -12,34 +14,44 @@ class BlogSearchWidget extends StatefulWidget {
 
 class _BlogSearchWidgetState extends State<BlogSearchWidget> {
   late final controller = TextEditingController();
+  late final StreamSubscription subscription;
 
   @override
   void initState() {
     super.initState();
-    controller.text = context.readBloc<BlogBloc>().searchTerm ?? '';
+    final bloc = context.readBloc<BlogBloc>();
+    controller.text = bloc.searchTerm ?? '';
+    subscription = bloc.clearStream
+        .listen((event) => setState(() => controller.text = ''));
   }
 
   @override
   void dispose() {
     super.dispose();
     controller.dispose();
+    subscription.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Expanded(
-        child: TextField(
-          controller: controller,
-          decoration: const InputDecoration(hintText: 'Search Term'),
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            controller: controller,
+            decoration: const InputDecoration(hintText: 'Search Term'),
+            textInputAction: TextInputAction.search,
+            onSubmitted: (value) => context.fireEvent(
+                VHCSiteEvent.changeBlogSearchTerm.event, value),
+          ),
         ),
-      ),
-      const SizedBox(width: 10),
-      ElevatedButton(
-        onPressed: () => context.fireEvent(
-            VHCSiteEvent.changeBlogSearchTerm.event, controller.text),
-        child: const Text('Search'),
-      ),
-    ]);
+        const SizedBox(width: 10),
+        ElevatedButton(
+          onPressed: () => context.fireEvent(
+              VHCSiteEvent.changeBlogSearchTerm.event, controller.text),
+          child: const Text('Search'),
+        ),
+      ],
+    );
   }
 }

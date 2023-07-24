@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:event_bloc/event_bloc.dart';
@@ -29,9 +30,23 @@ class BlogBloc extends Bloc {
           }
           searchTerm = value;
           generateSearchList();
-
           updateBloc();
         },
+      )
+      ..addEventListener<BlogSortOrder>(
+        VHCSiteEvent.pickBlogSortOrder.event,
+        (event, value) {
+          if (value == sortOrder) {
+            return;
+          }
+          sortOrder = value;
+          generateSearchList();
+          updateBloc();
+        },
+      )
+      ..addEventListener(
+        VHCSiteEvent.clearCategoryFilters.event,
+        (event, value) => resetFilters(),
       );
   }
   bool initialized = false;
@@ -39,6 +54,17 @@ class BlogBloc extends Bloc {
 
   String? category;
   String? searchTerm;
+  BlogSortOrder sortOrder = BlogSortOrder.dateDescending;
+
+  late final _clearStream = StreamController<void>.broadcast();
+  Stream<void> get clearStream => _clearStream.stream;
+
+  final blogMap = <String, BlogManifest>{};
+
+  late final sortedSearchList = SortedSearchList<BlogManifest, String>(
+    comparator: (a, b) => b.uploadDate.compareTo(a.uploadDate),
+    converter: (a) => a.path,
+  );
 
   String? get sanitizedSearchTerm {
     if (searchTerm == null) {
@@ -52,14 +78,8 @@ class BlogBloc extends Bloc {
     return category == null || manifest.category == category;
   }
 
-  final blogMap = <String, BlogManifest>{};
-
-  final sortedSearchList = SortedSearchList<BlogManifest, String>(
-    comparator: (a, b) => b.uploadDate.compareTo(a.uploadDate),
-    converter: (a) => a.path,
-  );
-
   void generateSearchList() {
+    sortedSearchList.comparator = sortOrder.comparator;
     sortedSearchList.generateSearchList(
       searchTerm: sanitizedSearchTerm,
       values: blogMap.values,
@@ -75,6 +95,15 @@ class BlogBloc extends Bloc {
         ),
       ),
     );
+  }
+
+  void resetFilters() {
+    searchTerm = null;
+    sortOrder = BlogSortOrder.dateDescending;
+    category = null;
+    generateSearchList();
+    updateBloc();
+    _clearStream.sink.add(null);
   }
 
   void initialize() async {
@@ -101,4 +130,29 @@ class BlogBloc extends Bloc {
       updateBloc();
     }
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _clearStream.close();
+  }
+}
+
+enum BlogSortOrder {
+  dateDescending('By Latest', _dateDescending),
+  dateAscending('By Oldest', _dateAscending),
+  alphabestically('Alphabetically', _alphabestically),
+  ;
+
+  static int _dateDescending(BlogManifest a, BlogManifest b) =>
+      b.uploadDate.compareTo(a.uploadDate);
+  static int _dateAscending(BlogManifest a, BlogManifest b) =>
+      a.uploadDate.compareTo(b.uploadDate);
+  static int _alphabestically(BlogManifest a, BlogManifest b) =>
+      a.name.compareTo(b.name);
+
+  const BlogSortOrder(this.display, this.comparator);
+
+  final String display;
+  final Comparator<BlogManifest> comparator;
 }
