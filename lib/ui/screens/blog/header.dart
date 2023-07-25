@@ -1,7 +1,7 @@
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/model/blog.dart';
+import 'package:vhcsite_models/vhcsite_models.dart';
 
 class BlogHeader extends StatelessWidget {
   const BlogHeader({super.key, required this.manifest});

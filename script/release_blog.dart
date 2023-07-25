@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:vhcsite/model/blog.dart';
+import 'package:vhcsite_models/vhcsite_models.dart';
 
 void main() {
   const directory = 'assets/text/blog';

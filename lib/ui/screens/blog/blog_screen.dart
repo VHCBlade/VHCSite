@@ -4,13 +4,13 @@ import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:vhcsite/bloc/blog.dart';
-import 'package:vhcsite/model/blog.dart';
 import 'package:vhcsite/ui/page/refresh.dart';
 import 'package:vhcsite/ui/screens/blog/category.dart';
 import 'package:vhcsite/ui/screens/blog/individual_blog.dart';
 import 'package:vhcsite/ui/screens/blog/selection/category.dart';
 import 'package:vhcsite/ui/screens/blog/selection/search.dart';
 import 'package:vhcsite/ui/screens/blog/selection/sort.dart';
+import 'package:vhcsite_models/vhcsite_models.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});

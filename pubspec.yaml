@@ -25,6 +25,8 @@ dependencies:
   # vhcblade_theme: 
   #   path: ../../../vhcblade_theme
 
+  vhcsite_models: ^1.0.0
+
   flutter_markdown: ^0.6.14
   intl: ^0.18.1
   provider: ^6.0.0

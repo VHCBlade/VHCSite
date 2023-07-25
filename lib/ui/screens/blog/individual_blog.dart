@@ -1,8 +1,8 @@
 import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
-import 'package:vhcsite/model/blog.dart';
 import 'package:vhcsite/ui/page/refresh.dart';
 import 'package:vhcsite/ui/screens/blog/header.dart';
+import 'package:vhcsite_models/vhcsite_models.dart';
 
 class IndividualBlogScreen extends StatelessWidget {
   const IndividualBlogScreen({super.key, required this.manifest});

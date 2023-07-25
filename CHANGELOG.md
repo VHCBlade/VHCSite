@@ -1,3 +1,7 @@
+## 3.3.6 - ...
+
+- Moved BlogManifest to vhcsite_models
+
 ## 3.3.5 - July 25, 2023
 
 - Updated event_bloc to 4.6.0

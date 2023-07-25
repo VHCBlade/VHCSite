@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:search_me_up/search_me_up.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:vhcsite/model/blog.dart';
+import 'package:vhcsite_models/vhcsite_models.dart';
 
 final _dateFormat = DateFormat.yMMMMd();
 
