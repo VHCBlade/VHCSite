@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:vhcsite/bloc/blog.dart';
@@ -14,22 +12,23 @@ class BlogSearchWidget extends StatefulWidget {
 
 class _BlogSearchWidgetState extends State<BlogSearchWidget> {
   late final controller = TextEditingController();
-  late final StreamSubscription subscription;
+  late final BlocEventListener subscription;
 
   @override
   void initState() {
     super.initState();
     final bloc = context.readBloc<BlogBloc>();
     controller.text = bloc.searchTerm ?? '';
-    subscription = bloc.clearStream
-        .listen((event) => setState(() => controller.text = ''));
+    subscription = bloc.eventChannel.eventBus.addEventListener(
+        VHCSiteEvent.clearCategoryFilters.event,
+        (event, _) => setState(() => controller.text = ''));
   }
 
   @override
   void dispose() {
     super.dispose();
     controller.dispose();
-    subscription.cancel();
+    subscription.unsubscribe();
   }
 
   @override

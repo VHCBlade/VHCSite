@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:event_bloc/event_bloc.dart';
@@ -56,9 +55,6 @@ class BlogBloc extends Bloc {
   String? searchTerm;
   BlogSortOrder sortOrder = BlogSortOrder.dateDescending;
 
-  late final _clearStream = StreamController<void>.broadcast();
-  Stream<void> get clearStream => _clearStream.stream;
-
   final blogMap = <String, BlogManifest>{};
 
   late final sortedSearchList = SortedSearchList<BlogManifest, String>(
@@ -103,7 +99,8 @@ class BlogBloc extends Bloc {
     category = null;
     generateSearchList();
     updateBloc();
-    _clearStream.sink.add(null);
+    eventChannel.eventBus
+        .fireEvent(VHCSiteEvent.clearCategoryFilters.event, null);
   }
 
   void initialize() async {
@@ -129,12 +126,6 @@ class BlogBloc extends Bloc {
       initializing = false;
       updateBloc();
     }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _clearStream.close();
   }
 }
 

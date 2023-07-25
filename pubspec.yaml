@@ -2,7 +2,7 @@ name: vhcsite
 description: Website for VHCBlade!
 
 publish_to: 'none' 
-version: 3.3.4
+version: 3.3.5
 
 environment:
   sdk: ">=2.17.0-0 <3.0.0"
@@ -13,7 +13,7 @@ dependencies:
 
   collection: ^1.15.0
 
-  event_bloc: ^4.5.1
+  event_bloc: ^4.6.0
   event_essay: ^0.1.5
   # event_essay:
   #   path: ../../../event_essay

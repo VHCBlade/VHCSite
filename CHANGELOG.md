@@ -1,3 +1,8 @@
+## 3.3.5 - July 25, 2023
+
+- Updated event_bloc to 4.6.0
+- Removed resetStream from BlogBloc and replaced with eventBus
+
 ## 3.3.4 - July 24, 2023
 
 - Added Sort for Blog List
