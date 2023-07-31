@@ -1,0 +1,30 @@
+The Melancholy of Interrupted Metamorphosis
+# Too Close to the Sun
+
+The PC Version of [Ratchet and Clank: Rift Apart](https://store.steampowered.com/app/1895880/Ratchet__Clank_Rift_Apart/) was recently released, and like many fans of the series, I eagerly delved into the game with high expectations. The exhilarating gameplay eclipsed that of all previous entries to the series. The new characters bring out aspects of the existing ones that we haven’t seen before. The story’s themes of the eternal value of forgiveness of others, but also of oneself, carry a strong emotional core throughout the entire game. And yet, as the game drew to a close, I found myself grappling with a sense of melancholy— a yearning for what could have been.
+
+The plot hurriedly moved through the necessary story beats to convey a tale of forgiveness, neglecting to properly establish the relationship between the main characters. What should have been a compelling and heartwarming journey of unlikely comrades becoming friends felt superficial and unconvincing. Moreover, the characters instead felt like distant strangers, arguing over nothing.
+
+The game seemed to have all the right ingredients for a poignant and impactful story, only to falter at the last hurdle. Rather than a minor blemish on an otherwise perfect experience, this misstep had a profound impact, leaving the entire journey feeling hollow. The promise of a deeply moving tale of redemption and growth slipped through the cracks, replaced by a sense of unfulfilled potential. For the brokenness of something promising is more painful than the reality of what never was.
+
+# Hollow’s Respite
+
+As I grappled with this feeling of hollowness, I recalled other hollow moments in my life— friendships unwatered, opportunities squandered, callings faltered. They appear to me as moments in my life when I could have transformed into a more complete person. And yet when the moment came, I failed to rise up to the occasion. 
+
+When we are called to adventure, our conscience dictates that we answer it. Failure to answer is a betrayal of what we could be. For when I break each promise, I suffer twice; first for not being true to my word, second for knowledge of the erosion of that good. The promise being a catalyst for suffering, rather than a tool to deepen the understanding. And it is in that suffering that the melancholy of interrupted metamorphosis sets in.
+
+And yet, in the desolation of the hollow oak, a new hope can spring forth. Like a phoenix rising from the ashes, I emerge from the depths of melancholy with a renewed sense of purpose and determination. While this failure cannot be changed, the future can still be molded. And when that time comes, I will no longer back down. I know too well what the consequences of failure are.
+
+# Embrace your Brokenness
+
+The Melancholy is profound and disheartening, but it is not without its purpose. While pain and suffering may be unbearable in the moment, they can serve as signal flares towards a greater truth. If a fire did not hurt when touched, how would a child know to avoid being burned? After we stumble and fall, it is precisely the remorse we feel that shows us who it is we want to be.
+
+As human beings, we are inherently flawed and imperfect. Our fallen nature will cause us to fail to be all that we can. Our remorse for our failures are not meant to paralyze us into inaction; Rather they are what drives us to reconcile our sins. It is in seeing our broken nature that we are driven to become whole again.
+
+# Metamorphosis Rekindled
+
+In our darkest moments, God's grace shines brightest. It is through His boundless love and forgiveness that we find the courage to face our flaws and seek redemption. When we embrace His grace, we open ourselves to the possibility of a new beginning. We are able to finally lay to rest the melancholy of interrupted metamorphosis, by rekindling the metamorphosis that we have led astray.
+
+While Rift Apart failed in telling the story I knew it could have, I was still ultimately able to appreciate what it was trying to say. And I have hope that it can serve as an example of the power that video games can have as a story-telling medium. And that even with its failures, I am still a better person for having played the game. And like the message of the game, I can forgive its flaws, as I seek God’s forgiveness for my own.
+
+And when our melancholy returns once again, we should take solace in its return. For the melancholy brings with it hope. A hope that our failures are only set in stone when we fail to recognize them. A hope that we can become a testament to God’s grace.

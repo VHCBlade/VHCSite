@@ -2,7 +2,6 @@
 
 - Added integration with newly added vhcsite_api
 - Added view count to individual blogs
-- Added refresh notification when there is a version mismatch between the cached version and the api version
 - Rearranged blocs and repositories into their own bloc_builders and repository_builders file
 - Moved BlogManifest to vhcsite_models
 
