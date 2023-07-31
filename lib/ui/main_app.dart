@@ -2,11 +2,9 @@ import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_navigation/event_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vhcsite/bloc/app_size.dart';
-import 'package:vhcsite/bloc/blog.dart';
-import 'package:vhcsite/bloc/navigation/navigation_bloc.dart';
 import 'package:vhcsite/model/environment.dart';
-import 'package:vhcsite/repository/url_repository.dart';
+import 'package:vhcsite/ui/bloc_builders.dart';
+import 'package:vhcsite/ui/repository_builders.dart';
 import 'package:vhcsite/ui/screens/main_screen.dart';
 import 'package:vhcsite/ui/theme/theme.dart';
 import 'package:vhcsite/ui/watcher/watcher.dart';
@@ -18,17 +16,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (context) => const VHCEnvironment(),
-      child: RepositoryProvider(
-        create: (_) => UrlRepository(),
+      child: MultiRepositoryProvider(
+        repositoryBuilders: repositoryBuilders,
         child: MultiBlocProvider(
-          blocBuilders: [
-            BlocBuilder<AppSizeBloc>((reader, parentChannel) =>
-                AppSizeBloc(parentChannel: parentChannel)),
-            BlocBuilder<MainNavigationBloc<String>>((reader, parentChannel) =>
-                generateNavigationBloc(parentChannel)),
-            BlocBuilder<BlogBloc>((reader, parentChannel) =>
-                BlogBloc(parentChannel: parentChannel)),
-          ],
+          blocBuilders: blocBuilders,
           child: WatcherLayer(child: _InnerApp()),
         ),
       ),
