@@ -12,6 +12,9 @@ enum VHCSiteEvent<T> {
   changeBlogSearchTerm<String?>(),
   pickBlogSortOrder<BlogSortOrder>(),
   clearCategoryFilters<void>(),
+
+  loadBlogViews<String>(),
+  recordBlogView<String>(),
   ;
 
   BlocEventType<T> get event => BlocEventType.fromObject(this);

@@ -12,4 +12,4 @@ This project also serves as a demonstration for the various event-based packages
 # Additional Code for Site
 
 - [vhcsite_models](github.com/VHCBlade/vhcsite_models) - contains the models used across the api and the website
-- [vhcsite_api](github.com/VHCBlade/vhcsite_api) - the server 
+- [vhcsite_api](github.com/VHCBlade/vhcsite_api) - the server that this website interfaces with.

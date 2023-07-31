@@ -1,20 +1,46 @@
+import 'package:event_bloc/event_bloc_widgets.dart';
 import 'package:event_essay/event_essay.dart';
 import 'package:flutter/material.dart';
+import 'package:vhcsite/bloc/blog_views.dart';
+import 'package:vhcsite/events/events.dart';
 import 'package:vhcsite/ui/page/refresh.dart';
 import 'package:vhcsite/ui/screens/blog/header.dart';
 import 'package:vhcsite_models/vhcsite_models.dart';
 
-class IndividualBlogScreen extends StatelessWidget {
+class IndividualBlogScreen extends StatefulWidget {
   const IndividualBlogScreen({super.key, required this.manifest});
   final BlogManifest manifest;
 
   @override
+  State<IndividualBlogScreen> createState() => _IndividualBlogScreenState();
+}
+
+class _IndividualBlogScreenState extends State<IndividualBlogScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.fireEvent(VHCSiteEvent.loadBlogViews.event, widget.manifest.path);
+    context.fireEvent(VHCSiteEvent.recordBlogView.event, widget.manifest.path);
+  }
+
+  @override
+  void didUpdateWidget(IndividualBlogScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    context.fireEvent(VHCSiteEvent.loadBlogViews.event, widget.manifest.path);
+    context.fireEvent(VHCSiteEvent.recordBlogView.event, widget.manifest.path);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final viewCount = context.selectBloc<BlogViewsBloc, int?>(
+        (bloc) => bloc.views(widget.manifest.path));
+
     return WebRefresh(
       child: EssayScreen(
         leading: [
-          BlogHeader(manifest: manifest),
-          Text(manifest.name,
+          BlogHeader(manifest: widget.manifest),
+          Text(widget.manifest.name,
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium
@@ -26,9 +52,10 @@ class IndividualBlogScreen extends StatelessWidget {
                   .textTheme
                   .headlineMedium
                   ?.copyWith(color: Theme.of(context).primaryColor)),
-          BlogHeader(manifest: manifest),
+          if (viewCount != null) Row(children: [Text('$viewCount')]),
+          BlogHeader(manifest: widget.manifest),
         ],
-        path: manifest.convertedPath,
+        path: widget.manifest.convertedPath,
       ),
     );
   }

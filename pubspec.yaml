@@ -15,7 +15,7 @@ dependencies:
 
   event_api: ^0.2.1
   event_bloc: ^4.6.0
-  event_essay: ^0.1.5
+  event_essay: ^0.1.6
   # event_essay:
   #   path: ../../../event_essay
   event_navigation: ^0.6.6
