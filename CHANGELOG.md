@@ -1,3 +1,8 @@
+## 3.4.1 - Auguest 6, 2023
+
+- Added Poems category for blogs (Red Category)
+- Added raw HTML share link at the bottom of each blog.
+
 ## 3.4.0 - July 31, 2023
 
 - Added integration with newly added vhcsite_api

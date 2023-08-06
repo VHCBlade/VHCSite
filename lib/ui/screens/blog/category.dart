@@ -12,6 +12,8 @@ class CategoryWidget extends StatelessWidget {
         return Colors.blue;
       case 'games':
         return Colors.green;
+      case 'poems':
+        return Colors.red;
       default:
         return Colors.grey;
     }

@@ -19,6 +19,7 @@ class CategoryPickerWidget extends StatelessWidget {
             DropdownMenuItem(value: 'flutter', child: Text('Flutter')),
             DropdownMenuItem(value: 'games', child: Text('Games')),
             DropdownMenuItem(value: 'life', child: Text('Life')),
+            DropdownMenuItem(value: 'poems', child: Text('Poems')),
             DropdownMenuItem(child: Text('All')),
           ],
           value: category,

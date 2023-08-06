@@ -2,7 +2,7 @@ name: vhcsite
 description: Website for VHCBlade!
 repository: https://github.com/VHCBlade/VHCSite
 publish_to: 'none' 
-version: 3.4.0
+version: 3.4.1
 
 environment:
   sdk: ">=2.17.0-0 <3.0.0"
@@ -36,6 +36,7 @@ dependencies:
   url_launcher: ^6.0.0
 
 dev_dependencies:
+
   event_db_tester: ^0.1.0
 
   flutter_test:
@@ -57,7 +58,9 @@ flutter:
     - assets/text/apps/
     # Blog
     - assets/text/manifest.json
+    - assets/text/html/
     - assets/text/blog/
     - assets/text/blog/flutter/
     - assets/text/blog/games/
     - assets/text/blog/life/
+    - assets/text/blog/poems/

@@ -15,6 +15,9 @@ enum VHCSiteEvent<T> {
 
   loadBlogViews<String>(),
   recordBlogView<String>(),
+
+  loadVersion<void>(),
+  loadApiVersion<void>(),
   ;
 
   BlocEventType<T> get event => BlocEventType.fromObject(this);

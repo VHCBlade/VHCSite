@@ -1,3 +1,5 @@
+# The Melancholy of Interrupted Metamorphosis
+
 # Too Close to the Sun
 
 The PC Version of [Ratchet and Clank: Rift Apart](https://store.steampowered.com/app/1895880/Ratchet__Clank_Rift_Apart/) was recently released, and like many fans of the series, I eagerly delved into the game with high expectations. The exhilarating gameplay eclipsed that of all previous entries to the series. The new characters bring out aspects of the existing ones that we haven’t seen before. The story’s themes of the eternal value of forgiveness of others, but also of oneself, carry a strong emotional core throughout the entire game. And yet, as the game drew to a close, I found myself grappling with a sense of melancholy— a yearning for what could have been.

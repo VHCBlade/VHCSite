@@ -52,7 +52,18 @@ class _IndividualBlogScreenState extends State<IndividualBlogScreen> {
                   .textTheme
                   .headlineMedium
                   ?.copyWith(color: Theme.of(context).primaryColor)),
-          if (viewCount != null) Row(children: [Text('$viewCount')]),
+          if (viewCount != null)
+            Row(children: [
+              Text('$viewCount'),
+              const Expanded(child: SizedBox()),
+              ElevatedButton(
+                onPressed: () => context.fireEvent(
+                  EssayEvent.url.event,
+                  'https://vhcblade.com/assets/assets/text/html/${widget.manifest.convertedPath.join('-')}.html',
+                ),
+                child: const Text('Raw HTML'),
+              )
+            ]),
           BlogHeader(manifest: widget.manifest),
         ],
         path: widget.manifest.convertedPath,
