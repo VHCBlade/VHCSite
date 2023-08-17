@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:vhcsite_models/vhcsite_models.dart';
 
-/// Need to install python and run pip3 install md-to-html
+/// Need to install python and run pip3 install markdown
 void main() {
   const directory = 'assets/text/blog';
   final manifestFile = File('assets/text/manifest.json');
@@ -24,21 +24,22 @@ void main() {
     final manifest = blogMap[currentPath]!;
 
     final withTitle = '# ${manifest.name}\n\n$blogPost';
+    final withBack =
+        '[<- Back](https://vhcblade.com/#/$currentPath)\n$withTitle';
     final pathAsFilename = currentPath.replaceAll('/', '-');
 
     final file = File('assets/text/md/$pathAsFilename.md');
-    file.writeAsStringSync(withTitle);
+    file.writeAsStringSync(withBack);
 
     // ignore: avoid_print
     print('Creating assets/text/html/$pathAsFilename.html');
 
     Process.run(
-      'md-to-html',
+      'python3',
       [
-        '--input',
-        'assets/text/md/$pathAsFilename.md',
-        '--output',
-        'assets/text/html/$pathAsFilename.html'
+        'script/python/convert_markdown.py',
+        '--input=assets/text/md/$pathAsFilename.md',
+        '--output=assets/text/html/$pathAsFilename.html',
       ],
     );
   });

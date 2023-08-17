@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/life/interrupted_metamorphosis)
 # The Melancholy of Interrupted Metamorphosis
 
 # Too Close to the Sun

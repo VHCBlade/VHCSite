@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/games/rules_of_thumb)
 # Rules of Thumb (and why you should follow them)
 
 When I’m trying to help people improve at League of Legends, I’ll often tell them to follow certain rules of thumb. Prioritize farming over fighting, retreat toward your base, hit whoever is closest in a teamfight. However, this will sometimes be met with resistance. I’ll hear about situations where the rules of thumb are inappropriate, or even that they don’t want to suppress their gameplay by following these oppressive rules. While there is merit to these objections, rules of thumb still have a great utility that should be used, especially by beginners to a game.

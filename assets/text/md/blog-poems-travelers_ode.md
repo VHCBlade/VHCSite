@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/poems/travelers_ode)
 # Traveler's Ode
 
 In solitude, he walks miles eight,  

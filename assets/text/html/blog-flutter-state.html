@@ -1,277 +1,99 @@
-<!DOCTYPE html>
-<!--Converted via md-to-html-->
 <html>
- <head>
- </head>
- <body>
-  <h1>
-   Flutter State Management
-  </h1>
-  <h1>
-   I Love Flutter
-  </h1>
-  <hr/>
-  <p>
-   <a href="https://flutter.dev">
-    Flutter
-   </a>
-   is awesome! It's remarkably easy to learn, since all of the code is in a single modern language (Google's Dart). No more dealing with Markup Languages that require copy pasting a lot of code or cryptic CSS Files. Of course the greatest selling point of Flutter is that it can be deployed pretty much anywhere while reusing all your code.
-  </p>
-  <p>
-   Flutter does all of this while maintaining a consistent beauty with lightning fast rendering times. It started with iOS and Android and now you can deploy Flutter anywhere. Even on a website, just like this one!
-  </p>
-  <h1>
-   State of Ruin
-  </h1>
-  <hr/>
-  <p>
-   Of course, everything has a tradeoff. Whenever you go into a new technology there is a greater chance of running into problems that don't have solutions yet. This becomes less of a concern as Flutter continues to mature, however there is one pitfall that can make using Flutter incredibly difficult. STATE MANAGEMENT.
-  </p>
-  <p>
-   Choosing a cumbersome one can lead to productivity drains that just suck away all the fun of using Flutter. I've lost so many nights of sleep thinking about the right way to handle State Management. But thankfully, we can learn from our mistakes, as well as the mistakes of others.
-  </p>
-  <h1>
-   Lean on Your Provider
-  </h1>
-  <hr/>
-  <p>
-   <a href="https://pub.dev/packages/provider">
-    Provider
-   </a>
-   to the rescue! Provider gives us a way to avoid this trap. If you aren't yet familiar with Provider, I suggest clicking on the link to their package site and reading the documentation and example. You can also easily find some resources about Provider made by other people with just a quick Google Search.
-   <a href="https://www.youtube.com/watch?v=d_m5csmrf7I">
-    Some even come from the Google Team!
-   </a>
-  </p>
-  <p>
-   Combining related information to form one state under a ChangeNotifier strikes the perfect balance between individual states and developer usability. Provider gives us a good baseline from which our state management solution can spring.
-  </p>
-  <h1>
-   Building on Provider
-  </h1>
-  <hr/>
-  <p>
-   While Provider is good, there are some things about it that I take issue with.
-  </p>
-  <p>
-   First, ChangeNotifier, the class suggested to hold our Model, has a dependency on the Flutter Framework! While this isn't a big issue, it just feels disgusting. This is also makes it impossible to have our model be purely dart code.
-  </p>
-  <p>
-   Second, there isn't a canonical way to have a ChangeNotifier that relies on a Parent ChangeNotifier get an update from the Parent. This can lead to some confusion within large teams about what the right way to update children is.
-  </p>
-  <p>
-   Third, it requires our buttons and other low level UI to have a dependency on the Model. This leads to a lot boilerplate code being repeated and makes it more difficult to make changes to our code.
-  </p>
-  <p>
-   Luckily, Provider is powerful enough that we can easily fix this with a few lines of code.
-  </p>
-  <p>
-   ```dart
-  </p>
-  <p>
-   abstract class Model {
-  </p>
-  <p>
-   List&lt;void Function()&gt; modelUpdated = [];
-  </p>
-  <p>
-   ProviderEventChannel get eventChannel;
-  </p>
-  <p>
-   void updateModel() =&gt; modelUpdated.forEach((element) =&gt; element());
-  </p>
-  <p>
-   }
-  </p>
-  <p>
-   ```
-  </p>
-  <p>
-   ```dart
-  </p>
-  <p>
-   class ModelNotifier&lt;T extends Model&gt; with ChangeNotifier {
-  </p>
-  <p>
-   final T model;
-  </p>
-  <p>
-   ModelNotifier(this.model) {
-  </p>
-  <pre><code>model.modelUpdated.add(notifyListeners);
+<p><a href="https://vhcblade.com/#/blog/flutter/state">&lt;- Back</a></p>
+<h1>Flutter State Management</h1>
+<h1>I Love Flutter</h1>
+<hr />
+<p><a href="https://flutter.dev">Flutter</a> is awesome! It's remarkably easy to learn, since all of the code is in a single modern language (Google's Dart). No more dealing with Markup Languages that require copy pasting a lot of code or cryptic CSS Files. Of course the greatest selling point of Flutter is that it can be deployed pretty much anywhere while reusing all your code. </p>
+<p>Flutter does all of this while maintaining a consistent beauty with lightning fast rendering times. It started with iOS and Android and now you can deploy Flutter anywhere. Even on a website, just like this one!</p>
+<h1>State of Ruin</h1>
+<hr />
+<p>Of course, everything has a tradeoff. Whenever you go into a new technology there is a greater chance of running into problems that don't have solutions yet. This becomes less of a concern as Flutter continues to mature, however there is one pitfall that can make using Flutter incredibly difficult. STATE MANAGEMENT. </p>
+<p>Choosing a cumbersome one can lead to productivity drains that just suck away all the fun of using Flutter. I've lost so many nights of sleep thinking about the right way to handle State Management. But thankfully, we can learn from our mistakes, as well as the mistakes of others.</p>
+<h1>Lean on Your Provider</h1>
+<hr />
+<p><a href="https://pub.dev/packages/provider">Provider</a> to the rescue! Provider gives us a way to avoid this trap. If you aren't yet familiar with Provider, I suggest clicking on the link to their package site and reading the documentation and example. You can also easily find some resources about Provider made by other people with just a quick Google Search. <a href="https://www.youtube.com/watch?v=d_m5csmrf7I">Some even come from the Google Team!</a> </p>
+<p>Combining related information to form one state under a ChangeNotifier strikes the perfect balance between individual states and developer usability. Provider gives us a good baseline from which our state management solution can spring.</p>
+<h1>Building on Provider</h1>
+<hr />
+<p>While Provider is good, there are some things about it that I take issue with. </p>
+<p>First, ChangeNotifier, the class suggested to hold our Model, has a dependency on the Flutter Framework! While this isn't a big issue, it just feels disgusting. This is also makes it impossible to have our model be purely dart code.</p>
+<p>Second, there isn't a canonical way to have a ChangeNotifier that relies on a Parent ChangeNotifier get an update from the Parent. This can lead to some confusion within large teams about what the right way to update children is. </p>
+<p>Third, it requires our buttons and other low level UI to have a dependency on the Model. This leads to a lot boilerplate code being repeated and makes it more difficult to make changes to our code.</p>
+<p>Luckily, Provider is powerful enough that we can easily fix this with a few lines of code.</p>
+<p><code>dart
+abstract class Model {
+  List&lt;void Function()&gt; modelUpdated = [];
+  ProviderEventChannel get eventChannel;
+  void updateModel() =&gt; modelUpdated.forEach((element) =&gt; element());
+}</code></p>
+<p>```dart
+class ModelNotifier<T extends Model> with ChangeNotifier {
+  final T model;</p>
+<p>ModelNotifier(this.model) {
+    model.modelUpdated.add(notifyListeners);
+  }
+}</p>
+<p>class ModelProvider<T extends Model> extends StatefulWidget {
+  final Widget child;
+  final T Function(BuildContext, ProviderEventChannel) builder;</p>
+<p>const ModelProvider({Key key, @required this.child, @required this.builder})
+      : super(key: key);</p>
+<p>@override
+  _ModelProviderState<T> createState() =&gt; _ModelProviderState<T>();
+}
+```</p>
+<p>```dart
+typedef bool ProviderEventListener(dynamic);</p>
+<p>class ProviderEventChannel {
+  final ProviderEventChannel _parentChannel;
+  final Map<String, List\<ProviderEventListener>> _listeners = {};</p>
+<p>ProviderEventChannel([this._parentChannel]);</p>
+<p>void fireEvent(String eventType, dynamic payload) {
+    // ...
+  }</p>
+<p>void addEventListener(String eventType, ProviderEventListener listener) {
+    // ...
+  }
+}
+```</p>
+<p>Don't worry about the missing source code. There's a link to the github page for this website at the bottom of this page.</p>
+<p>First we have our Model Class. As the name suggests this will be our new model, and all of our Models will extend this Class. This model slots into the ModelNotifier, which extends the original model, ChangeNotifier. Calling updateModel on our model will automatically call notifyListeners. Now we no longer need to have our model depend on the Flutter Framework!</p>
+<p>Second, our Model class also comes with a List of functions to call in modelUpdated. Child Models can simply subscribe to the model updating of their parents with a specific action to take. Just make sure you unsubscribe when the Child Model is disposed! (Probably should have added a dispose function to Model. I actually already have, just not in this version. Whoops!)</p>
+<p>Third, instead of having UI elements call methods in the model directly, we'll have them fire events up the nearest event channel instead. [Get the closest EventChannel with Provider.of<ProviderEventChannel>() or context.watch<ProviderEventChannel>()]. </p>
+<p>Now we can do cool things like have our buttons only require a type parameter, and the model will simply listen for events. Hooray! This also has the added benefit of creating a canonical event channel that can be used to propagate any information from the leaves of our widget tree all the way to the root!</p>
+<h1>Lead by Example</h1>
+<hr />
+<p>```dart
+import 'package:vhcsite/state/model.dart';
+import 'package:vhcsite/state/event_channel.dart';</p>
+<p>const _POSSIBLE_NAVIGATIONS = {"home", "flutter"};</p>
+<p>class NavigationModel with Model {
+  final ProviderEventChannel eventChannel;
+  String navigationPath = "flutter";</p>
+<p>NavigationModel({ProviderEventChannel parentChannel})
+      : eventChannel = ProviderEventChannel(parentChannel) {
+    eventChannel.addEventListener("button", (payload) {
+      navigate(payload);
+      return false;
+    });
+  }</p>
+<p>void navigate(String navigate) {
+    if (!_POSSIBLE_NAVIGATIONS.contains(navigate)) {
+      return;
+    }</p>
+<pre><code>if (navigationPath == navigate) {
+  return;
+}
+
+navigationPath = navigate;
+updateModel();
 </code></pre>
-  <p>
-   }
-  </p>
-  <p>
-   }
-  </p>
-  <p>
-   class ModelProvider&lt;T extends Model&gt; extends StatefulWidget {
-  </p>
-  <p>
-   final Widget child;
-  </p>
-  <p>
-   final T Function(BuildContext, ProviderEventChannel) builder;
-  </p>
-  <p>
-   const ModelProvider({Key key, @required this.child, @required this.builder})
-  </p>
-  <pre><code>  : super(key: key);
-</code></pre>
-  <p>
-   @override
-  </p>
-  <p>
-   _ModelProviderState&lt;T&gt; createState() =&gt; _ModelProviderState&lt;T&gt;();
-  </p>
-  <p>
-   }
-  </p>
-  <p>
-   ```
-  </p>
-  <p>
-   ```dart
-  </p>
-  <p>
-   typedef bool ProviderEventListener(dynamic);
-  </p>
-  <p>
-   class ProviderEventChannel {
-  </p>
-  <p>
-   final ProviderEventChannel _parentChannel;
-  </p>
-  <p>
-   final Map&lt;String, List&lt;ProviderEventListener&gt;&gt; _listeners = {};
-  </p>
-  <p>
-   ProviderEventChannel([this._parentChannel]);
-  </p>
-  <p>
-   void fireEvent(String eventType, dynamic payload) {
-  </p>
-  <pre><code>// ...
-</code></pre>
-  <p>
-   }
-  </p>
-  <p>
-   void addEventListener(String eventType, ProviderEventListener listener) {
-  </p>
-  <pre><code>// ...
-</code></pre>
-  <p>
-   }
-  </p>
-  <p>
-   }
-  </p>
-  <p>
-   ```
-  </p>
-  <p>
-   Don't worry about the missing source code. There's a link to the github page for this website at the bottom of this page.
-  </p>
-  <p>
-   First we have our Model Class. As the name suggests this will be our new model, and all of our Models will extend this Class. This model slots into the ModelNotifier, which extends the original model, ChangeNotifier. Calling updateModel on our model will automatically call notifyListeners. Now we no longer need to have our model depend on the Flutter Framework!
-  </p>
-  <p>
-   Second, our Model class also comes with a List of functions to call in modelUpdated. Child Models can simply subscribe to the model updating of their parents with a specific action to take. Just make sure you unsubscribe when the Child Model is disposed! (Probably should have added a dispose function to Model. I actually already have, just not in this version. Whoops!)
-  </p>
-  <p>
-   Third, instead of having UI elements call methods in the model directly, we'll have them fire events up the nearest event channel instead. [Get the closest EventChannel with Provider.of&lt;ProviderEventChannel&gt;() or context.watch&lt;ProviderEventChannel&gt;()].
-  </p>
-  <p>
-   Now we can do cool things like have our buttons only require a type parameter, and the model will simply listen for events. Hooray! This also has the added benefit of creating a canonical event channel that can be used to propagate any information from the leaves of our widget tree all the way to the root!
-  </p>
-  <h1>
-   Lead by Example
-  </h1>
-  <hr/>
-  <p>
-   ```dart
-  </p>
-  <p>
-   import 'package:vhcsite/state/model.dart';
-  </p>
-  <p>
-   import 'package:vhcsite/state/event_channel.dart';
-  </p>
-  <p>
-   const _POSSIBLE_NAVIGATIONS = {"home", "flutter"};
-  </p>
-  <p>
-   class NavigationModel with Model {
-  </p>
-  <p>
-   final ProviderEventChannel eventChannel;
-  </p>
-  <p>
-   String navigationPath = "flutter";
-  </p>
-  <p>
-   NavigationModel({ProviderEventChannel parentChannel})
-  </p>
-  <pre><code>  : eventChannel = ProviderEventChannel(parentChannel) {
-</code></pre>
-  <pre><code>eventChannel.addEventListener("button", (payload) {
-</code></pre>
-  <pre><code>  navigate(payload);
-</code></pre>
-  <pre><code>  return false;
-</code></pre>
-  <pre><code>});
-</code></pre>
-  <p>
-   }
-  </p>
-  <p>
-   void navigate(String navigate) {
-  </p>
-  <pre><code>if (!_POSSIBLE_NAVIGATIONS.contains(navigate)) {
-</code></pre>
-  <pre><code>  return;
-</code></pre>
-  <pre><code>}
-</code></pre>
-  <pre><code>if (navigationPath == navigate) {
-</code></pre>
-  <pre><code>  return;
-</code></pre>
-  <pre><code>}
-</code></pre>
-  <pre><code>navigationPath = navigate;
-</code></pre>
-  <pre><code>updateModel();
-</code></pre>
-  <p>
-   }
-  </p>
-  <p>
-   }
-  </p>
-  <p>
-   ```
-  </p>
-  <p>
-   Well the first thing you'll notice is the use of the event channel. We listen for a button event and simply match it with our possible navigations. The button doesn't even know that it's actually being used for navigation. That also means that if we want to change the functionality of the button, we don't even have to look at the buttons!
-  </p>
-  <p>
-   You'll also see how little the model cares about the UI. That being, it doesn't care at all. It simply changes the current navigation value and lets anyone who cares know that the navigation value has changed. In this case, I simply change the underlying body. It's not the best form of navigation in the world, but hey, it's all I need right now.
-  </p>
-  <p>
-   Then I just feed it into my ModelProvider and voila, I have Navigation enabled!
-  </p>
-  <p>
-   I hope that this has given you a good idea on how to handle state management in Flutter. Do what you're good at and have a great day!
-  </p>
-  <p>
-   <a href="https://github.com/VHCBlade/VHCSite/tree/state-example/Flutter/vhcsite/lib/state">
-    Link to Source Code
-   </a>
-  </p>
- </body>
+<p>}
+}
+```</p>
+<p>Well the first thing you'll notice is the use of the event channel. We listen for a button event and simply match it with our possible navigations. The button doesn't even know that it's actually being used for navigation. That also means that if we want to change the functionality of the button, we don't even have to look at the buttons!</p>
+<p>You'll also see how little the model cares about the UI. That being, it doesn't care at all. It simply changes the current navigation value and lets anyone who cares know that the navigation value has changed. In this case, I simply change the underlying body. It's not the best form of navigation in the world, but hey, it's all I need right now.</p>
+<p>Then I just feed it into my ModelProvider and voila, I have Navigation enabled!</p>
+<p>I hope that this has given you a good idea on how to handle state management in Flutter. Do what you're good at and have a great day!</p>
+<p><a href="https://github.com/VHCBlade/VHCSite/tree/state-example/Flutter/vhcsite/lib/state">Link to Source Code</a></p>
 </html>

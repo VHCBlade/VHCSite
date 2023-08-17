@@ -25,19 +25,33 @@ class MainScreen extends StatelessWidget {
     final model = context.watch<BlocNotifier<AppSizeBloc>>().bloc;
 
     return Provider<TextRepository>(
-        create: (_) => CURRENT_CONFIG == RunConfig.debug
-            ? DelayedDefaultTextRepository()
-            : DefaultTextRepository(),
-        child: Scaffold(
-          appBar: createAppBar(context, model.showState == 1),
-          body: const MainBody(),
-          drawer: model.showState == 1 ? null : const ActionDrawer(),
-        ));
+      create: (_) => CURRENT_CONFIG == RunConfig.debug
+          ? DelayedDefaultTextRepository()
+          : DefaultTextRepository(),
+      child: Scaffold(
+        appBar: createAppBar(context, model.showState == 1),
+        body: const MainBody(),
+        drawer: model.showState == 1 ? null : const ActionDrawer(),
+      ),
+    );
   }
 }
 
-class MainBody extends StatelessWidget {
+class MainBody extends StatefulWidget {
   const MainBody({super.key});
+
+  @override
+  State<MainBody> createState() => _MainBodyState();
+}
+
+class _MainBodyState extends State<MainBody> {
+  @override
+  void initState() {
+    super.initState();
+    context
+      ..fireEvent(VHCSiteEvent.loadApiVersion.event, null, withDelay: true)
+      ..fireEvent(VHCSiteEvent.loadVersion.event, null, withDelay: true);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -18,6 +18,7 @@ enum VHCSiteEvent<T> {
 
   loadVersion<void>(),
   loadApiVersion<void>(),
+  versionOutdated<void>(),
   ;
 
   BlocEventType<T> get event => BlocEventType.fromObject(this);

@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/games/git_gud)
 # "Git Gud" and why you should (maybe)
 
 I am a very serious gamer. I peaked at Diamond 1 (top 1%) in League of Legends and even hit Challenger (top 200) in Teamfight Tactics. This should bring up different thoughts, such as “Get a Life” or “What a loser,” or perhaps you might find it mildly impressive. Either way, you’ll recognize that I needed to dedicate some time to specifically get better at these games. I’ll be making the case that playing to improve like I did was a good use of my time.

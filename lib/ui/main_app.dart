@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
         repositoryBuilders: repositoryBuilders,
         child: MultiBlocProvider(
           blocBuilders: blocBuilders,
-          child: WatcherLayer(child: _InnerApp()),
+          child: _InnerApp(),
         ),
       ),
     );
@@ -38,7 +38,7 @@ class _InnerApp extends StatelessWidget {
           OverlayEntry(
             builder: (context) => Navigator(
               onGenerateRoute: (_) => MaterialPageRoute(
-                builder: (_) => const MainScreen(),
+                builder: (_) => const WatcherLayer(child: MainScreen()),
               ),
             ),
           ),

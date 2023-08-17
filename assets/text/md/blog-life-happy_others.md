@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/life/happy_others)
 # Be Happy for Others
 
 [Youtube Link](https://www.youtube.com/watch?v=rAgfAZVsA64)

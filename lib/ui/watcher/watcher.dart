@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vhcsite/ui/watcher/text_scale.dart';
+import 'package:vhcsite/ui/watcher/version.dart';
 
 class WatcherLayer extends StatelessWidget {
   const WatcherLayer({super.key, required this.child});
@@ -7,6 +8,10 @@ class WatcherLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextScaleWatcher(child: child);
+    return TextScaleWatcher(
+      child: VersionWatcher(
+        child: child,
+      ),
+    );
   }
 }

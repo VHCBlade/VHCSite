@@ -1,4 +1,11 @@
-## 3.4.1 - Auguest 6, 2023
+## 3.4.2 - August 17, 2023
+
+- Moved version in home screen to be loaded in the VersionBloc instead.
+- Added Reload prompt if the loaded VERSION and the version from the API do not match.
+- Updated the Raw HTML of each blog to have a return to website button.
+- Updated the Raw HTML to convert special single and double quote to the simple version.
+
+## 3.4.1 - August 6, 2023
 
 - Added Poems category for blogs (Red Category)
 - Added raw HTML share link at the bottom of each blog.

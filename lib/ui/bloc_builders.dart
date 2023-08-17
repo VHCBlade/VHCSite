@@ -4,6 +4,7 @@ import 'package:vhcsite/bloc/app_size.dart';
 import 'package:vhcsite/bloc/blog.dart';
 import 'package:vhcsite/bloc/blog_views.dart';
 import 'package:vhcsite/bloc/navigation/navigation_bloc.dart';
+import 'package:vhcsite/bloc/version.dart';
 
 final blocBuilders = [
   BlocBuilder<AppSizeBloc>(
@@ -17,6 +18,12 @@ final blocBuilders = [
       parentChannel: parentChannel,
       api: reader.read(),
       database: reader.read(),
+    ),
+  ),
+  BlocBuilder<VersionBloc>(
+    (reader, parentChannel) => VersionBloc(
+      parentChannel: parentChannel,
+      api: reader.read(),
     ),
   ),
 ];

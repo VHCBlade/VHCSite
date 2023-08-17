@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/games/report)
 # Why I Don't Report People
 
 [Youtube Link](https://www.youtube.com/watch?v=eWGT0eTPXZk)

@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/life/humility)
 # On the Utility of Humility
 
 # Wisdom of the Ages

@@ -1,3 +1,4 @@
+[<- Back](https://vhcblade.com/#/blog/life/serious_humor)
 # A Serious Case for Humor
 
 # Serious Beginnings
