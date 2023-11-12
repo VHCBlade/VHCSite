@@ -34,7 +34,6 @@ class VersionBloc extends Bloc {
   void loadApiVersion() async {
     final response = await api.request('GET', 'version', (_) => null);
     if (response.statusCode != 200) {
-      print(response.statusCode);
       return;
     }
     apiVersion = await response.body;

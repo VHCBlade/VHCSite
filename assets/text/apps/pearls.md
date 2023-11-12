@@ -4,6 +4,6 @@
 
 A business simulator game set in the Modern Day Philippines. Play as both historical and modern figures to thrive in the economic landscape of the Philippines!
 
-[Web Demo](https://pearl.reviewerblade.com)
+[Web Demo](https://pearl.vhcblade.com)
 
 [Main Website](https://pearlsofasia.io)

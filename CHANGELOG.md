@@ -1,3 +1,8 @@
+## 3.5.0 - November 12, 2023
+
+- Updated packages so that event_db ^0.2.0 and all necessary upgrades along with that change.
+- Added Resume button in about page to see current resume from API.
+
 ## 3.4.2 - August 17, 2023
 
 - Moved version in home screen to be loaded in the VersionBloc instead.

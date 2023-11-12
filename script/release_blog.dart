@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:event_db/event_db.dart';
 import 'package:vhcsite_models/vhcsite_models.dart';
 
 void main() {
