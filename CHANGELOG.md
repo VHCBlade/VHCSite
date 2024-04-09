@@ -1,3 +1,7 @@
+## 3.5.1 - April 9, 2024
+
+- Updated to Flutter 3 and changed to use old material
+
 ## 3.5.0 - November 12, 2023
 
 - Updated packages so that event_db ^0.2.0 and all necessary upgrades along with that change.

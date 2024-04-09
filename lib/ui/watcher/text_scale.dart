@@ -10,7 +10,9 @@ class TextScaleWatcher extends StatelessWidget {
   Widget build(BuildContext context) {
     if (context.environment.overrideTextScale) {
       return MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+        data: MediaQuery.of(context).copyWith(
+          textScaler: const TextScaler.linear(1),
+        ),
         child: child,
       );
     }

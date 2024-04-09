@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:event_db/event_db.dart';
 import 'package:vhcsite_models/vhcsite_models.dart';
 
+/// This will automatically release any new blogs in
 void main() {
   const directory = 'assets/text/blog';
   final manifestFile = File('assets/text/manifest.json');
