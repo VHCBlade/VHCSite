@@ -13,7 +13,8 @@ void main() {
   final blogMap = <String, BlogManifest>{};
 
   for (final map in manifest) {
-    final blogManifest = BlogManifest()..loadFromMap(map);
+    final blogManifest = BlogManifest()
+      ..loadFromMap(map as Map<String, dynamic>);
     blogMap[blogManifest.path] = blogManifest;
   }
 

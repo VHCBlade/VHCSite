@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:vhcblade_theme/vhcblade_theme.dart';
 
@@ -7,23 +9,23 @@ ThemeData createSiteTheme() {
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
           backgroundColor: textButtonBackgroundColor,
-          shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+          shape: WidgetStateProperty.all(const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(3)))),
           overlayColor: textButtonOverlayColor,
-          surfaceTintColor: MaterialStateProperty.all(HIGHLIGHT_COLOR),
+          surfaceTintColor: WidgetStateProperty.all(HIGHLIGHT_COLOR),
           foregroundColor:
-              MaterialStatePropertyAll(theme.textTheme.bodyLarge!.color)),
+              WidgetStateProperty.all(theme.textTheme.bodyLarge!.color)),
     ),
   );
 }
 
-MaterialStateProperty<Color> get textButtonBackgroundColor =>
-    MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.disabled)) {
+WidgetStateProperty<Color> get textButtonBackgroundColor =>
+    WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
         return const Color(0x80000000);
       }
-      if (states.contains(MaterialState.hovered) &&
-          !states.contains(MaterialState.disabled)) {
+      if (states.contains(WidgetState.hovered) &&
+          !states.contains(WidgetState.disabled)) {
         return HIGHLIGHT_COLOR.withAlpha(99);
       }
       return Colors.transparent;

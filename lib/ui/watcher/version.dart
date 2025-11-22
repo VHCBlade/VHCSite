@@ -19,7 +19,7 @@ class _VersionWatcherState extends State<VersionWatcher> {
   @override
   void initState() {
     super.initState();
-    subscription = context.eventChannel.eventBus.addEventListener(
+    subscription = context.eventChannel.eventBus.addEventListener<void>(
       VHCSiteEvent.versionOutdated.event,
       (event, value) {
         if (!kIsWeb) {

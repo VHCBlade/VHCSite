@@ -10,7 +10,8 @@ class TextScaleModel extends GenericModel {
   double textScale = 1;
 
   @override
-  Map<String, Tuple2<Getter, Setter>> getGetterSetterMap() => {};
+  Map<String, Tuple2<Getter<dynamic>, Setter<dynamic>>> getGetterSetterMap() =>
+      {};
 
   @override
   String get type => 'TextScale';

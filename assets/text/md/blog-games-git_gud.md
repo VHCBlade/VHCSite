@@ -6,7 +6,7 @@ I am a very serious gamer. I peaked at Diamond 1 (top 1%) in League of Legends a
 # The Will to Improve
 ---------------------
 
-If you play to get better, you’ll start to realize just how bad you are. You’ll realize that your reflexes aren’t as fast as you’d like. You’ll find yourself confused at different game states. You’ll see just how much better others are at you at the game. Seeing the mountain you must climb can be discouraging. The path to “gud”ness appears before us as rough and harrowing. Not only that, but we have our stagnant rank as proof of our failures. And it is precisely this difficulty why we must pursue it.
+If you play to get better, you’ll start to realize just how bad you are. You’ll realize that your reflexes aren’t as fast as you’d like. You’ll find yourself confused at different game states. You’ll see just how much better others are at the game than you. Seeing the mountain you must climb can be discouraging. The path to “gud”ness appears before us as rough and harrowing. Not only that, but we have our stagnant rank as proof of our failures. And it is precisely this difficulty why we must pursue it.
 
 For everything in life that is meaningful demands that we strive for it. While the reward for competence in video games are meager, the attaining of this competence fosters a spirit of industriousness and excellence. Pushing through the adversity of one’s own limitations is a universal and lifelong experience. Becoming as good as you can at anything will make you better at being the best you can at anything. Even if it’s just ranking up to the next level.
 

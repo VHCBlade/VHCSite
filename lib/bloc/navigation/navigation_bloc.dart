@@ -1,20 +1,22 @@
-import 'package:event_navigation/event_navigation.dart';
 import 'package:event_bloc/event_bloc.dart';
+import 'package:event_navigation/event_navigation.dart';
 import 'package:vhcsite/bloc/navigation/inner/blog.dart';
 import 'package:vhcsite/bloc/navigation/inner/navigations.dart';
 
-const POSSIBLE_NAVIGATIONS = <String>{"home", "apps", "blog", "about", "error"};
+const POSSIBLE_NAVIGATIONS = <String>{'home', 'apps', 'blog', 'about', 'error'};
 
 MainNavigationBloc<String> generateNavigationBloc(
-    BlocEventChannel? parentChannel) {
+  BlocEventChannel? parentChannel,
+) {
   return MainNavigationBloc<String>(
     parentChannel: parentChannel,
     strategy: ListNavigationStrategy(
-        possibleNavigations: POSSIBLE_NAVIGATIONS.toList(),
-        navigationOnError: "error",
-        defaultNavigation: "home"),
+      possibleNavigations: POSSIBLE_NAVIGATIONS.toList(),
+      navigationOnError: 'error',
+      defaultNavigation: 'home',
+    ),
     undoStrategy: UndoRedoMainNavigationStrategy(),
   )
-    ..deepNavigationStrategyMap["about"] = AboutDeepNavigationStrategy()
-    ..deepNavigationStrategyMap["blog"] = BlogDeepNavigationStrategy();
+    ..deepNavigationStrategyMap['about'] = AboutDeepNavigationStrategy()
+    ..deepNavigationStrategyMap['blog'] = BlogDeepNavigationStrategy();
 }

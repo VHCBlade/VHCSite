@@ -1,3 +1,10 @@
+## 3.6.0 - November 22, 2025
+
+- Upgraded to event_bloc 4.7.0
+- Removed Other Apps section
+- Updated Analysis for Coding standards and followed them
+- Attempted to improve performance of blogs screen
+
 ## 3.5.1 - April 9, 2024
 
 - Updated to Flutter 3 and changed to use old material

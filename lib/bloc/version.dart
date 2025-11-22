@@ -12,10 +12,14 @@ class VersionBloc extends Bloc {
     this.getVersion = _loadFromRootBundle,
   }) {
     eventChannel
-      ..addEventListener(
-          VHCSiteEvent.loadVersion.event, (event, value) => loadVersion())
-      ..addEventListener(VHCSiteEvent.loadApiVersion.event,
-          (event, value) => loadApiVersion());
+      ..addEventListener<void>(
+        VHCSiteEvent.loadVersion.event,
+        (event, value) => loadVersion(),
+      )
+      ..addEventListener<void>(
+        VHCSiteEvent.loadApiVersion.event,
+        (event, value) => loadApiVersion(),
+      );
   }
 
   final Future<String> Function() getVersion;

@@ -2,7 +2,7 @@ name: vhcsite
 description: Website for VHCBlade!
 repository: https://github.com/VHCBlade/VHCSite
 publish_to: 'none' 
-version: 3.5.1
+version: 3.6.0
 
 environment:
   sdk: ">=2.17.0-0 <3.0.0"
@@ -14,7 +14,7 @@ dependencies:
   collection: ^1.17.1
 
   event_api: ^0.3.0
-  event_bloc: ^4.6.0
+  event_bloc: ^4.7.0
   event_essay: ^0.1.6
   # event_essay:
   #   path: ../../../event_essay
@@ -48,6 +48,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.1
+  very_good_analysis: ^10.0.0
 
 flutter:
   uses-material-design: true

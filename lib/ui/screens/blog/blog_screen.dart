@@ -40,34 +40,49 @@ class BlogSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.watchBloc<BlogBloc>();
+
+    final blogList = bloc.sortedSearchList.list
+        .map((x) => bloc.blogMap[x]!)
+        .where((x) => bloc.inCategory(x))
+        .toList();
+
     return WebRefresh(
-      child: EssayScroll(
-        alignment: Alignment.topCenter,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(width: double.infinity),
-            Text(
-              'Blogs',
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(height: 10),
-            const CategoryPickerWidget(),
-            const BlogSearchWidget(),
-            const SizedBox(height: 10),
-            const BlogSortWidget(),
-            const SizedBox(height: 10),
-            ...bloc.sortedSearchList.list.map((e) {
-              final manifest = bloc.blogMap[e]!;
-
-              if (!bloc.inCategory(manifest)) {
-                return const SizedBox();
-              }
-
-              return BlogSelection(manifest: manifest);
-            }),
-          ],
+      child: EssayLayout(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 1200),
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(width: double.infinity),
+              Text(
+                'Blogs',
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(height: 10),
+              const CategoryPickerWidget(),
+              const BlogSearchWidget(),
+              const SizedBox(height: 10),
+              const BlogSortWidget(),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ScrollbarProvider(
+                  isAlwaysShown: true,
+                  builder: (controller, _) => ListView.builder(
+                    controller: controller,
+                    itemCount: blogList.length,
+                    itemBuilder: (context, i) => Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: BlogSelection(
+                        manifest: blogList[i],
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -13,10 +13,12 @@ class AppSizeBloc extends Bloc {
 
   AppSizeBloc({super.parentChannel}) {
     eventChannel.addEventListener<MediaQueryData>(
-        DataEvent.mediaQuery.event,
-        (_, val) => updateBlocOnChange(
-            tracker: () => [showState],
-            change: () => showState = getStateFromMediaQuery(val)));
+      DataEvent.mediaQuery.event,
+      (_, val) => updateBlocOnChange(
+        tracker: () => [showState],
+        change: () => showState = getStateFromMediaQuery(val),
+      ),
+    );
   }
 
   int getStateFromMediaQuery(MediaQueryData query) {

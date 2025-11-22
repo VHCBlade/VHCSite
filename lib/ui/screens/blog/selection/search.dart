@@ -12,16 +12,17 @@ class BlogSearchWidget extends StatefulWidget {
 
 class _BlogSearchWidgetState extends State<BlogSearchWidget> {
   late final controller = TextEditingController();
-  late final BlocEventListener subscription;
+  late final BlocEventListener<dynamic> subscription;
 
   @override
   void initState() {
     super.initState();
     final bloc = context.readBloc<BlogBloc>();
     controller.text = bloc.searchTerm ?? '';
-    subscription = bloc.eventChannel.eventBus.addEventListener(
-        VHCSiteEvent.clearCategoryFilters.event,
-        (event, _) => setState(() => controller.text = ''));
+    subscription = bloc.eventChannel.eventBus.addEventListener<void>(
+      VHCSiteEvent.clearCategoryFilters.event,
+      (event, _) => setState(() => controller.text = ''),
+    );
   }
 
   @override
@@ -41,13 +42,17 @@ class _BlogSearchWidgetState extends State<BlogSearchWidget> {
             decoration: const InputDecoration(hintText: 'Search Term'),
             textInputAction: TextInputAction.search,
             onSubmitted: (value) => context.fireEvent(
-                VHCSiteEvent.changeBlogSearchTerm.event, value),
+              VHCSiteEvent.changeBlogSearchTerm.event,
+              value,
+            ),
           ),
         ),
         const SizedBox(width: 10),
         ElevatedButton(
           onPressed: () => context.fireEvent(
-              VHCSiteEvent.changeBlogSearchTerm.event, controller.text),
+            VHCSiteEvent.changeBlogSearchTerm.event,
+            controller.text,
+          ),
           child: const Text('Search'),
         ),
       ],

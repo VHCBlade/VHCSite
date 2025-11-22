@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:event_db/event_db.dart';
 import 'package:vhcsite_models/vhcsite_models.dart';
 
-/// This will automatically release any new blogs in
+/// This will automatically release any new blogs in assets/text/blog and take the first line as the title of the blog
 void main() {
   const directory = 'assets/text/blog';
   final manifestFile = File('assets/text/manifest.json');
@@ -14,7 +14,10 @@ void main() {
   final blogMap = <String, BlogManifest>{};
 
   for (final map in manifest) {
-    final blogManifest = BlogManifest()..loadFromMap(map);
+    final blogManifest = BlogManifest()
+      ..loadFromMap(
+        map as Map<String, dynamic>,
+      );
     blogMap[blogManifest.path] = blogManifest;
   }
 
@@ -23,11 +26,12 @@ void main() {
     if (blogMap.containsKey(currentPath)) {
       return;
     }
+    print("Acting on $currentPath");
     final blogPost = File(markdown).readAsStringSync().split('\n');
     File(markdown).writeAsStringSync(
       blogPost.skip(1).reduce((value, element) => '$value\n$element'),
     );
-    // ignore: avoid_print
+    // ignore: avoid_print script so should print
     print('Publishing ${blogPost.first}...');
     blogMap[currentPath] = BlogManifest()
       ..idSuffix = '${blogMap.length}'

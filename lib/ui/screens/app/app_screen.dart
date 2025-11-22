@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:vhcblade_theme/vhcblade_widget.dart';
 import 'package:vhcsite/ui/page/refresh.dart';
 
-const apps = ["reviewer", "weight"];
-const otherApps = ["pearls"];
+const apps = ['reviewer', 'weight'];
+const otherApps = <String>[];
 
 class AppsScreen extends StatelessWidget {
   const AppsScreen({super.key});
@@ -27,7 +27,7 @@ class AppsScreen extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
-                  "My Apps",
+                  'My Apps',
                   style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.left,
                 )),
@@ -37,30 +37,32 @@ class AppsScreen extends StatelessWidget {
               rowAlignment: CrossAxisAlignment.start,
               builder: (index, _) => Card(
                 child: EssayScreen(
-                  path: ["apps", apps[index]],
+                  path: ['apps', apps[index]],
                 ),
               ),
               itemsPerRow: items,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Text(
-                "Apps Made for Others",
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.left,
-              ),
-            ),
-            FlexibleGrid(
-              shrinkWrap: true,
-              itemCount: otherApps.length,
-              rowAlignment: CrossAxisAlignment.start,
-              builder: (index, _) => Card(
-                child: EssayScreen(
-                  path: ["apps", otherApps[index]],
+            if (otherApps.isNotEmpty) ...[
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  'Apps Made for Others',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                  textAlign: TextAlign.left,
                 ),
               ),
-              itemsPerRow: items,
-            ),
+              FlexibleGrid(
+                shrinkWrap: true,
+                itemCount: otherApps.length,
+                rowAlignment: CrossAxisAlignment.start,
+                builder: (index, _) => Card(
+                  child: EssayScreen(
+                    path: ['apps', otherApps[index]],
+                  ),
+                ),
+                itemsPerRow: items,
+              ),
+            ]
           ],
         ),
       ),

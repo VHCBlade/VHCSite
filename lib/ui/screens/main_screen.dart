@@ -19,8 +19,12 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.microtask(() => context.fireEvent<MediaQueryData>(
-        DataEvent.mediaQuery.event, MediaQuery.of(context)));
+    final query = MediaQuery.of(context);
+    final eventChannel = context.eventChannel;
+    Future.microtask(
+      () => eventChannel.fireEvent<MediaQueryData>(
+          DataEvent.mediaQuery.event, query),
+    );
 
     final model = context.watch<BlocNotifier<AppSizeBloc>>().bloc;
 

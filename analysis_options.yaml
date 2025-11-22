@@ -1,6 +1,10 @@
-include: package:flutter_lints/flutter.yaml
+include: package:very_good_analysis/analysis_options.yaml
 
 linter:
   rules:
     avoid_function_literals_in_foreach_calls: false
     constant_identifier_names: false
+    public_member_api_docs: false
+    avoid_void_async: false
+    sort_constructors_first: 
+    specify_nonobvious_property_types: false

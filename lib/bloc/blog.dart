@@ -12,14 +12,16 @@ final _dateFormat = DateFormat.yMMMMd();
 class BlogBloc extends Bloc {
   BlogBloc({required super.parentChannel}) {
     eventChannel
-      ..addEventListener(
+      ..addEventListener<void>(
         VHCSiteEvent.loadBlog.event,
         (event, value) => initialize(),
       )
       ..addEventListener<String?>(
         VHCSiteEvent.pickBlogCategory.event,
         (event, value) => updateBlocOnChange(
-            change: () => category = value, tracker: () => [category]),
+          change: () => category = value,
+          tracker: () => [category],
+        ),
       )
       ..addEventListener<String?>(
         VHCSiteEvent.changeBlogSearchTerm.event,
@@ -43,7 +45,7 @@ class BlogBloc extends Bloc {
           updateBloc();
         },
       )
-      ..addEventListener(
+      ..addEventListener<void>(
         VHCSiteEvent.clearCategoryFilters.event,
         (event, value) => resetFilters(),
       );
@@ -86,7 +88,7 @@ class BlogBloc extends Bloc {
                   manifest.name,
                   _dateFormat.format(manifest.uploadDate),
                   manifest.category,
-                ]
+                ],
           ],
         ),
       ),
@@ -111,9 +113,9 @@ class BlogBloc extends Bloc {
     try {
       final bundle = await rootBundle.loadString('assets/text/manifest.json');
       final decoded = (json.decode(bundle) as List<dynamic>)
-          .map((e) => BlogManifest()..loadFromMap(e))
+          .map((e) => BlogManifest()..loadFromMap(e as Map<String, dynamic>))
           .toList();
-      for (int i = 0; i < decoded.length; i++) {
+      for (var i = 0; i < decoded.length; i++) {
         blogMap[decoded[i].path] = decoded[i];
         if (i > 0) {
           decoded[i].next = decoded[i - 1].path;

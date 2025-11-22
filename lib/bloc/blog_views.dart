@@ -12,16 +12,20 @@ class BlogViewsBloc extends Bloc {
   }) {
     eventChannel
       ..addEventListener<String>(
-          VHCSiteEvent.loadBlogViews.event, (event, value) => loadViews(value))
-      ..addEventListener<String>(VHCSiteEvent.recordBlogView.event,
-          (event, value) => recordView(value));
+        VHCSiteEvent.loadBlogViews.event,
+        (event, value) => loadViews(value),
+      )
+      ..addEventListener<String>(
+        VHCSiteEvent.recordBlogView.event,
+        (event, value) => recordView(value),
+      );
   }
 
   final APIRepository api;
   final DatabaseRepository database;
 
   late final blogViewsMap = <String, BlogViews>{};
-  late final viewRecordedMap = GenericModelMap(
+  late final viewRecordedMap = GenericModelMap<BlogViews>(
     repository: () => database,
     supplier: BlogViews.new,
     defaultDatabaseName: 'blogViews',
@@ -41,7 +45,10 @@ class BlogViewsBloc extends Bloc {
     }
 
     final response = await api.request(
-        'POST', 'blog/${path.replaceAll('/', '-')}/views', (request) => null);
+      'POST',
+      'blog/${path.replaceAll('/', '-')}/views',
+      (request) => null,
+    );
 
     if (response.statusCode != 200) {
       return;
@@ -52,7 +59,10 @@ class BlogViewsBloc extends Bloc {
 
   void loadViews(String path) async {
     final response = await api.request(
-        'GET', 'blog/${path.replaceAll('/', '-')}/views', (request) => null);
+      'GET',
+      'blog/${path.replaceAll('/', '-')}/views',
+      (request) => null,
+    );
 
     if (response.statusCode != 200) {
       return;

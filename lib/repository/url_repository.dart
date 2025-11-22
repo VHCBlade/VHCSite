@@ -1,12 +1,15 @@
+import 'package:event_bloc/event_bloc.dart';
 import 'package:event_essay/event_essay.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vhcsite/events/events.dart';
-import 'package:event_bloc/event_bloc.dart';
 
 class UrlRepository extends Repository {
   /// Generates the listener map that this [Repository] will add to the
   @override
-  List<BlocEventListener> generateListeners(BlocEventChannel eventChannel) => [
+  List<BlocEventListener<dynamic>> generateListeners(
+    BlocEventChannel eventChannel,
+  ) =>
+      [
         eventChannel.addEventListener<String>(
             EssayEvent.url.event, (_, val) => _launch(val)),
         eventChannel.addEventListener<String>(VHCSiteEvent.button.event,
@@ -17,7 +20,7 @@ class UrlRepository extends Repository {
         }),
       ];
 
-  void _launch(String target) {
-    launchUrl(Uri.parse((target)));
+  void _launch(String target) async {
+    await launchUrl(Uri.parse((target)));
   }
 }
