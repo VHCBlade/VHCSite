@@ -1,3 +1,8 @@
+## 3.6.1 - January 31, 2026
+
+- Updated Changelog with instructions on how to release a blog
+- Upgraded Flutter version
+
 ## 3.6.0 - November 22, 2025
 
 - Upgraded to event_bloc 4.7.0
