@@ -1,0 +1,71 @@
+I keep coming back to a childhood memory of rummaging through a bookcase. It was filled with old books and encyclopedias that I don’t remember ever being used. Eventually I stumbled upon an old bible. I decided to open it since my child eyes were curious as to what made it special. Of course, not everything is rife with meaning, but in this case, something did set this bible apart.
+
+It was a bible that my mother had given to my father, and in the front page was a dedication written by her. It was a poem about how it would now be my mother and father together. Just them. Just “You and I.”
+
+The poem was simple… elegant… beautiful. It moved my young heart. The love that they had as a young couple crystallized in just 4 lines. It gave me a new appreciation for the love that they share now.
+
+-------------------
+
+# The Tapestry of Emotion
+-------------------
+
+Writing is a beautiful hobby, one that I inherited from my mother. I still love reading the old letters that my mother wrote and it adds color to the story of my own life. Her dedications always fill me with joy, embraced by the love she has for me and her family.
+
+Writing allows you to weave your current emotional state into the tapestry of your life. A poem, or a letter, or an essay, can hold the very essence of your current life. They say that a picture is worth a thousand words, but I feel that saying sells the power of words a bit short. Well-crafted literature conveys a more intimate depth than any photo can express. (Granted, I have a poor visual imagination, so I’m probably a little biased.)
+
+And if you write throughout your entire life, it helps tell your story. The people that matter to you, the ideas that gripped you– they become immortalized in the words that you have written down. Your struggles and your fears become inspiration for the wounded. Your joys and your love fill the deepest longing of the soul. Your memories become a beautiful tapestry to be appreciated by yourself, your family, and your friends.
+
+Moreover, the writer is able to establish a unique relationship with the reader. And this allows your present love to reach further and wider than the current moment. It allows you to create friendships through space and time! And who doesn't want more friends?
+
+Writing lets you create a beautiful tapestry you can share. Every poem, and essay, a memory on that sacred rug.
+
+# The Tidying of the Mind
+-------------------
+
+Writing helps you navigate and understand your emotions. It lets you gather the dust of idea fragments you have littered around the corners of your mind. You can then weave them together to create a coherent whole.
+
+As someone with a more melancholic temperament– and really I feel most writers lean in this sad way– writing helps me to make sense of the events in my life. It lets me appreciate the graces that I’ve found in my life, and understand the beauty in the inevitable suffering. It lets me understand who I’ve been, who I am, and who I am going to be. 
+
+Virtue is built on the idea of striving for a target, but how will you reach that target if you don't even know what you're aiming for?
+
+Writing essentially forces you to sharpen your thought. The struggle to form coherent sentences forces you to come to grips with what you actually think.
+
+Moreover, a lot of ideas about yourself and your life just kind of float around with you unchallenged. Ideas formed in childhood that were once useful can now impede you and prevent you from growing. 
+
+For example, I had always thought of myself as a very serious person. I was someone that was always tense and I performed best under pressure. Thanks to writing, I slowly realized that this was just the cope that a procrastinator comes up with to justify inaction. Furthermore, taking myself so seriously all the time prevents me from appreciating the quieter and calmer parts of life. 
+
+I further recognized the strain that I put on my own writing. Every piece needed to be monumental. Every idea needed to be perfect the first time. I now realize that I ultimately just need to have faith in the process and put my trust in God. After all, I actually prefer more light-hearted books when I read. (With the minor exception of books about death.)
+
+Writing allows you to evaluate the denizens of your mind, and finally give an eviction notice to the ideas that have been living rent-free for years.
+
+# The Joy of Creation
+-------------------
+
+The final reason why I write is because it brings me joy. We are made in God's image and God is the great creator. In the process of becoming more like God, participating in the creation of something beautiful (or at least approximating it) is invaluable.
+
+From when I was young, I’ve always found writing enjoyable. Whether it be poetry or essays or even speeches. I found myself drawn to the writing exercises in school and relished the opportunity to flex my creative muscles. 
+
+The only pitfall that I fell into was finding my old writings “cringe.” I’d see the word choice and think that it was poor. I’d find some parts of the writing as meandering and unfocused. But most of all, the ideas that I had once clung to now seem so trivial or even contradictory to what I believe now.
+
+I remember one of my college friends saying something I vehemently disagreed with. It seemed insane to me that he would even come up with that idea. Lo and behold, he revealed to me that I was the progenitor of the idea– what great irony to have your words thrown back at you!
+
+I’ve grown to realize however, that just like regrets in life, criticizing your past writing is folly. The current you can only exist because of the steady evolution of your own ideas. Now, rather than cringe at my old writing, I feel grateful. Because the writing represents my journey to who I am, and my writing today is just another chapter in that story.
+
+But most of all, writing brings me joy because I’m inspired by the writings I read– my mother's old letters, the songs I listen to, even the speeches that I hear at weddings. And this inspiration from writing can only express itself through writing. 
+
+Writing brings joy because it is natural for the mind to write. The mind which knows must then show it through writing.
+
+-------------------
+
+# The Writer's Evolution
+-------------------
+
+When I read my mother's writing, I am sometimes tempted to think that she's always been this eloquent. However, when I read some of her earliest writing, I realized that this wasn't always the case. She too grew and matured in her writing. I only see the skyscraper that she has become today.
+
+When I read her earliest writings however, I still see the beauty of her soul. Her thoughts, her musings, her being, I encounter her in a more real way than when I listen to her stories (though those are great too). I feel myself becoming friends with my mother from her youth.
+
+I write to weave a tapestry of emotion, to make sense of all these sometimes overwhelming feelings. I write to tidy my mind, and clean up any ideas that have long past their expiration date. I write to find joy in the creative process, and share in God’s perfect creation.
+
+Ultimately, however, I write so that my present self too can be friends with my future children. That my writing can be an anchor of God’s specific love for me in the present. And that I can have a relationship with them in the past, present, as well as in the future.
+
+(Or maybe I just want my children to cry in the same way I cry when I read my mother's writing)
